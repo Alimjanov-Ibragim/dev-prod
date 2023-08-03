@@ -1,7 +1,8 @@
 import cn from 'classnames';
 
-import { TIcon, TIconColor, TIconShape, TIconSize, TIconStyle } from './libs';
-import { GetIcon } from './ui';
+import { TIcon } from 'shared/lib';
+import { GetIcon } from 'shared/lib';
+import { TIconColor, TIconShape, TIconSize, TIconStyle } from './libs';
 
 type Props = {
   /** Style type of icon: "white" | "default" | "solid" | "soft" | "soft-outlined" | "outlined" */

@@ -1,43 +1,15 @@
 import cn from 'classnames';
 import { type ReactNode } from 'react';
 
-import { Icon } from '../Icon/Icon';
-import { Loading } from '../Loading/Loading';
-
-type TButtonStyles = 'solid' | 'outlined' | 'ghost' | 'soft' | 'link' | 'white';
-
-type TButtonSizes = 'small' | 'default' | 'large';
-type TButtonShapes = 'default' | 'pilled';
-type TButtonColors =
-  | 'dark'
-  | 'gray'
-  | 'green'
-  | 'blue'
-  | 'red'
-  | 'yellow'
-  | 'light';
-
-type TButtonFontWeight =
-  | 'font-thin'
-  | 'font-extralight'
-  | 'font-light'
-  | 'font-normal'
-  | 'font-medium'
-  | 'font-semibold'
-  | 'font-bold'
-  | 'font-extrabold'
-  | 'font-black';
-
-type TButtonFontSize =
-  | 'font-text-xs'
-  | 'font-text-sm'
-  | 'font-text-base'
-  | 'font-text-lg'
-  | 'font-text-xl'
-  | 'font-text-2xl'
-  | 'font-text-3xl'
-  | 'font-text-4xl'
-  | 'font-text-5xl';
+import { Icon, Loading } from 'shared/ui';
+import {
+  TButtonColors,
+  TButtonFontSize,
+  TButtonFontWeight,
+  TButtonShapes,
+  TButtonSizes,
+  TButtonStyles,
+} from './libs';
 
 type Props = {
   /** Click handler */

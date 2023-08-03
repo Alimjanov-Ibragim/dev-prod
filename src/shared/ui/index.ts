@@ -1,3 +1,10 @@
-export { Button } from './Button/Button';
-export { Icon } from './Icon/Icon';
-export { Loading } from './Loading/Loading';
+export { Button } from './Button';
+export { Icon } from './Icon';
+export { Loading } from './Loading';
+export { Layout } from './Layout';
+export { Indicator } from './Indicator';
+export { Badge } from './Badge';
+export { Progress } from './Progress';
+export { Input } from './Input';
+export { Checkbox } from './Checkbox';
+export { Avatar, AvatarGroup } from './Avatar';

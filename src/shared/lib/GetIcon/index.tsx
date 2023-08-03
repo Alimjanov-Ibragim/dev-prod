@@ -1,4 +1,5 @@
 import {
+  Search,
   CheckLg,
   PlusLg,
   Download,
@@ -18,24 +19,29 @@ import {
   Flag,
   BrightnessHigh,
   InfoCircle,
+  Dash,
+  PersonFill,
 } from 'react-bootstrap-icons';
 
-import { TIcon } from '../../libs';
+import { TIcon } from 'shared/lib';
 
 type Props = {
   /** ClassName for icon. */
-  className: string;
+  className?: string;
   /** Width property for svg tag. */
   width: string;
   /** Height property for svg tag. */
   height: string;
-  /** Get icon by name: "check" | "plus" | "download" | "filter" | "pencil-fill" etc. */
+  /** Get icon by name: "search" */
   name: TIcon;
 };
 
 export const GetIcon = ({ className, width, height, name }: Props) => {
   return (
     <>
+      {name === 'search' && (
+        <Search className={className} width={width} height={height} />
+      )}
       {name === 'check' && (
         <CheckLg className={className} width={width} height={height} />
       )}
@@ -92,6 +98,12 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'info-circle' && (
         <InfoCircle className={className} width={width} height={height} />
+      )}
+      {name === 'dash' && (
+        <Dash className={className} width={width} height={height} />
+      )}
+      {name === 'person-fill' && (
+        <PersonFill className={className} width={width} height={height} />
       )}
     </>
   );
