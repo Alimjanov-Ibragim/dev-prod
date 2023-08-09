@@ -20,7 +20,10 @@ export type TIcon =
   | 'flag'
   | 'brightness-high'
   | 'info-circle'
-  | 'dash';
+  | 'dash'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'calendar4-range';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 

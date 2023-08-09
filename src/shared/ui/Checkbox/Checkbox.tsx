@@ -7,7 +7,6 @@ import {
   useLayoutEffect,
 } from 'react';
 
-import { UNIQUE_NUMBER } from 'shared/config';
 import { GetIcon } from 'shared/lib';
 
 type TStyleType = 'solid' | 'soft';
@@ -17,17 +16,19 @@ type Props = {
   children?: ReactNode;
   indeterminate?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: boolean;
+  checked: boolean;
   disabled?: boolean;
+  forUniqueItem?: number;
 };
 
 export const Checkbox = ({
   styleType = 'solid',
   children,
   onChange,
-  value,
+  checked,
   disabled,
   indeterminate = false,
+  forUniqueItem,
 }: Props) => {
   const firstUpdate = useRef(true);
   useLayoutEffect(() => {
@@ -39,14 +40,14 @@ export const Checkbox = ({
 
   return (
     <label
-      htmlFor={`link-checkbox-${UNIQUE_NUMBER}`}
+      htmlFor={`link-checkbox-${forUniqueItem || ''}`}
       className='relative w-3.5 h-3.5 flex items-center'
     >
       <input
         onChange={onChange}
-        checked={value}
+        checked={checked}
         disabled={disabled}
-        id={`link-checkbox-${UNIQUE_NUMBER}`}
+        id={`link-checkbox-${forUniqueItem || ''}`}
         type='checkbox'
         className={cn(
           'absolute inset-0 appearance-none peer focus:ountline-none rounded border border-solid',
@@ -60,7 +61,7 @@ export const Checkbox = ({
           }
         )}
       />
-      {value && (
+      {checked && (
         <GetIcon
           name='check'
           width='14'
@@ -76,7 +77,7 @@ export const Checkbox = ({
           )}
         />
       )}
-      {!firstUpdate.current && indeterminate && !value && (
+      {!firstUpdate.current && indeterminate && !checked && (
         <GetIcon
           name='dash'
           width='14'

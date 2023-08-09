@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { GetIcon } from 'shared/lib';
 import {
   Avatar,
   Badge,
@@ -10,12 +11,76 @@ import {
   Indicator,
   Input,
   AvatarGroup,
+  Table,
+  Pagination,
+  Datepicker,
 } from 'shared/ui';
+import { data } from './data';
 
 export const LeadsPage = () => {
   const [isChecked, setIsChecked] = useState(false);
   const handler = (e: React.ChangeEvent<HTMLInputElement>) =>
     setIsChecked((prev: boolean) => !prev);
+
+  // table checkbox check
+  const [list, setList] = useState(data || []);
+  const [isCheckedAll, setIsCheckedAll] = useState(false);
+  const tableHandler = (
+    _: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const isTrueAll: boolean[] = [];
+    const tempList = list.map((item, ind) => {
+      if (ind === index) {
+        isTrueAll.push(!item.checked);
+        return Object.assign(
+          {},
+          {
+            ...item,
+            checked: !item.checked,
+          }
+        );
+      } else {
+        isTrueAll.push(item.checked);
+        return item;
+      }
+    });
+    setList(tempList);
+    if (!isTrueAll.includes(false)) {
+      setIsCheckedAll(true);
+    }
+    if (isTrueAll.includes(false)) {
+      setIsCheckedAll(false);
+    }
+  };
+  const tableAllHandler = () => {
+    const temp = list.map((item) =>
+      Object.assign(
+        {},
+        {
+          ...item,
+          checked: isCheckedAll ? false : true,
+        }
+      )
+    );
+    setIsCheckedAll(!isCheckedAll);
+    setList(temp);
+  };
+  const actionHandlerBtn = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    ind: number
+  ) => {
+    e.preventDefault();
+    console.log('ind: ', ind);
+  };
+
+  //handle Page Change
+  const handlePageChange = (event: { selected: number }) => {
+    console.log('Current event: ', event);
+  };
+  const handleTablePageChange = (event: { selected: number }) => {
+    console.log('Current event: ', event);
+  };
 
   return (
     <div
@@ -25,6 +90,67 @@ export const LeadsPage = () => {
       }}
     >
       <h1>Leads page</h1>
+      <Datepicker />
+      <Pagination
+        // previousLabel={<GetIcon name='chevron-left' width='16' height='16' />}
+        // nextLabel={<GetIcon name='chevron-right' width='16' height='16' />}
+        pageCount={150}
+        onChange={handlePageChange}
+        shape='circular'
+        perPageAmount
+      />
+      <Table
+        // onChangeAllCheckboxHandler={tableAllHandler}
+        // onChangeCheckboxHandler={tableHandler}
+        // checkedAll={isCheckedAll}
+        topSlot={
+          <div className='flex justify-between items-center'>
+            <Input
+              type='text'
+              size='default'
+              styleType='underline'
+              // label='ibragim'
+              iconName='search'
+            />
+          </div>
+        }
+        botSlot={
+          <Pagination
+            pageCount={150}
+            onChange={handleTablePageChange}
+            perPageAmount={true}
+          />
+        }
+        actionHandlerBtn={actionHandlerBtn}
+        theadBgClass='bg-gray-50'
+        rounded
+        withShadow
+        styleType='bordered'
+        wrapClassTable='w-[1000px]'
+        listHead={[
+          {
+            text: 'NAME',
+            width: 'flex-[0_0_25.7142%]',
+            maxWidth: '25.7142%',
+          },
+          {
+            text: 'AGE',
+            width: 'flex-[0_0_13.2653%]',
+            maxWidth: '13.2653%',
+          },
+          {
+            text: 'ADDRESS',
+            width: 'flex-[0_0_43.2653%]',
+            maxWidth: '43.2653%',
+          },
+          {
+            text: 'ACTION',
+            width: 'flex-[0_0_17.7551%]',
+            maxWidth: '17.7551%',
+          },
+        ]}
+        list={list}
+      />
       <AvatarGroup
         moreLengthClassName='!bg-gray-100 !text-gray-800 hover:!bg-gray-500 hover:!text-white'
         moreLength={3}
@@ -103,7 +229,7 @@ export const LeadsPage = () => {
       />
       <Checkbox
         onChange={handler}
-        value={isChecked}
+        checked={isChecked}
         // styleType='soft'
         // indeterminate
       >

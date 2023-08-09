@@ -21,6 +21,9 @@ import {
   InfoCircle,
   Dash,
   PersonFill,
+  ChevronLeft,
+  ChevronRight,
+  Calendar4Range,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
@@ -104,6 +107,15 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'person-fill' && (
         <PersonFill className={className} width={width} height={height} />
+      )}
+      {name === 'chevron-left' && (
+        <ChevronLeft className={className} width={width} height={height} />
+      )}
+      {name === 'chevron-right' && (
+        <ChevronRight className={className} width={width} height={height} />
+      )}
+      {name === 'calendar4-range' && (
+        <Calendar4Range className={className} width={width} height={height} />
       )}
     </>
   );

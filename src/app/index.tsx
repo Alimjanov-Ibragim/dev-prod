@@ -1,7 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
+import { baseLayout } from 'app/layout';
 import { LeadsPage } from 'pages/leads';
-import { baseLayout } from './layout/baseLayout';
+import { withHocs } from './hocs';
 import './index.css';
 
 const App = () => {
@@ -20,4 +21,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withHocs(App);

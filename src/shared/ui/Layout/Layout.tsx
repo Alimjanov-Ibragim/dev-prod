@@ -7,9 +7,12 @@ type Props = {
 
 export function Layout(props: Props) {
   return (
-    <div>
-      <div className='sidebar'>{props.sidebarSlot}</div>
-      <div className='content'>
+    <div className='flex flex-row h-full gap-[24px]'>
+      <div className='sidebar grow-0 shrink-0 basis-[260px]'>
+        {props.sidebarSlot}
+      </div>
+      <div className='content grow shrink basis-[0%]'>
+        <div className='pb-[24px]'>head</div>
         <Outlet />
       </div>
       {/* <ScrollRestoration /> */}

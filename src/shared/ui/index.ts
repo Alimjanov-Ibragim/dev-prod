@@ -8,3 +8,6 @@ export { Progress } from './Progress';
 export { Input } from './Input';
 export { Checkbox } from './Checkbox';
 export { Avatar, AvatarGroup } from './Avatar';
+export { Table } from './Table';
+export { Pagination } from './Pagination';
+export { Datepicker } from './Datepicker';

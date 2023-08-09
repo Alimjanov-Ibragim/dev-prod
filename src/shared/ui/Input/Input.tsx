@@ -15,6 +15,7 @@ type Props = {
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   label?: string;
   iconName?: TIcon;
+  placeholder?: string;
 };
 
 export const Input = ({
@@ -28,6 +29,7 @@ export const Input = ({
   onChange,
   label,
   iconName,
+  placeholder = 'Search here',
 }: Props) => {
   return (
     <div className={cn('input-wrap flex flex-col justify-start', {})}>
@@ -78,7 +80,7 @@ export const Input = ({
           onChange={onChange}
           disabled={disabled}
           // value={'hello'}
-          placeholder='placeholder'
+          placeholder={placeholder}
           type={type}
           alt={alt || 'input'}
         />
