@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { ExportOptions } from 'features/ExportOptions';
 import { GetIcon } from 'shared/lib';
 import {
   Avatar,
@@ -90,6 +91,7 @@ export const LeadsPage = () => {
       }}
     >
       <h1>Leads page</h1>
+      <ExportOptions />
       <Datepicker />
       <Pagination
         // previousLabel={<GetIcon name='chevron-left' width='16' height='16' />}

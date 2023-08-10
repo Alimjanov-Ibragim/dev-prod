@@ -23,7 +23,12 @@ export type TIcon =
   | 'dash'
   | 'chevron-left'
   | 'chevron-right'
-  | 'calendar4-range';
+  | 'chevron-down'
+  | 'calendar4-range'
+  | 'printer'
+  | 'excel'
+  | 'pdf'
+  | 'word';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 

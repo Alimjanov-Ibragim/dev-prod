@@ -23,10 +23,13 @@ import {
   PersonFill,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Calendar4Range,
+  Printer,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
+import { Excel, Pdf, Word } from './ui';
 
 type Props = {
   /** ClassName for icon. */
@@ -116,6 +119,21 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'calendar4-range' && (
         <Calendar4Range className={className} width={width} height={height} />
+      )}
+      {name === 'chevron-down' && (
+        <ChevronDown className={className} width={width} height={height} />
+      )}
+      {name === 'printer' && (
+        <Printer className={className} width={width} height={height} />
+      )}
+      {name === 'excel' && (
+        <Excel className={className} width={width} height={height} />
+      )}
+      {name === 'pdf' && (
+        <Pdf className={className} width={width} height={height} />
+      )}
+      {name === 'word' && (
+        <Word className={className} width={width} height={height} />
       )}
     </>
   );

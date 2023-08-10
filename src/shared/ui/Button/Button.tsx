@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { type ReactNode } from 'react';
 
+import { TIcon } from 'shared/lib';
 import { Icon, Loading } from 'shared/ui';
 import {
   TButtonColors,
@@ -35,12 +36,17 @@ type Props = {
   disabled?: boolean;
   className?: string;
   /** Leading icon: "before" */
-  leadingIcon?: 'check';
+  leadingIcon?: TIcon;
   /** Leading icon color */
   leadingIconColor?: TButtonColors;
+  /** Leading icon clasname */
   leadingIconClassName?: string;
   /** Trailing icon sourse path: "after" */
-  trailingIconSrc?: string;
+  trailingIcon?: TIcon;
+  /** Trailing icon color */
+  trailingIconColor?: TButtonColors;
+  /** Trailing icon clasname */
+  trailingIconClassName?: string;
   /** Badge text */
   badgeText?: string;
   /** Badge color */
@@ -63,7 +69,9 @@ export function Button({
   leadingIcon,
   leadingIconColor,
   leadingIconClassName = '!p-0',
-  trailingIconSrc,
+  trailingIcon,
+  trailingIconColor,
+  trailingIconClassName = '!p-0',
   badgeText,
   badgeColor,
 }: Props) {
@@ -72,7 +80,7 @@ export function Button({
       type={type}
       disabled={disabled}
       className={cn(
-        `btn ex-btn flex justify-center items-center ml-auto mr-auto transition-all delay-300`,
+        `btn ex-btn text-[15px] flex justify-center items-center ml-auto mr-auto transition-all delay-300`,
         {
           // typeStyle === 'solid'
           [`bg-gray-800 text-white hover:bg-gray-900 focus:text-white focus:ring-4 focus:ring-gray-800/25 disabled:text-white disabled:bg-gray-300`]:
@@ -148,9 +156,9 @@ export function Button({
           [`${fontWeight}`]: fontWeight,
           // fontsize
           [`${fontSize}`]: fontSize,
-          'py-2.5 px-3': size === 'small',
-          'py-3.5 px-4': size === 'default',
-          'py-6 px-5': size === 'large',
+          'py-2.5 px-3 h-[38px]': size === 'small',
+          'py-3.5 px-4 h-[46px]': size === 'default',
+          'py-6 px-5 h-[62px]': size === 'large',
           'rounded-md': shape === 'default',
           'rounded-full': shape === 'pilled',
           [className as string]: className,
@@ -170,8 +178,16 @@ export function Button({
             />
           )}
           {children}
-          {trailingIconSrc && (
+          {/* {trailingIconSrc && (
             <img src={trailingIconSrc} alt='' className='ml-2' />
+          )} */}
+          {trailingIcon && (
+            <Icon
+              icon={trailingIcon}
+              className={`ml-2 ${trailingIconClassName}`}
+              size={size === 'small' ? 'xs' : size}
+              color={trailingIconColor}
+            />
           )}
           {badgeText && (
             <span
