@@ -34,6 +34,10 @@ type Props = {
   disabled?: boolean;
   /** Boolean is multivalue elements */
   isMulti?: boolean;
+  /** Onchange handler of select */
+  onChange?: any;
+  /** Default value of select */
+  defaultValue?: any;
 };
 
 export const AsyncSelect = ({
@@ -51,6 +55,8 @@ export const AsyncSelect = ({
   clearIndicatorIconHeight = '16',
   disabled = false,
   isMulti = false,
+  onChange,
+  defaultValue,
 }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const DropdownIndicator = (props: any) => {
@@ -115,6 +121,7 @@ export const AsyncSelect = ({
         </label>
       )}
       <AsyncSelectUI
+        onChange={onChange}
         menuIsOpen={isMenuOpen}
         onMenuOpen={() => setIsMenuOpen(true)}
         onMenuClose={() => setIsMenuOpen(false)}
@@ -126,6 +133,7 @@ export const AsyncSelect = ({
         cacheOptions
         defaultOptions
         loadOptions={options}
+        defaultValue={defaultValue}
         components={{
           IndicatorSeparator: () => null,
           DropdownIndicator,

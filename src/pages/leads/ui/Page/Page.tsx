@@ -107,7 +107,12 @@ export const LeadsPage = () => {
     >
       <h1>Leads page</h1>
       <div className='w-[200px]'>
-        <AsyncSelect options={promiseOptions} label='Unit' />
+        <AsyncSelect
+          options={promiseOptions}
+          label='Unit'
+          // isMulti
+          // defaultValue={filterColors('')[0]}
+        />
       </div>
       <ExportOptions />
       <Datepicker />

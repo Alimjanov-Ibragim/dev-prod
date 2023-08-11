@@ -168,11 +168,20 @@ export const Pagination = ({
             components={{
               IndicatorSeparator: () => null,
             }}
-            styles={{
-              singleValue: (base) => ({
-                ...base,
-                color: '#6b7280',
-              }),
+            classNames={{
+              singleValue: (state) =>
+                state.isDisabled ? '!text-gray-300' : '!text-gray-800',
+              control: (state) =>
+                state.isFocused
+                  ? '!border !border-solid !border-blue-500 !shadow-[0px_0px_0px_4px_rgba(59,130,246,0.25)]'
+                  : state.isDisabled
+                  ? '!border !border-solid !border-gray-200 !bg-gray-50 !shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]'
+                  : '!text-gray-500 !border !border-solid !border-gray-200',
+              multiValue: (_) =>
+                '!flex !items-center !bg-transparent !border !border-solid !border-gray-200 !text-gray-800 !text-sm !rounded-full',
+              multiValueLabel: (_) => '!text-gray-800 !text-sm',
+              multiValueRemove: (_) =>
+                '!bg-gray-200 w-[15px] h-[15px] mr-[6px] !pl-[0] !pr-[0] !rounded-full',
             }}
           />
           <span className={cn('ml-2')}>of {pageCount}</span>
