@@ -24,8 +24,10 @@ import {
   ChevronLeft,
   ChevronRight,
   ChevronDown,
+  ChevronUp,
   Calendar4Range,
   Printer,
+  X,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
@@ -134,6 +136,12 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'word' && (
         <Word className={className} width={width} height={height} />
+      )}
+      {name === 'x' && (
+        <X className={className} width={width} height={height} />
+      )}
+      {name === 'chevron-up' && (
+        <ChevronUp className={className} width={width} height={height} />
       )}
     </>
   );

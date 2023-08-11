@@ -24,11 +24,13 @@ export type TIcon =
   | 'chevron-left'
   | 'chevron-right'
   | 'chevron-down'
+  | 'chevron-up'
   | 'calendar4-range'
   | 'printer'
   | 'excel'
   | 'pdf'
-  | 'word';
+  | 'word'
+  | 'x';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 

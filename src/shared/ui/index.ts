@@ -11,3 +11,4 @@ export { Avatar, AvatarGroup } from './Avatar';
 export { Table } from './Table';
 export { Pagination } from './Pagination';
 export { Datepicker } from './Datepicker';
+export { AsyncSelect } from './AsyncSelect';

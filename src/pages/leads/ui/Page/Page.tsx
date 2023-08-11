@@ -15,8 +15,9 @@ import {
   Table,
   Pagination,
   Datepicker,
+  AsyncSelect,
 } from 'shared/ui';
-import { data } from './data';
+import { data, ColourOption, colourOptions } from './data';
 
 export const LeadsPage = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -83,6 +84,20 @@ export const LeadsPage = () => {
     console.log('Current event: ', event);
   };
 
+  // select example
+  const filterColors = (inputValue: string) => {
+    return colourOptions.filter((i) =>
+      i.label.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  };
+
+  const promiseOptions = (inputValue: string) =>
+    new Promise<ColourOption[]>((resolve) => {
+      setTimeout(() => {
+        resolve(filterColors(inputValue));
+      }, 1000);
+    });
+
   return (
     <div
       className='flex justify-center flex-col items-center gap-2 w-1/2  ml-auto mr-auto'
@@ -91,6 +106,9 @@ export const LeadsPage = () => {
       }}
     >
       <h1>Leads page</h1>
+      <div className='w-[200px]'>
+        <AsyncSelect options={promiseOptions} label='Unit' />
+      </div>
       <ExportOptions />
       <Datepicker />
       <Pagination
