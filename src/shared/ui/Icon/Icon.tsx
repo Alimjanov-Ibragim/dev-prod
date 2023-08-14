@@ -13,10 +13,16 @@ type Props = {
   shape?: TIconShape;
   /** Color of icon: "dark" | "gray" | "green" | "blue" | "red" | "yellow" | "light" */
   color?: TIconColor;
-  /** Get icon by name: "check" | "plus" | "download" | "filter" | "pencil-fill" etc.s */
+  /** Get icon by name: "check" | "plus" | "download" | "filter" | "pencil-fill" etc. */
   icon: TIcon;
   /** ClassName of wrapper tag. */
   className?: string;
+  /** ClassName of icon svg tag. */
+  classNameIcon?: string;
+  /** Role attribute */
+  role?: string;
+  /** Onclick handler */
+  onClick?: () => void;
 };
 
 export const Icon: React.FC<Props> = ({
@@ -26,10 +32,15 @@ export const Icon: React.FC<Props> = ({
   color = 'dark',
   icon,
   className,
+  classNameIcon,
+  role = 'div',
+  onClick,
 }: Props) => {
   return (
     <div
-      className={cn('ex-icon inline-block', {
+      onClick={onClick}
+      role={role}
+      className={cn('ex-icon flex items-center justify-center', {
         'p-2.5': size === 'default',
         'p-1': size === 'xs' || 'small',
         'p-5': size === 'large',
@@ -126,6 +137,7 @@ export const Icon: React.FC<Props> = ({
           // styleType === 'solid'
           'fill-white': styleType === 'solid',
           'fill-gray-700': styleType === 'white',
+          [classNameIcon as string]: classNameIcon,
         })}
         width={
           size === 'default' || size === 'large'

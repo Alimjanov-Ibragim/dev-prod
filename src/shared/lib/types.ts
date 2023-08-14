@@ -30,7 +30,8 @@ export type TIcon =
   | 'excel'
   | 'pdf'
   | 'word'
-  | 'x';
+  | 'x'
+  | 'preline-slash';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 

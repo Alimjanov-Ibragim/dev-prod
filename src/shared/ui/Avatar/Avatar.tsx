@@ -120,7 +120,7 @@ export const Avatar = ({
           )}
         </div>
         {/* status */}
-        {nameStatusIcon && (
+        {(nameStatusIcon || status) && (
           <span
             className={cn('absolute border-2 border-white rounded-full', {
               // shape === 'rounded' && size
@@ -149,7 +149,7 @@ export const Avatar = ({
               [classNameStatus as string]: classNameStatus,
             })}
           >
-            {status === 'icon' && (
+            {status === 'icon' && nameStatusIcon && (
               <GetIcon
                 className={classNameStatusIcon}
                 name={nameStatusIcon}

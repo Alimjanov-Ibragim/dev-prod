@@ -12,3 +12,5 @@ export { Table } from './Table';
 export { Pagination } from './Pagination';
 export { Datepicker } from './Datepicker';
 export { AsyncSelect } from './AsyncSelect';
+export { Breadcrumb } from './Breadcrumb';
+export { Title } from './Title';

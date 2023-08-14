@@ -80,7 +80,7 @@ export function Button({
       type={type}
       disabled={disabled}
       className={cn(
-        `btn ex-btn text-[15px] flex justify-center items-center ml-auto mr-auto transition-all delay-300`,
+        `btn ex-btn text-[15px] flex justify-center items-center transition-all delay-300`,
         {
           // typeStyle === 'solid'
           [`bg-gray-800 text-white hover:bg-gray-900 focus:text-white focus:ring-4 focus:ring-gray-800/25 disabled:text-white disabled:bg-gray-300`]:

@@ -12,6 +12,7 @@ import { GetIcon } from 'shared/lib';
 type TStyleType = 'solid' | 'soft';
 
 type Props = {
+  className?: string;
   styleType?: TStyleType;
   children?: ReactNode;
   indeterminate?: boolean;
@@ -29,6 +30,7 @@ export const Checkbox = ({
   disabled,
   indeterminate = false,
   forUniqueItem,
+  className,
 }: Props) => {
   const firstUpdate = useRef(true);
   useLayoutEffect(() => {
@@ -41,7 +43,9 @@ export const Checkbox = ({
   return (
     <label
       htmlFor={`link-checkbox-${forUniqueItem || ''}`}
-      className='relative w-3.5 h-3.5 flex items-center'
+      className={cn('relative w-3.5 h-3.5 flex items-center', {
+        [className as string]: className,
+      })}
     >
       <input
         onChange={onChange}

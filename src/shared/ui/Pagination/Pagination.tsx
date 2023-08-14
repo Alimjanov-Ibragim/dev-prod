@@ -172,11 +172,12 @@ export const Pagination = ({
               singleValue: (state) =>
                 state.isDisabled ? '!text-gray-300' : '!text-gray-800',
               control: (state) =>
-                state.isFocused
+                (state.isFocused
                   ? '!border !border-solid !border-blue-500 !shadow-[0px_0px_0px_4px_rgba(59,130,246,0.25)]'
                   : state.isDisabled
                   ? '!border !border-solid !border-gray-200 !bg-gray-50 !shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]'
-                  : '!text-gray-500 !border !border-solid !border-gray-200',
+                  : '!text-gray-500 !border !border-solid !border-gray-200') +
+                cn(' !rounded-md'),
               multiValue: (_) =>
                 '!flex !items-center !bg-transparent !border !border-solid !border-gray-200 !text-gray-800 !text-sm !rounded-full',
               multiValueLabel: (_) => '!text-gray-800 !text-sm',

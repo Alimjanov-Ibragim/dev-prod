@@ -1,4 +1,4 @@
-export const data2 = [
+export const data = [
   {
     id: 2287,
     title: 'Biltmore Sufouh, 1412',
@@ -73,7 +73,7 @@ export const data2 = [
     createdAt: '2023-07-24T04:46:32.595Z',
     deal: null,
     status: {
-      id: 1,
+      id: 5,
     },
     type: {
       id: 1,
@@ -140,7 +140,7 @@ export const data2 = [
     createdAt: '2023-07-24T04:25:30.595Z',
     deal: null,
     status: {
-      id: 1,
+      id: 7,
     },
     type: {
       id: 1,
@@ -207,7 +207,7 @@ export const data2 = [
     createdAt: '2023-07-24T04:22:01.371Z',
     deal: null,
     status: {
-      id: 1,
+      id: 3,
     },
     type: {
       id: 1,
@@ -274,7 +274,7 @@ export const data2 = [
     createdAt: '2023-07-24T04:21:55.427Z',
     deal: null,
     status: {
-      id: 1,
+      id: 9,
     },
     type: {
       id: 1,
@@ -678,7 +678,7 @@ export const data2 = [
     createdAt: '2023-07-21T08:31:14.267Z',
     deal: null,
     status: {
-      id: 1,
+      id: 7,
     },
     type: {
       id: 1,
@@ -745,7 +745,7 @@ export const data2 = [
     createdAt: '2023-07-21T06:02:51.624Z',
     deal: null,
     status: {
-      id: 1,
+      id: 8,
     },
     type: {
       id: 1,
@@ -812,7 +812,7 @@ export const data2 = [
     createdAt: '2023-07-21T05:48:18.861Z',
     deal: null,
     status: {
-      id: 1,
+      id: 2,
     },
     type: {
       id: 1,
@@ -881,7 +881,7 @@ export const data2 = [
     createdAt: '2023-07-21T05:39:32.065Z',
     deal: null,
     status: {
-      id: 1,
+      id: 10,
     },
     type: {
       id: 1,
@@ -948,7 +948,7 @@ export const data2 = [
     createdAt: '2023-07-21T05:38:31.488Z',
     deal: null,
     status: {
-      id: 1,
+      id: 6,
     },
     type: {
       id: 1,
@@ -1007,46 +1007,6 @@ export const data2 = [
       },
     },
     jobs: [],
-  },
-];
-
-export const data = [
-  {
-    items: [
-      {
-        text: 'John Brown',
-        className: 'bg-blue-100',
-      },
-      {
-        text: '45',
-      },
-      {
-        text: 'New York No. 1 Lake Park',
-      },
-      {
-        text: 'Delete',
-        link: '#',
-      },
-    ],
-    checked: false,
-  },
-  {
-    items: [
-      {
-        text: 'Jim Green',
-      },
-      {
-        text: '27',
-      },
-      {
-        text: 'London No. 1 Lake Park',
-        className: 'bg-orange-100',
-      },
-      {
-        text: 'NoTdelete',
-      },
-    ],
-    checked: true,
   },
 ];
 

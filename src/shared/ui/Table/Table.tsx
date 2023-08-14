@@ -1,7 +1,5 @@
 import cn from 'classnames';
 
-import { Checkbox } from '../Checkbox';
-
 type TStyleTypeTable =
   | 'basic'
   | 'striped-rows'
@@ -9,23 +7,68 @@ type TStyleTypeTable =
   | 'bordered'
   | 'thead-divided';
 
-const CHECKBOX_WIDTH = '56';
-
+// FIXME: do types file when available api
 type TListHeadTableItem = {
+  id?: string;
   text: string;
   width?: string;
   maxWidth?: string;
+  type?: 'text' | 'avatar' | 'badge-tag' | 'progress' | 'action';
 };
 type TListHeadTable = TListHeadTableItem[];
 
-type TListTableItem = {
-  text: string;
-  link?: string;
+type TParticipant = {
+  id: number;
+  role: string;
+  entity: {
+    id: number;
+    type: {
+      id: number;
+      title: string;
+    };
+    user: any;
+    company: any;
+    client: any;
+    agency: any;
+  };
+};
+
+type TUnit = {
+  id: number;
+  title: string;
+  blockedFor: any;
+  project: {
+    title: string;
+    entity: {
+      id: number;
+    };
+  };
+  status: {
+    title: string;
+  };
+};
+
+type TListTableRow = {
+  id: number;
+  title: string;
+  amount: number;
+  createdAt: string;
+  deal: any;
+  status: {
+    id: number;
+  };
+  type: {
+    id: number;
+    title: string;
+  };
+  sourceType: {
+    id: number;
+  };
+  participants: TParticipant[];
+  unit: TUnit;
+  jobs: any[];
   /** Worked with style type "highlighted", it's for set a bg color. */
   className?: string;
-};
-type TListTableRow = {
-  items: TListTableItem[];
   checked: boolean;
 };
 type TListTable = TListTableRow[];
@@ -36,16 +79,6 @@ type Props = {
   withShadow?: boolean;
   theadBgClass?: string;
   headless?: boolean;
-  onChangeAllCheckboxHandler?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeCheckboxHandler?: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => void;
-  checkedAll?: boolean;
-  actionHandlerBtn?: (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    ind: number
-  ) => void;
   /** Above right place of the table as ReactNode */
   topSlot?: React.ReactNode;
   /** Below left place of the table as ReactNode */
@@ -54,10 +87,10 @@ type Props = {
   styleType?: TStyleTypeTable;
   /** Array of list of content. Example: list["row"]["item"].text */
   list: TListTable;
-  /** Array of list head items. listHead["item"].text */
-  listHead?: TListHeadTable;
   /** Classname for wrapper of table */
   wrapClassTable?: string;
+  /** Table item columns */
+  cols: any;
 };
 
 export const Table = ({
@@ -68,13 +101,9 @@ export const Table = ({
   botSlot,
   styleType = 'basic',
   list,
-  listHead,
   wrapClassTable,
   theadBgClass,
-  onChangeCheckboxHandler,
-  onChangeAllCheckboxHandler,
-  checkedAll,
-  actionHandlerBtn,
+  cols,
 }: Props) => {
   return (
     <div
@@ -112,52 +141,48 @@ export const Table = ({
                 styleType === 'striped-rows' ||
                 styleType === 'bordered', // border bottom color
               'border-t-[1px] border-solid border-gray-200': topSlot,
-              flex: onChangeAllCheckboxHandler,
+              // flex: onChangeAllCheckboxHandler,
               [theadBgClass as string]: theadBgClass,
             })}
           >
-            {onChangeAllCheckboxHandler && (
-              <div
-                className={cn('py-4 h-[auto] pr-5', {
-                  'border-r-[1px] border-solid border-gray-200':
-                    styleType === 'thead-divided',
-                })}
-              >
-                <Checkbox
-                  onChange={onChangeAllCheckboxHandler}
-                  checked={checkedAll || false}
-                  indeterminate
-                />
-              </div>
-            )}
             <div
               className={cn(
                 'flex-1 flex flex-wrap ml-[-20px] text-xs text-left font-medium text-gray-500 uppercase'
               )}
             >
-              {listHead &&
-                listHead.map((item, index) => (
+              {cols.map(
+                (
+                  headerItem: {
+                    width: string;
+                    title: string;
+                    titleRender?: any;
+                    render: any;
+                  },
+                  headerIndex: number
+                ) => (
                   <div
-                    key={index}
-                    className={cn('pl-5', {
-                      [`${
-                        item.width === 'auto' ? 'flex-[0_0_auto]' : item.width
-                      }`]: item.width,
+                    key={headerIndex}
+                    className={cn('pl-[20px] flex items-center', {
+                      [`${headerItem.width}`]: headerItem.width,
                     })}
-                    style={{ maxWidth: item.maxWidth }}
                   >
                     <div
-                      className={cn('py-4 pr-5', {
-                        'pl-5': index === 0 && onChangeAllCheckboxHandler,
+                      className={cn('py-4 pr-5 text-center w-full', {
+                        // 'pl-5': headerIndex === 0 && onChangeAllCheckboxHandler,
                         'border-r-[1px] border-solid border-gray-200':
                           styleType === 'thead-divided' &&
-                          index !== listHead.length - 1,
+                          headerIndex !== cols.length - 1,
                       })}
                     >
-                      {item.text}
+                      {headerItem.title === 'checkbox' ? (
+                        <>{headerItem.titleRender()}</>
+                      ) : (
+                        <>{headerItem.title}</>
+                      )}
                     </div>
                   </div>
-                ))}
+                )
+              )}
             </div>
           </div>
         )}
@@ -178,90 +203,43 @@ export const Table = ({
                     styleType === 'thead-divided') &&
                     index === list.length - 1 &&
                     !botSlot), // border bottom none
-                flex: onChangeAllCheckboxHandler,
+                // flex: onChangeAllCheckboxHandler,
                 'bg-gray-100': styleType === 'striped-rows' && index % 2 !== 0, // bg color
               })}
             >
-              {onChangeAllCheckboxHandler && (
-                <div className={cn('py-4 h-[auto] pr-5', {})}>
-                  {onChangeCheckboxHandler && (
-                    <Checkbox
-                      onChange={(e) => onChangeCheckboxHandler(e, index)}
-                      checked={item.checked}
-                      forUniqueItem={index + 1}
-                    />
-                  )}
-                </div>
-              )}
               <div
                 className={cn(
                   'ex-table__row flex-1 flex flex-wrap ml-[-20px] text-left'
                 )}
               >
-                {item.items.length > 0 &&
-                  item.items.map((innerItem, innerIndex) =>
-                    innerItem.link ? (
-                      <a
-                        onClick={(e) =>
-                          actionHandlerBtn ? actionHandlerBtn(e, index) : null
-                        }
-                        href={innerItem.link}
-                        className={cn('pl-5 font-semibold text-blue-500', {
-                          [`${innerItem.className}`]:
-                            innerItem.className && styleType === 'highlighted',
-                          [listHead
-                            ? `${
-                                listHead[innerIndex].width === 'auto'
-                                  ? 'flex-[0_0_auto]'
-                                  : listHead[innerIndex].width
-                              }`
-                            : 'flex-[0_0_auto]']:
-                            listHead && listHead[innerIndex].width,
-                        })}
-                        style={{
-                          maxWidth: listHead && listHead[innerIndex].maxWidth,
-                        }}
-                        key={innerIndex}
-                      >
-                        <div
-                          className={cn('py-4 pr-5', {
-                            'pl-5':
-                              innerIndex === 0 && onChangeAllCheckboxHandler,
-                          })}
-                        >
-                          {innerItem.text}
-                        </div>
-                      </a>
-                    ) : (
+                <>
+                  {/* new */}
+                  {cols.map(
+                    (
+                      col: {
+                        title: string;
+                        render: any;
+                        width: string;
+                      },
+                      i: number
+                    ) => (
                       <div
-                        className={cn('pl-5', {
-                          [`${innerItem.className}`]:
-                            innerItem.className && styleType === 'highlighted',
-                          [listHead
-                            ? `${
-                                listHead[innerIndex].width === 'auto'
-                                  ? 'flex-[0_0_auto]'
-                                  : listHead[innerIndex].width
-                              }`
-                            : 'flex-[0_0_auto]']:
-                            listHead && listHead[innerIndex].width,
+                        key={i}
+                        className={cn('pl-[20px] flex items-center', {
+                          [`${col.width}`]: col.width,
                         })}
-                        style={{
-                          maxWidth: listHead && listHead[innerIndex].maxWidth,
-                        }}
-                        key={innerIndex}
                       >
                         <div
-                          className={cn('py-4 pr-5', {
-                            'pl-5':
-                              innerIndex === 0 && onChangeAllCheckboxHandler,
+                          className={cn('py-4 pr-5 text-center w-full', {
+                            // 'pl-5': i === 0 && onChangeAllCheckboxHandler,
                           })}
                         >
-                          {innerItem.text}
+                          {col.render(item)}
                         </div>
                       </div>
                     )
                   )}
+                </>
               </div>
             </div>
           ))}
