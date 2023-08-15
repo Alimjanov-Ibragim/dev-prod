@@ -22,11 +22,14 @@ export const FilterDropdown = () => {
   // to detect modal do not stuck on the rightside
   useEffect(() => {
     const handleWindowResize = () => {
-      const x =
-        window.innerWidth - (ref.current.offsetLeft + ref.current.clientWidth);
-      setPosition({
-        x: x > ref.current.clientWidth,
-      });
+      if (ref.current) {
+        const x =
+          window.innerWidth -
+          (ref.current.offsetLeft + ref.current.clientWidth);
+        setPosition({
+          x: x > ref.current.clientWidth,
+        });
+      }
     };
 
     const onLoad = () => {
@@ -94,7 +97,7 @@ export const FilterDropdown = () => {
             icon='x'
             role='button'
             styleType='soft'
-            className='w-[38px] h-[38px] !p-0'
+            className='w-[38px] h-[38px] !p-0 hover:bg-gray-200'
             classNameIcon='w-[20px] h-[20px]'
             onClick={() => setIsOpen(false)}
           />
