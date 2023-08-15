@@ -23,7 +23,7 @@ export const Logo = ({ width = '116', height = '31', className }: Props) => {
       <path
         d='M1 28V15C1 8.37258 6.37258 3 13 3C19.6274 3 25 8.37258 25 15C25 21.6274 19.6274 27 13 27H12'
         stroke='white'
-        stroke-width='2'
+        strokeWidth='2'
       />
       <circle cx='13' cy='15.0215' r='5' fill='white' />
     </svg>

@@ -28,9 +28,9 @@ export const Sidebar = () => {
           >
             PAGES
           </div>
-          {routes.map((route) =>
+          {routes.map((route, index) =>
             route.sub ? (
-              <div className={cn('flex flex-col')}>
+              <div className={cn('flex flex-col')} key={index}>
                 <Link
                   to={'#'}
                   icon={route.icon}
@@ -55,8 +55,9 @@ export const Sidebar = () => {
                     }
                   )}
                 >
-                  {route.sub?.map((subroute) => (
+                  {route.sub?.map((subroute, subrouteIndex) => (
                     <Link
+                      key={subrouteIndex}
                       chevron
                       to={subroute.to}
                       icon={subroute.icon}
@@ -70,6 +71,7 @@ export const Sidebar = () => {
               </div>
             ) : (
               <Link
+                key={index}
                 to={route.to}
                 icon={route.icon}
                 badgeText={route.badgeText}
