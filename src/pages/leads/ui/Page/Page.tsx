@@ -1,7 +1,8 @@
 import cn from 'classnames';
 
 import { TableData } from 'widgets/leads';
-import { Button, Breadcrumb, Title } from 'shared/ui';
+import { AddLead } from 'features/AddLead';
+import { Breadcrumb, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
   {
@@ -27,9 +28,7 @@ export const LeadsPage = () => {
           <Breadcrumb list={LIST_BREADCRUMB} />
           <Title text='Leads' />
         </div>
-        <Button leadingIcon='plus' leadingIconColor='light'>
-          Add lead
-        </Button>
+        <AddLead />
       </div>
       <TableData />
     </div>

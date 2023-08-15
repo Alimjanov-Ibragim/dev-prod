@@ -15,3 +15,4 @@ export { AsyncSelect } from './AsyncSelect';
 export { Breadcrumb } from './Breadcrumb';
 export { Title } from './Title';
 export { Link } from './Link';
+export { Modal } from './Modal';
