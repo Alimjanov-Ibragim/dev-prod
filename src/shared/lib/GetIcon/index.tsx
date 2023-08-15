@@ -31,7 +31,7 @@ import {
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
-import { Excel, Pdf, PrelineSlash, Word } from './ui';
+import { Excel, Logo, Pdf, PrelineSlash, Word } from './ui';
 
 type Props = {
   /** ClassName for icon. */
@@ -145,6 +145,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'preline-slash' && (
         <PrelineSlash className={className} width={width} height={height} />
+      )}
+      {name === 'logo' && (
+        <Logo className={className} width={width} height={height} />
       )}
     </>
   );

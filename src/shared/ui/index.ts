@@ -14,3 +14,4 @@ export { Datepicker } from './Datepicker';
 export { AsyncSelect } from './AsyncSelect';
 export { Breadcrumb } from './Breadcrumb';
 export { Title } from './Title';
+export { Link } from './Link';

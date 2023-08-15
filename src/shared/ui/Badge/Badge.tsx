@@ -11,6 +11,7 @@ type Props = {
   size?: TBadgeSize;
   indicator?: boolean;
   children: ReactNode;
+  className?: string;
 };
 
 export const Badge = ({
@@ -19,6 +20,7 @@ export const Badge = ({
   type = 'solid',
   size = 'default',
   indicator = false,
+  className,
   children,
 }: Props) => {
   return (
@@ -62,6 +64,7 @@ export const Badge = ({
         'bg-red-500 text-white': type === 'solid' && color === 'red',
         'bg-yellow-500 text-white': type === 'solid' && color === 'yellow',
         'bg-transparent text-gray-800': type === 'solid' && color === 'light',
+        [className as string]: className,
       })}
     >
       {indicator && <Indicator className='mr-[7px]' color={color} />}

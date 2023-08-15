@@ -6,7 +6,7 @@ import { ExportOptions } from 'features/ExportOptions';
 import { FilterDropdown } from 'features/FilterDropdown';
 import { Search } from 'features/Search';
 import { Table, Pagination } from 'shared/ui';
-import { ColourOption, colourOptions, data } from './config/data';
+import { data } from './config/data';
 import { tableConstants } from './config/tableConstants';
 
 export const TableData = () => {

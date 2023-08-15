@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { type ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -9,10 +10,12 @@ type Props = {
 export function Layout({ sidebarSlot, header }: Props) {
   return (
     <div className='flex flex-row h-full'>
-      <div className='sidebar grow-0 shrink-0 basis-[260px] bg-gray-200'>
-        {sidebarSlot}
-      </div>
-      <div className='content grow shrink basis-[0%]'>
+      {sidebarSlot}
+      <div
+        className={cn('content grow shrink basis-[0%]', {
+          'pl-[260px]': sidebarSlot,
+        })}
+      >
         {header && (
           <div className='mb-[24px] border-b border-solid border-slate-200'>
             {header}

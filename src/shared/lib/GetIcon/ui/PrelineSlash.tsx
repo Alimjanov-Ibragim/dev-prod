@@ -7,8 +7,8 @@ type Props = {
 };
 
 export const PrelineSlash = ({
-  width = '16',
-  height = '16',
+  width = '12',
+  height = '12',
   className,
 }: Props) => {
   return (

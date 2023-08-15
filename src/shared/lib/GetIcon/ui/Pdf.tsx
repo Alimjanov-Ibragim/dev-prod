@@ -6,7 +6,7 @@ type Props = {
   className?: string;
 };
 
-export const Pdf = ({ width = '16', height = '16', className }: Props) => {
+export const Pdf = ({ width = '12', height = '14', className }: Props) => {
   return (
     <svg
       className={className}

@@ -31,7 +31,8 @@ export type TIcon =
   | 'pdf'
   | 'word'
   | 'x'
-  | 'preline-slash';
+  | 'preline-slash'
+  | 'logo';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 
