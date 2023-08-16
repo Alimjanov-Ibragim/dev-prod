@@ -31,20 +31,7 @@ export const FilterDropdown = () => {
         });
       }
     };
-
-    const onLoad = () => {
-      let bool = true;
-      if (true) {
-        bool = false;
-        handleWindowResize();
-      }
-      window.addEventListener('resize', handleWindowResize);
-    };
-
-    window.addEventListener('load', onLoad);
-    return () => {
-      window.removeEventListener('load', onLoad);
-    };
+    handleWindowResize();
   }, []);
 
   // options
