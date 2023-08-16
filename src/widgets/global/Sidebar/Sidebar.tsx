@@ -1,11 +1,20 @@
 import cn from 'classnames';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import { routes } from 'shared/config';
 import { GetIcon } from 'shared/lib';
 import { Link, Icon } from 'shared/ui';
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split('/');
+
+  const setActiveClass = (routeName: string) =>
+    splitLocation[1].includes(routeName) ? 'bg-white/10' : '';
+
   return (
     <div
       className={cn(
@@ -17,7 +26,11 @@ export const Sidebar = () => {
         <Link to='/'>
           <GetIcon name='logo' width='116' height='31' />
         </Link>
-        <Link to={'/dashboards'} icon='house'>
+        <Link
+          to={'/dashboards'}
+          icon='house'
+          className={setActiveClass('dashboards')}
+        >
           Dashboards
         </Link>
         <div className={cn('flex-col flex gap-[4px]')}>
@@ -36,6 +49,7 @@ export const Sidebar = () => {
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <Link
+                  className={setActiveClass(route.to.slice(1))}
                   to={'#'}
                   icon={route.icon}
                   badgeText={route.badgeText}
@@ -60,6 +74,7 @@ export const Sidebar = () => {
                 >
                   {route.sub?.map((subroute, subrouteIndex) => (
                     <Link
+                      className={setActiveClass(subroute.to.slice(1))}
                       key={subrouteIndex}
                       chevron
                       to={subroute.to}
@@ -74,6 +89,7 @@ export const Sidebar = () => {
               </div>
             ) : (
               <Link
+                className={setActiveClass(route.to.slice(1))}
                 key={index}
                 to={route.to}
                 icon={route.icon}

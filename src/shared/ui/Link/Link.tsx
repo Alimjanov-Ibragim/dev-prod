@@ -18,11 +18,15 @@ export const Link = ({
   badgeClassName,
   children,
   chevron,
+  className,
 }: Props) => {
   return (
     <ULink
       className={cn(
-        'flex py-[8px] px-[14px] items-center text-sm font-medium text-white gap-2 hover:bg-white/10 hover:rounded-md'
+        'flex py-[8px] px-[14px] items-center text-sm font-medium text-white gap-2 hover:bg-white/10 rounded-md',
+        {
+          [className as string]: className,
+        }
       )}
       to={to}
     >
