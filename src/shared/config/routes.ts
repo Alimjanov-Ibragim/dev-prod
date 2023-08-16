@@ -1,7 +1,9 @@
 import { ClientsPage } from 'pages/clients';
+import { CompaniesPage } from 'pages/companies';
 import { DealsPage } from 'pages/deals';
 import { LeadsPage } from 'pages/leads';
 import { TasksPage } from 'pages/tasks';
+import { UsersPage } from 'pages/users';
 
 import { TIcon } from 'shared/lib';
 
@@ -50,10 +52,12 @@ export const routes: TRoute[] = [
       {
         title: 'Companies',
         to: '/companies',
+        component: CompaniesPage,
       },
       {
         title: 'Users',
         to: '/users',
+        component: UsersPage,
       },
     ],
   },

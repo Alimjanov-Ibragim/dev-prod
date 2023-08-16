@@ -1,4 +1,4 @@
-import { Checkbox, Icon } from 'shared/ui';
+import { Avatar, Checkbox, Icon } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
 
 export const tableConstants = (
@@ -44,19 +44,25 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[22.5%]',
-      width: 'flex-[0_0_22.5%]',
+      maxWidth: 'max-w-[16.5%]',
+      width: 'flex-[0_0_16.5%]',
       title: 'Name',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.displayName}</span>;
+        return (
+          <Avatar
+            styleType={rowData.avatar ? 'image' : 'placeholder'}
+            imageSrc={rowData.avatar || ''}
+            textTitle={rowData.displayName || 'unknown'}
+          />
+        );
       },
     },
     {
-      maxWidth: 'max-w-[20.5%]',
-      width: 'flex-[0_0_20.5%]',
-      title: 'Agent',
+      maxWidth: 'max-w-[23.5%]',
+      width: 'flex-[0_0_23.5%]',
+      title: 'Role',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.user.displayName || 'unknown'}</span>;
+        return <span>{rowData.role.title || 'unknown'}</span>;
       },
     },
     {
@@ -73,8 +79,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[21.5%]',
-      width: 'flex-[0_0_21.5%]',
+      maxWidth: 'max-w-[24.5%]',
+      width: 'flex-[0_0_24.5%]',
       title: 'Email',
       render: (rowData: TListTableRow) => {
         return <span>{rowData.entity.contacts[0].emailContact.email}</span>;

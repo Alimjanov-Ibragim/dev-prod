@@ -9,7 +9,7 @@ const LIST_BREADCRUMB = [
     link: '#',
   },
   {
-    text: 'Application',
+    text: 'Deals',
     link: '#',
   },
 ];
