@@ -1,3 +1,7 @@
+import { DealsPage } from 'pages/deals';
+import { LeadsPage } from 'pages/leads';
+import { TasksPage } from 'pages/tasks';
+
 import { TIcon } from 'shared/lib';
 
 type TRouteItem = {
@@ -5,6 +9,7 @@ type TRouteItem = {
   title: string;
   to: string;
   badgeText?: string;
+  component?: React.ComponentClass | React.FunctionComponent;
 };
 
 interface TRoute extends TRouteItem {
@@ -16,17 +21,20 @@ export const routes: TRoute[] = [
     icon: 'check2-circle',
     title: 'Tasks',
     to: '/tasks',
+    component: TasksPage,
   },
   {
     icon: 'check2-square',
     title: 'Deals',
     to: '/deals',
     badgeText: '5',
+    component: DealsPage,
   },
   {
     icon: 'person',
     title: 'Leads',
     to: '/leads',
+    component: LeadsPage,
   },
   {
     icon: 'people',
@@ -34,16 +42,16 @@ export const routes: TRoute[] = [
     to: '/contacts',
     sub: [
       {
+        title: 'Clients',
+        to: '/clients',
+      },
+      {
         title: 'Companies',
         to: '/companies',
       },
       {
         title: 'Users',
         to: '/users',
-      },
-      {
-        title: 'Clients',
-        to: '/clients',
       },
     ],
   },

@@ -7,72 +7,6 @@ type TStyleTypeTable =
   | 'bordered'
   | 'thead-divided';
 
-// FIXME: do types file when available api
-type TListHeadTableItem = {
-  id?: string;
-  text: string;
-  width?: string;
-  maxWidth?: string;
-  type?: 'text' | 'avatar' | 'badge-tag' | 'progress' | 'action';
-};
-type TListHeadTable = TListHeadTableItem[];
-
-type TParticipant = {
-  id: number;
-  role: string;
-  entity: {
-    id: number;
-    type: {
-      id: number;
-      title: string;
-    };
-    user: any;
-    company: any;
-    client: any;
-    agency: any;
-  };
-};
-
-type TUnit = {
-  id: number;
-  title: string;
-  blockedFor: any;
-  project: {
-    title: string;
-    entity: {
-      id: number;
-    };
-  };
-  status: {
-    title: string;
-  };
-};
-
-type TListTableRow = {
-  id: number;
-  title: string;
-  amount: number;
-  createdAt: string;
-  deal: any;
-  status: {
-    id: number;
-  };
-  type: {
-    id: number;
-    title: string;
-  };
-  sourceType: {
-    id: number;
-  };
-  participants: TParticipant[];
-  unit: TUnit;
-  jobs: any[];
-  /** Worked with style type "highlighted", it's for set a bg color. */
-  className?: string;
-  checked: boolean;
-};
-type TListTable = TListTableRow[];
-
 type Props = {
   /**  */
   rounded?: boolean;
@@ -85,8 +19,8 @@ type Props = {
   botSlot?: React.ReactNode;
   /** Style type of the table: "basic" | "striped-rows" | "highlighted" | "bordered" | "thead-divided" */
   styleType?: TStyleTypeTable;
-  /** Array of list of content. Example: list["row"]["item"].text */
-  list: TListTable;
+  /** Array of list of content. */
+  list: any;
   /** Classname for wrapper of table */
   wrapClassTable?: string;
   /** Table item columns */
@@ -191,7 +125,7 @@ export const Table = ({
         <div
           className={cn('ex-table__content text-sm font-medium text-gray-800')}
         >
-          {list.map((item, index) => (
+          {list.map((item: any, index: number) => (
             <div
               key={index}
               className={cn('border-b-[1px] border-solid px-5', {

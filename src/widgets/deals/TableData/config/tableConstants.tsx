@@ -2,9 +2,9 @@ import cn from 'classnames';
 
 import dayjs from 'dayjs';
 import { priceFormatter } from 'shared/lib';
-import { Avatar, Badge, Checkbox, Icon } from 'shared/ui';
+import { Avatar, Badge, Checkbox } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
-import { LeadStatusType, leadStatusesColorSwitch } from './const';
+import { DealStatusType, dealStatusesColorSwitch } from './const';
 
 export const tableConstants = (
   onChangeAllCheckboxHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -12,8 +12,7 @@ export const tableConstants = (
   onChangeCheckboxHandler: (
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
-  ) => void,
-  handleRemove: (data: TListTableRow) => void
+  ) => void
 ) => {
   return [
     {
@@ -109,11 +108,11 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[10.625%]',
-      width: 'flex-[0_0_10.625%]',
+      maxWidth: 'max-w-[13.625%]',
+      width: 'flex-[0_0_13.625%]',
       title: 'Status',
       render: (rowData: TListTableRow) => {
-        const statusColor = leadStatusesColorSwitch(rowData.status.id);
+        const statusColor = dealStatusesColorSwitch(rowData.status.id);
         return (
           <Badge
             size='default'
@@ -122,17 +121,9 @@ export const tableConstants = (
             color={statusColor}
             className={cn('inline-flex capitalize', {})}
           >
-            {LeadStatusType[rowData.status.id]}
+            {DealStatusType[rowData.status.id]}
           </Badge>
         );
-      },
-    },
-    {
-      maxWidth: 'max-w-[4.6666%]',
-      width: 'flex-[0_0_4.6666%]',
-      title: 'Deal ID',
-      render: (rowData: TListTableRow) => {
-        return <span>{rowData.deal || '-----'}</span>;
       },
     },
     {
@@ -141,6 +132,14 @@ export const tableConstants = (
       title: 'Next Job',
       render: (rowData: TListTableRow) => {
         return <span>{rowData.jobs[0]?.title || 'unknown'}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[6.6666%]',
+      width: 'flex-[0_0_6.6666%]',
+      title: 'Payment',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.deal || '-----'}</span>;
       },
     },
     {
@@ -157,23 +156,6 @@ export const tableConstants = (
       title: 'Price',
       render: (rowData: TListTableRow) => {
         return <span>{priceFormatter.format(rowData.amount)}</span>;
-      },
-    },
-    {
-      maxWidth: 'max-w-[5%]',
-      width: 'flex-[0_0_5%]',
-      title: 'Action',
-      render: (rowData: TListTableRow) => {
-        return (
-          <Icon
-            className='hover:bg-gray-100'
-            size='small'
-            icon='trash-fill'
-            styleType='white'
-            role='button'
-            onClick={() => handleRemove(rowData)}
-          />
-        );
       },
     },
   ];

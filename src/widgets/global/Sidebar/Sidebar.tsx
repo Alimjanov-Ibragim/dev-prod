@@ -30,7 +30,11 @@ export const Sidebar = () => {
           </div>
           {routes.map((route, index) =>
             route.sub ? (
-              <div className={cn('flex flex-col')} key={index}>
+              <div
+                className={cn('flex flex-col')}
+                key={index}
+                onClick={() => setIsOpen(!isOpen)}
+              >
                 <Link
                   to={'#'}
                   icon={route.icon}
@@ -38,16 +42,15 @@ export const Sidebar = () => {
                   badgeClassName='flex items-center justify-center w-[18px] h-[18px] bg-white rounded-full	border border-solid border-gray-200 shadow-[0px_1px_2px 0px_rgba(0,0,0,0.05)] text-[10px] font-medium text-gray-800'
                 >
                   {route.title}
-
                   <Icon
                     icon={!isOpen ? 'chevron-down' : 'chevron-up'}
                     className='!p-0 ml-auto'
                     classNameIcon='fill-white/50 w-[12px] h-[12px]'
-                    onClick={() => setIsOpen(!isOpen)}
                   />
                 </Link>
 
                 <div
+                  onClick={(e) => e.stopPropagation()}
                   className={cn(
                     'flex flex-col ml-[20px] pl-[10px] border-l border-solid border-white/20',
                     {
