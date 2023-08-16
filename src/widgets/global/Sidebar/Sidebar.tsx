@@ -13,7 +13,9 @@ export const Sidebar = () => {
   const splitLocation = pathname.split('/');
 
   const setActiveClass = (routeName: string) =>
-    splitLocation[1].includes(routeName) ? 'bg-white/10' : '';
+    routeName.includes(splitLocation[1]) ? 'bg-white/10' : '';
+
+  console.log('object: ', routes[3].sub?.map((r) => r.to).join(''));
 
   return (
     <div
@@ -21,6 +23,14 @@ export const Sidebar = () => {
         'ex-sidebar bg-slate-900 text-white fixed z-20 inset-0 w-[260px] flex flex-col justify-between'
       )}
     >
+      <Icon
+        icon='arrow-bar-left'
+        role='button'
+        className='!inline-flex absolute top-[12px] right-[-19px] !rounded-full w-[38px] h-[38px] !bg-slate-900 border border-white/20 hover:scale-[1.1] transition'
+        size='xs'
+        styleType='solid'
+        color='dark'
+      />
       {/* top */}
       <div className={cn('p-5 overflow-y-auto flex flex-col gap-[24px]')}>
         <Link to='/'>
@@ -49,7 +59,13 @@ export const Sidebar = () => {
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <Link
-                  className={setActiveClass(route.to.slice(1))}
+                  className={
+                    !isOpen
+                      ? setActiveClass(
+                          route.sub?.map((r) => r.to.split('/')).join('')
+                        )
+                      : ''
+                  }
                   to={'#'}
                   icon={route.icon}
                   badgeText={route.badgeText}
