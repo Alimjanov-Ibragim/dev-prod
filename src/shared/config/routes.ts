@@ -1,3 +1,4 @@
+import { ClientsPage } from 'pages/clients';
 import { DealsPage } from 'pages/deals';
 import { LeadsPage } from 'pages/leads';
 import { TasksPage } from 'pages/tasks';
@@ -44,6 +45,7 @@ export const routes: TRoute[] = [
       {
         title: 'Clients',
         to: '/clients',
+        component: ClientsPage,
       },
       {
         title: 'Companies',

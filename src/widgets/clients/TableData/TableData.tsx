@@ -61,6 +61,11 @@ export const TableData = () => {
     setIsCheckedAll(!isCheckedAll);
     setList(temp);
   };
+  /** Delete btn */
+  const actionHandlerBtn = (item: any) => {
+    alert(item.id);
+    console.log('item: ', item);
+  };
 
   //handle Page Change
   const handleTablePageChange = (event: { selected: number }) => {
@@ -92,7 +97,12 @@ export const TableData = () => {
       styleType='bordered'
       wrapClassTable='w-full'
       list={list}
-      cols={tableConstants(tableAllHandler, isCheckedAll, tableHandler)}
+      cols={tableConstants(
+        tableAllHandler,
+        isCheckedAll,
+        tableHandler,
+        actionHandlerBtn
+      )}
     />
   );
 };
