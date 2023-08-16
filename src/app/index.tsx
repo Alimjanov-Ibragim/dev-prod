@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-
+// import { Provider as ReduxProvider } from 'react-redux';
+// import { PersistGate } from 'redux-persist/integration/react';
 import { baseLayout } from 'app/layout';
 import { NotFoundPage } from 'pages/not-found';
 import { routes } from 'shared/config';

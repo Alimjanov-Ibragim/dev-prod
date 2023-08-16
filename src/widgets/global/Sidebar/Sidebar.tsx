@@ -8,6 +8,7 @@ import { Link, Icon } from 'shared/ui';
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSideOpen, setIsSideOpen] = useState(false);
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split('/');
@@ -15,12 +16,11 @@ export const Sidebar = () => {
   const setActiveClass = (routeName: string) =>
     routeName.includes(splitLocation[1]) ? 'bg-white/10' : '';
 
-  console.log('object: ', routes[3].sub?.map((r) => r.to).join(''));
-
+  // console.log('isSideOpen: ', isSideOpen);
   return (
     <div
       className={cn(
-        'ex-sidebar bg-slate-900 text-white fixed z-20 inset-0 w-[260px] flex flex-col justify-between'
+        'ex-sidebar bg-slate-900 fixed z-20 text-white inset-0 w-[260px] flex flex-col justify-between'
       )}
     >
       <Icon
@@ -30,6 +30,7 @@ export const Sidebar = () => {
         size='xs'
         styleType='solid'
         color='dark'
+        onClick={() => setIsSideOpen(!isSideOpen)}
       />
       {/* top */}
       <div className={cn('p-5 overflow-y-auto flex flex-col gap-[24px]')}>
