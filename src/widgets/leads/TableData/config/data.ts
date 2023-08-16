@@ -67,6 +67,157 @@ export const data = [
     jobs: [],
   },
   {
+    id: 2872,
+    title: 'Biltmore Sufouh, 310',
+    amount: 1747107,
+    createdAt: '2023-08-13T09:04:38.844Z',
+    deal: null,
+    status: {
+      id: 5,
+    },
+    type: {
+      id: 2,
+      title: 'EOI',
+    },
+    sourceType: {
+      id: 3,
+    },
+    participants: [
+      {
+        id: 5418,
+        role: 'Project',
+        entity: {
+          id: 638,
+          type: {
+            id: 4,
+            title: 'Project',
+          },
+          user: null,
+          company: null,
+          client: null,
+          agency: null,
+        },
+      },
+      {
+        id: 5419,
+        role: 'BrokerAgent',
+        entity: {
+          id: 356,
+          type: {
+            id: 1,
+            title: 'User',
+          },
+          user: {
+            id: 57,
+            displayName: 'Umang Gupta',
+          },
+          company: null,
+          client: null,
+          agency: null,
+        },
+      },
+      {
+        id: 5420,
+        role: 'BrokerAgency',
+        entity: {
+          id: 503,
+          type: {
+            id: 3,
+            title: 'Agency',
+          },
+          user: null,
+          company: null,
+          client: null,
+          agency: {
+            id: 1,
+            title: 'AX Capital',
+          },
+        },
+      },
+      {
+        id: 5421,
+        role: 'Agent',
+        entity: {
+          id: 634,
+          type: {
+            id: 1,
+            title: 'User',
+          },
+          user: {
+            id: 114,
+            displayName: 'Valodia Sarkissian',
+          },
+          company: null,
+          client: null,
+          agency: null,
+        },
+      },
+      {
+        id: 5422,
+        role: 'Client',
+        entity: {
+          id: 770,
+          type: {
+            id: 2,
+            title: 'Client',
+          },
+          user: null,
+          company: null,
+          client: {
+            id: 553,
+            displayName: 'Mr Shubham Rajendrakumar Tak',
+            user: {
+              id: 130,
+              displayName: 'Debra Gewan',
+            },
+          },
+          agency: null,
+        },
+      },
+    ],
+    unit: {
+      id: 724,
+      title: '310',
+      blockedFor: {
+        id: 2872,
+      },
+      project: {
+        title: 'Biltmore Sufouh',
+        entity: {
+          id: 638,
+        },
+      },
+      status: {
+        title: 'Blocked',
+      },
+    },
+    jobs: [
+      {
+        id: 9411,
+        title: 'Send Sales Offer',
+        type: {
+          id: 1,
+        },
+        accessRoles: [
+          {
+            id: 1,
+          },
+          {
+            id: 2,
+          },
+          {
+            id: 4,
+          },
+          {
+            id: 5,
+          },
+        ],
+        deadline: null,
+        createdAt: '2023-08-13T09:04:39.000Z',
+      },
+    ],
+  },
+  {
     id: 2283,
     title: 'Biltmore Sufouh, 3203',
     amount: 2921116.8,

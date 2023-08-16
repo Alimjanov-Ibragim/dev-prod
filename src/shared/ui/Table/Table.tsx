@@ -153,6 +153,7 @@ export const Table = ({
               {cols.map(
                 (
                   headerItem: {
+                    maxWidth: string;
                     width: string;
                     title: string;
                     titleRender?: any;
@@ -164,6 +165,7 @@ export const Table = ({
                     key={headerIndex}
                     className={cn('pl-[20px] flex items-center', {
                       [`${headerItem.width}`]: headerItem.width,
+                      [`${headerItem.maxWidth}`]: headerItem.maxWidth,
                     })}
                   >
                     <div
@@ -220,12 +222,14 @@ export const Table = ({
                         title: string;
                         render: any;
                         width: string;
+                        maxWidth: string;
                       },
                       i: number
                     ) => (
                       <div
                         key={i}
                         className={cn('pl-[20px] flex items-center', {
+                          [`${col.maxWidth}`]: col.maxWidth,
                           [`${col.width}`]: col.width,
                         })}
                       >

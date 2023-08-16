@@ -28,8 +28,6 @@ export const Modal = ({
   titleClassName,
   ...props
 }: TProps) => {
-  console.log(props.onRequestClose);
-
   return (
     <ReactModal
       ariaHideApp={false}

@@ -28,6 +28,7 @@ import {
   Calendar4Range,
   Printer,
   X,
+  TrashFill,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
@@ -148,6 +149,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'logo' && (
         <Logo className={className} width={width} height={height} />
+      )}
+      {name === 'trash-fill' && (
+        <TrashFill className={className} width={width} height={height} />
       )}
     </>
   );

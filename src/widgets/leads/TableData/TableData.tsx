@@ -27,8 +27,6 @@ export const TableData = () => {
     const isTrueAll: boolean[] = [];
     const tempList = list.map((item) => {
       if (id === item.id) {
-        console.log('id: ', id);
-        console.log('item.id: ', item.id);
         isTrueAll.push(!item.checked);
         return Object.assign(
           {},
@@ -63,11 +61,8 @@ export const TableData = () => {
     setIsCheckedAll(!isCheckedAll);
     setList(temp);
   };
-  const actionHandlerBtn = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    item: any
-  ) => {
-    e.preventDefault();
+  /** Delete btn */
+  const actionHandlerBtn = (item: any) => {
     alert(item.id);
     console.log('item: ', item);
   };

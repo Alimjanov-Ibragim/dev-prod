@@ -48,6 +48,8 @@ export type TAvatarProps = {
   classNameTextBody?: string;
   /** Classname image concept tag. */
   imageWrapClassName?: string;
+  /** Classname text wrap */
+  classNameTextWrap?: string;
   /** Title text */
   textTitle?: string;
   /** Body text */

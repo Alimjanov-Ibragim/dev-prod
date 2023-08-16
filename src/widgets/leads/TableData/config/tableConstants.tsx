@@ -1,7 +1,9 @@
 import cn from 'classnames';
 
-import { Avatar, Badge, Button, Checkbox, Progress } from 'shared/ui';
+import dayjs from 'dayjs';
+import { Avatar, Badge, Button, Checkbox, Icon, Progress } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
+import { LeadStatusType, leadStatusesColorSwitch } from './const';
 
 export const tableConstants = (
   onChangeAllCheckboxHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -10,14 +12,12 @@ export const tableConstants = (
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
   ) => void,
-  handleEdit: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    data: TListTableRow
-  ) => void
+  handleRemove: (data: TListTableRow) => void
 ) => {
   return [
     {
-      width: 'flex-[0_0_5%]',
+      maxWidth: 'max-w-[2%]',
+      width: 'flex-[0_0_2%]',
       title: 'checkbox',
       titleRender: () => (
         <Checkbox
@@ -40,20 +40,31 @@ export const tableConstants = (
       },
     },
     {
-      width: 'flex-[0_0_5%]',
+      maxWidth: 'max-w-[3.3333%]',
+      width: 'flex-[0_0_3.3333%]',
       title: 'ID',
       render: (rowData: TListTableRow) => {
         return <span>{rowData.id}</span>;
       },
     },
     {
-      width: 'flex-[0_0_20%]',
-      title: 'Name',
+      maxWidth: 'max-w-[12.625%]',
+      width: 'flex-[0_0_12.625%]',
+      title: 'Title',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.title}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[10.625%]',
+      width: 'flex-[0_0_10.625%]',
+      title: 'Agent',
       render: (rowData: TListTableRow) => {
         return (
           <Avatar
-            wrapClassName='pl-6'
-            imageSrc='https://flowbite.com/docs/images/people/profile-picture-5.jpg'
+            wrapClassName='justify-center'
+            classNameTextWrap='ml-0'
+            imageWrapClassName='hidden'
             textTitle={
               rowData.participants[1].entity.user?.displayName || 'unknown'
             }
@@ -62,8 +73,22 @@ export const tableConstants = (
       },
     },
     {
-      width: 'flex-[0_0_20%]',
-      title: 'Status',
+      maxWidth: 'max-w-[10.625%]',
+      width: 'flex-[0_0_10.625%]',
+      title: 'Client/Company',
+      render: (rowData: TListTableRow) => {
+        return (
+          <span>
+            {rowData.participants.filter((item) => item.role === 'Client')[0]
+              ?.entity.client.displayName || 'unknown'}
+          </span>
+        );
+      },
+    },
+    {
+      maxWidth: 'max-w-[9.5%]',
+      width: 'flex-[0_0_9.5%]',
+      title: 'Unit',
       render: (rowData: TListTableRow) => {
         const statusText = rowData.unit.status.title;
         const color =
@@ -73,7 +98,8 @@ export const tableConstants = (
             ? 'red'
             : 'gray';
         return (
-          <div className='inline-flex'>
+          <div className='inline-flex flex-col items-start'>
+            <span className='mb-[3px]'>{rowData.unit.title}</span>
             <Badge size='default' type='soft' indicator color={color}>
               {rowData.unit.status.title}
             </Badge>
@@ -82,43 +108,70 @@ export const tableConstants = (
       },
     },
     {
-      width: 'flex-[0_0_20%]',
-      title: 'Title',
+      maxWidth: 'max-w-[14.625%]',
+      width: 'flex-[0_0_14.625%]',
+      title: 'Status',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.title}</span>;
-      },
-    },
-    {
-      width: 'flex-[0_0_20%]',
-      title: 'Progress',
-      render: (rowData: TListTableRow) => {
+        const statusColor = leadStatusesColorSwitch(rowData.status.id);
         return (
-          <Progress
-            successColor='bg-teal-500'
-            width={rowData.status.id * 10}
-            type='trailing-label-left'
-            titleLabel='hellow'
-            // successColor='bg-teal-500'
-          />
+          <Badge
+            size='default'
+            type='soft'
+            indicator
+            color={statusColor}
+            className={cn('inline-flex capitalize', {})}
+          >
+            {LeadStatusType[rowData.status.id]}
+          </Badge>
         );
       },
     },
     {
-      width: 'flex-[0_0_10%]',
+      maxWidth: 'max-w-[4.6666%]',
+      width: 'flex-[0_0_4.6666%]',
+      title: 'Deal ID',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.deal || '-----'}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[9.5%]',
+      width: 'flex-[0_0_9.5%]',
+      title: 'Next Job',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.jobs[0]?.title || 'unknown'}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[7.5%]',
+      width: 'flex-[0_0_7.5%]',
+      title: 'Created Date',
+      render: (rowData: TListTableRow) => {
+        return <span>{dayjs(rowData.createdAt).format('DD/MM/YYYY')}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[9.5%]',
+      width: 'flex-[0_0_9.5%]',
+      title: 'Price',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.amount}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[5%]',
+      width: 'flex-[0_0_5%]',
       title: 'Action',
       render: (rowData: TListTableRow) => {
         return (
-          <Button
-            className='mx-auto'
-            typeStyle='white'
-            leadingIcon='pencil-fill'
-            color='gray'
-            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-              handleEdit(e, rowData)
-            }
-          >
-            Edit
-          </Button>
+          <Icon
+            className='hover:bg-gray-100'
+            size='small'
+            icon='trash-fill'
+            styleType='white'
+            role='button'
+            onClick={() => handleRemove(rowData)}
+          />
         );
       },
     },

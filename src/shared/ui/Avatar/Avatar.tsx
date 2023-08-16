@@ -15,6 +15,7 @@ export const Avatar = ({
   classNameStatusIcon,
   classNameTextTitle,
   classNameTextBody,
+  classNameTextWrap,
   nameStatusIcon,
   imageWrapClassName,
   textTitle,
@@ -163,7 +164,9 @@ export const Avatar = ({
       {/* text content */}
       {(textTitle || textBody) && (
         <div
-          className={cn('ex-avatar-text flex flex-col items-start ml-[15px]')}
+          className={cn('ex-avatar-text flex flex-col items-start ml-[15px]', {
+            [classNameTextWrap as string]: classNameTextWrap,
+          })}
         >
           <div
             className={cn(

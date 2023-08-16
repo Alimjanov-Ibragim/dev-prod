@@ -47,7 +47,7 @@ export const Progress = ({
       {/* type === 'title-label'  */}
       {type === 'title-label' && (
         <div className='flex justify-between w-full mb-2.5'>
-          <div className='text-gray-800 text-base font-medium'>
+          <div className='text-gray-800 text-base font-medium capitalize'>
             {titleLabel}
           </div>
           <span className='text-gray-800 text-sm	font-medium ml-2.5'>{`${width}%`}</span>
