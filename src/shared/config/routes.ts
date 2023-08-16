@@ -1,3 +1,4 @@
+import { AgenciesPage } from 'pages/agencies';
 import { ClientsPage } from 'pages/clients';
 import { CompaniesPage } from 'pages/companies';
 import { DealsPage } from 'pages/deals';
@@ -60,6 +61,12 @@ export const routes: TRoute[] = [
         component: UsersPage,
       },
     ],
+  },
+  {
+    icon: 'houses',
+    title: 'Agencies',
+    to: '/agencies',
+    component: AgenciesPage,
   },
   {
     icon: 'house-door',

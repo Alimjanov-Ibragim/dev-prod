@@ -33,7 +33,8 @@ export type TIcon =
   | 'x'
   | 'preline-slash'
   | 'logo'
-  | 'trash-fill';
+  | 'trash-fill'
+  | 'houses';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 

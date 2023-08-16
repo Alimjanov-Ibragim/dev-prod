@@ -29,6 +29,7 @@ import {
   Printer,
   X,
   TrashFill,
+  Houses,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
@@ -152,6 +153,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'trash-fill' && (
         <TrashFill className={className} width={width} height={height} />
+      )}
+      {name === 'houses' && (
+        <Houses className={className} width={width} height={height} />
       )}
     </>
   );
