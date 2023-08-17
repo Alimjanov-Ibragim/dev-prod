@@ -3,6 +3,7 @@ import { ClientsPage } from 'pages/clients';
 import { CompaniesPage } from 'pages/companies';
 import { DealsPage } from 'pages/deals';
 import { LeadsPage } from 'pages/leads';
+import { ProjectsPage } from 'pages/projects';
 import { TasksPage } from 'pages/tasks';
 import { UnitsPage } from 'pages/units';
 import { UsersPage } from 'pages/users';
@@ -79,6 +80,7 @@ export const routes: TRoute[] = [
     icon: 'layers',
     title: 'Projects',
     to: '/projects',
+    component: ProjectsPage,
   },
   {
     icon: 'building',
