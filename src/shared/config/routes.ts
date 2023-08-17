@@ -1,6 +1,7 @@
 import { AgenciesPage } from 'pages/agencies';
 import { ClientsPage } from 'pages/clients';
 import { CompaniesPage } from 'pages/companies';
+import { CountriesPage } from 'pages/countries';
 import { DealsPage } from 'pages/deals';
 import { DevelopersPage } from 'pages/developers';
 import { LeadsPage } from 'pages/leads';
@@ -100,6 +101,7 @@ export const routes: TRoute[] = [
     icon: 'globe2',
     title: 'Countries',
     to: '/countries',
+    component: CountriesPage,
   },
   {
     icon: 'flag',
