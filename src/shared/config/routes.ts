@@ -5,6 +5,7 @@ import { DealsPage } from 'pages/deals';
 import { DevelopersPage } from 'pages/developers';
 import { LeadsPage } from 'pages/leads';
 import { ProjectsPage } from 'pages/projects';
+import { ReportsPage } from 'pages/reports';
 import { TasksPage } from 'pages/tasks';
 import { UnitsPage } from 'pages/units';
 import { UsersPage } from 'pages/users';
@@ -93,6 +94,7 @@ export const routes: TRoute[] = [
     icon: 'cloud-download',
     title: 'Reports',
     to: '/reports',
+    component: ReportsPage,
   },
   {
     icon: 'globe2',
