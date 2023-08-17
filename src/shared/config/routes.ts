@@ -2,6 +2,7 @@ import { AgenciesPage } from 'pages/agencies';
 import { ClientsPage } from 'pages/clients';
 import { CompaniesPage } from 'pages/companies';
 import { DealsPage } from 'pages/deals';
+import { DevelopersPage } from 'pages/developers';
 import { LeadsPage } from 'pages/leads';
 import { ProjectsPage } from 'pages/projects';
 import { TasksPage } from 'pages/tasks';
@@ -86,6 +87,7 @@ export const routes: TRoute[] = [
     icon: 'building',
     title: 'Developers',
     to: '/developers',
+    component: DevelopersPage,
   },
   {
     icon: 'cloud-download',
