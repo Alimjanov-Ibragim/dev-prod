@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
 import { TableData } from 'widgets/agencies';
+import { AddAgency } from 'features/AddAgency';
 import { Breadcrumb, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -27,6 +28,7 @@ export const AgenciesPage = () => {
           <Breadcrumb list={LIST_BREADCRUMB} />
           <Title text='Agencies' />
         </div>
+        <AddAgency />
       </div>
       <TableData />
     </div>

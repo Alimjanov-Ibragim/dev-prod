@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
 import { TableData } from 'widgets/users';
+import { AddUser } from 'features/AddUser';
 import { Breadcrumb, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -27,6 +28,7 @@ export const UsersPage = () => {
           <Breadcrumb list={LIST_BREADCRUMB} />
           <Title text='Users' />
         </div>
+        <AddUser />
       </div>
       <TableData />
     </div>

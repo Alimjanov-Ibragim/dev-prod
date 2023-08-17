@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
 import { TableData } from 'widgets/units';
+import { AddUnit } from 'features/AddUnit';
 import { Breadcrumb, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -27,6 +28,7 @@ export const UnitsPage = () => {
           <Breadcrumb list={LIST_BREADCRUMB} />
           <Title text='Units' />
         </div>
+        <AddUnit />
       </div>
       <TableData />
     </div>
