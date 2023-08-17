@@ -66,6 +66,10 @@ export const TableData = () => {
     alert(item.id);
     console.log('item: ', item);
   };
+  const downloadHandlerBtn = (item: any) => {
+    alert(`Download: ${item.id}`);
+    console.log('item: ', item);
+  };
 
   //handle Page Change
   const handleTablePageChange = (event: { selected: number }) => {
@@ -101,6 +105,7 @@ export const TableData = () => {
         tableAllHandler,
         isCheckedAll,
         tableHandler,
+        downloadHandlerBtn,
         actionHandlerBtn
       )}
     />

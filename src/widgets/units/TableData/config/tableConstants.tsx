@@ -10,6 +10,7 @@ export const tableConstants = (
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
   ) => void,
+  handleDownload: (data: TListTableRow) => void,
   handleRemove: (data: TListTableRow) => void
 ) => {
   return [
@@ -103,16 +104,16 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[8%]',
-      width: 'flex-[0_0_8%]',
+      maxWidth: 'max-w-[6%]',
+      width: 'flex-[0_0_6%]',
       title: 'Floor',
       render: (rowData: TListTableRow) => {
         return <span>{rowData.floor}</span>;
       },
     },
     {
-      maxWidth: 'max-w-[8%]',
-      width: 'flex-[0_0_8%]',
+      maxWidth: 'max-w-[6%]',
+      width: 'flex-[0_0_6%]',
       title: 'Bedrooms',
       render: (rowData: TListTableRow) => {
         return <span>{rowData.bedrooms}</span>;
@@ -134,20 +135,31 @@ export const tableConstants = (
         return <span>{priceFormatter.format(rowData.price)}</span>;
       },
     },
+
     {
-      maxWidth: 'max-w-[4%]',
-      width: 'flex-[0_0_4%]',
+      maxWidth: 'max-w-[8%]',
+      width: 'flex-[0_0_8%]',
       title: 'Action',
       render: (rowData: TListTableRow) => {
         return (
-          <Icon
-            className='hover:bg-gray-100'
-            size='small'
-            icon='trash-fill'
-            styleType='white'
-            role='button'
-            onClick={() => handleRemove(rowData)}
-          />
+          <span className='flex justify-center gap-[5px]'>
+            <Icon
+              className='hover:bg-gray-100'
+              size='small'
+              icon='download'
+              role='button'
+              color='light'
+              onClick={() => handleDownload(rowData)}
+            />
+            <Icon
+              className='hover:bg-gray-100'
+              size='small'
+              icon='trash-fill'
+              styleType='white'
+              role='button'
+              onClick={() => handleRemove(rowData)}
+            />
+          </span>
         );
       },
     },
