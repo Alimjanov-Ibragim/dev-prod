@@ -54,9 +54,9 @@ export const tableConstants = (
     {
       maxWidth: 'max-w-[42.5%]',
       width: 'flex-[0_0_42.5%]',
-      title: 'NATIONALITY',
+      title: 'COUNTRY',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.nationality || 'unknown'}</span>;
+        return <span>{rowData.country.title || '----'}</span>;
       },
     },
     {

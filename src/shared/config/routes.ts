@@ -1,4 +1,5 @@
 import { AgenciesPage } from 'pages/agencies';
+import { CitiesPage } from 'pages/cities';
 import { ClientsPage } from 'pages/clients';
 import { CompaniesPage } from 'pages/companies';
 import { CountriesPage } from 'pages/countries';
@@ -107,5 +108,6 @@ export const routes: TRoute[] = [
     icon: 'flag',
     title: 'Cities',
     to: '/cities',
+    component: CitiesPage,
   },
 ];
