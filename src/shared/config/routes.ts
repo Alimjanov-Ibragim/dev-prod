@@ -4,6 +4,7 @@ import { CompaniesPage } from 'pages/companies';
 import { DealsPage } from 'pages/deals';
 import { LeadsPage } from 'pages/leads';
 import { TasksPage } from 'pages/tasks';
+import { UnitsPage } from 'pages/units';
 import { UsersPage } from 'pages/users';
 
 import { TIcon } from 'shared/lib';
@@ -72,6 +73,7 @@ export const routes: TRoute[] = [
     icon: 'house-door',
     title: 'Units',
     to: '/units',
+    component: UnitsPage,
   },
   {
     icon: 'layers',

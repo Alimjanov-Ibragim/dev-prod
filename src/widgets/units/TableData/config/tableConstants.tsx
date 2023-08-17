@@ -1,7 +1,7 @@
-import dayjs from 'dayjs';
-
-import { Checkbox, Icon } from 'shared/ui';
+import { priceFormatter } from 'shared/lib';
+import { Badge, Checkbox, Icon } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
+import { unitsStatusesColorSwitch } from './const';
 
 export const tableConstants = (
   onChangeAllCheckboxHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -48,77 +48,90 @@ export const tableConstants = (
     {
       maxWidth: 'max-w-[12%]',
       width: 'flex-[0_0_12%]',
-      title: 'Agency Name',
+      title: 'Project',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.title || 'unknown'}</span>;
+        return <span>{rowData.project.title || 'unknown'}</span>;
       },
     },
     {
       maxWidth: 'max-w-[10%]',
       width: 'flex-[0_0_10%]',
-      title: 'LICENSE',
+      title: 'Unit number',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.licenseNumber || 'unknown'}</span>;
+        return <span>{rowData.unitNumber || 'unknown'}</span>;
       },
     },
     {
       maxWidth: 'max-w-[10%]',
       width: 'flex-[0_0_10%]',
-      title: 'BANK ACCOUNT',
-      render: (rowData: TListTableRow) => {
-        return <span>{rowData.bankAccount || 'unknown'}</span>;
-      },
-    },
-    {
-      maxWidth: 'max-w-[10%]',
-      width: 'flex-[0_0_10%]',
-      title: 'Orn',
-      render: (rowData: TListTableRow) => {
-        return <span>{rowData.orn}</span>;
-      },
-    },
-    {
-      maxWidth: 'max-w-[8%]',
-      width: 'flex-[0_0_8%]',
-      title: 'CONTACT PERSON',
-      render: (rowData: TListTableRow) => {
-        return <span>{rowData.contactPerson || '----'}</span>;
-      },
-    },
-    {
-      maxWidth: 'max-w-[10%]',
-      width: 'flex-[0_0_10%]',
-      title: 'LICENSE DATE OF EXPIRY',
+      title: 'Status',
       render: (rowData: TListTableRow) => {
         return (
-          <span>{dayjs(rowData.licenseExpireAt).format('DD/MM/YYYY')}</span>
+          <div className='inline-flex flex-col items-start'>
+            <Badge
+              size='default'
+              type='soft'
+              indicator
+              color={unitsStatusesColorSwitch(rowData.status.id)}
+            >
+              {rowData.status.title}
+            </Badge>
+          </div>
         );
       },
     },
     {
       maxWidth: 'max-w-[10%]',
       width: 'flex-[0_0_10%]',
-      title: 'BROKER REGISTRATION DATE',
+      title: 'Type',
       render: (rowData: TListTableRow) => {
         return (
-          <span>{dayjs(rowData.registrationDate).format('DD/MM/YYYY')}</span>
+          <div className='inline-flex flex-col items-start'>
+            <Badge size='default' type='outlined' color='gray'>
+              {rowData.type.title}
+            </Badge>
+          </div>
         );
-      },
-    },
-    {
-      maxWidth: 'max-w-[8%]',
-      width: 'flex-[0_0_8%]',
-      title: 'OFFICE ADDRESS',
-      render: (rowData: TListTableRow) => {
-        return <span>{rowData.city || '----'}</span>;
       },
     },
     {
       maxWidth: 'max-w-[12%]',
       width: 'flex-[0_0_12%]',
-      title: 'EMAIL',
+      title: 'View',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.entity.contacts[0].emailContact.email}</span>;
+        return <span>{rowData.view || '----'}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[8%]',
+      width: 'flex-[0_0_8%]',
+      title: 'Floor',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.floor}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[8%]',
+      width: 'flex-[0_0_8%]',
+      title: 'Bedrooms',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.bedrooms}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[8%]',
+      width: 'flex-[0_0_8%]',
+      title: 'TOTAL AREA',
+      render: (rowData: TListTableRow) => {
+        return <span>{rowData.totalArea || '----'}</span>;
+      },
+    },
+    {
+      maxWidth: 'max-w-[12%]',
+      width: 'flex-[0_0_12%]',
+      title: 'Price',
+      render: (rowData: TListTableRow) => {
+        return <span>{priceFormatter.format(rowData.price)}</span>;
       },
     },
     {
