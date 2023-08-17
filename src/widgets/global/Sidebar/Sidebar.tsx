@@ -4,11 +4,15 @@ import { useLocation } from 'react-router-dom';
 
 import { routes } from 'shared/config';
 import { GetIcon } from 'shared/lib';
+import { toggleSidebarBoolean } from 'shared/model';
+import { useAppDispatch, useAppSelector } from 'shared/model';
+
 import { Link, Icon } from 'shared/ui';
 
 export const Sidebar = () => {
+  const isSidebarOpen = useAppSelector((state) => state.sidebarBoolean);
+  const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(false);
-  const [isSideOpen, setIsSideOpen] = useState(false);
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split('/');
@@ -16,11 +20,14 @@ export const Sidebar = () => {
   const setActiveClass = (routeName: string) =>
     routeName.includes(splitLocation[1]) ? 'bg-white/10' : '';
 
-  // console.log('isSideOpen: ', isSideOpen);
   return (
     <div
       className={cn(
-        'ex-sidebar bg-slate-900 fixed z-20 text-white inset-0 w-[260px] flex flex-col justify-between'
+        'ex-sidebar bg-slate-900 fixed z-20 text-white inset-0 flex flex-col justify-between',
+        {
+          'w-[260px]': isSidebarOpen.isOpen,
+          'w-[90px]': !isSidebarOpen.isOpen,
+        }
       )}
     >
       <Icon
@@ -30,24 +37,42 @@ export const Sidebar = () => {
         size='xs'
         styleType='solid'
         color='dark'
-        onClick={() => setIsSideOpen(!isSideOpen)}
+        onClick={() => dispatch(toggleSidebarBoolean())}
       />
       {/* top */}
-      <div className={cn('p-5 overflow-y-auto flex flex-col gap-[24px]')}>
+      <div
+        className={cn('p-5 overflow-y-auto flex flex-col gap-[24px]', {
+          '!pt-2 !p-1': !isSidebarOpen.isOpen,
+        })}
+      >
         <Link to='/'>
-          <GetIcon name='logo' width='116' height='31' />
+          {isSidebarOpen.isOpen ? (
+            <GetIcon name='logo' width='116' height='31' />
+          ) : (
+            <GetIcon
+              name='logo-without-text'
+              width='24'
+              height='25'
+              className='mx-auto'
+            />
+          )}
         </Link>
         <Link
           to={'/dashboards'}
           icon='house'
-          className={setActiveClass('dashboards')}
+          className={cn(`${setActiveClass('dashboards')}`, {
+            'flex-col': !isSidebarOpen.isOpen,
+          })}
         >
           Dashboards
         </Link>
         <div className={cn('flex-col flex gap-[4px]')}>
           <div
             className={cn(
-              'py-[8px] px-[14px] text-sm font-semibold text-white uppercase'
+              'py-[8px] px-[14px] text-sm font-semibold text-white uppercase',
+              {
+                '!px-[8px]': !isSidebarOpen.isOpen,
+              }
             )}
           >
             PAGES
@@ -60,13 +85,12 @@ export const Sidebar = () => {
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <Link
-                  className={
-                    !isOpen
-                      ? setActiveClass(
-                          route.sub?.map((r) => r.to.split('/')).join('')
-                        )
-                      : ''
-                  }
+                  className={cn('', {
+                    [`${setActiveClass(
+                      route.sub?.map((r) => r.to.split('/')).join('')
+                    )}`]: !isOpen,
+                    'flex-col': !isSidebarOpen.isOpen,
+                  })}
                   to={'#'}
                   icon={route.icon}
                   badgeText={route.badgeText}
@@ -75,23 +99,26 @@ export const Sidebar = () => {
                   {route.title}
                   <Icon
                     icon={!isOpen ? 'chevron-down' : 'chevron-up'}
-                    className='!p-0 ml-auto'
+                    className={cn('!p-0 ml-auto', {
+                      'mr-auto': !isSidebarOpen.isOpen,
+                    })}
                     classNameIcon='fill-white/50 w-[12px] h-[12px]'
                   />
                 </Link>
 
                 <div
                   onClick={(e) => e.stopPropagation()}
-                  className={cn(
-                    'flex flex-col ml-[20px] pl-[10px] border-l border-solid border-white/20',
-                    {
-                      hidden: !isOpen,
-                    }
-                  )}
+                  className={cn('flex flex-col border-white/20', {
+                    hidden: !isOpen,
+                    'ml-[20px] pl-[10px] border-l border-solid':
+                      isSidebarOpen.isOpen,
+                  })}
                 >
                   {route.sub?.map((subroute, subrouteIndex) => (
                     <Link
-                      className={setActiveClass(subroute.to.slice(1))}
+                      className={cn(`${setActiveClass(subroute.to.slice(1))}`, {
+                        'flex-col': !isSidebarOpen.isOpen,
+                      })}
                       key={subrouteIndex}
                       chevron
                       to={subroute.to}
@@ -106,7 +133,9 @@ export const Sidebar = () => {
               </div>
             ) : (
               <Link
-                className={setActiveClass(route.to.slice(1))}
+                className={cn(`${setActiveClass(route.to.slice(1))}`, {
+                  'flex-col': !isSidebarOpen.isOpen,
+                })}
                 key={index}
                 to={route.to}
                 icon={route.icon}
@@ -122,7 +151,10 @@ export const Sidebar = () => {
       {/* bot */}
       <div
         className={cn(
-          'p-3 flex items-center justify-center gap-[16px] border-t border-solid border-white/20'
+          'p-3 flex items-center justify-center gap-[16px] border-t border-solid border-white/20',
+          {
+            'flex-col': !isSidebarOpen.isOpen,
+          }
         )}
       >
         <Icon

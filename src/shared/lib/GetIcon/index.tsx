@@ -34,6 +34,7 @@ import {
 
 import { TIcon } from 'shared/lib';
 import { Excel, Logo, Pdf, PrelineSlash, Word } from './ui';
+import { LogoWithoutText } from './ui/LogoWithoutText';
 
 type Props = {
   /** ClassName for icon. */
@@ -156,6 +157,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'houses' && (
         <Houses className={className} width={width} height={height} />
+      )}
+      {name === 'logo-without-text' && (
+        <LogoWithoutText className={className} width={width} height={height} />
       )}
     </>
   );

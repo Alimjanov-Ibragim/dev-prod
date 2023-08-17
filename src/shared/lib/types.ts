@@ -33,6 +33,7 @@ export type TIcon =
   | 'x'
   | 'preline-slash'
   | 'logo'
+  | 'logo-without-text'
   | 'trash-fill'
   | 'houses';
 
