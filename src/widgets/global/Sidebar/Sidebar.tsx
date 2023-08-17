@@ -31,7 +31,7 @@ export const Sidebar = () => {
       )}
     >
       <Icon
-        icon='arrow-bar-left'
+        icon={!isSidebarOpen.isOpen ? 'arrow-bar-right' : 'arrow-bar-left'}
         role='button'
         className='!inline-flex absolute top-[12px] right-[-19px] !rounded-full w-[38px] h-[38px] !bg-slate-900 border border-white/20 hover:scale-[1.1] transition'
         size='xs'

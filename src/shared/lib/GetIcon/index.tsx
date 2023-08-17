@@ -6,6 +6,7 @@ import {
   Filter,
   PencilFill,
   ArrowBarLeft,
+  ArrowBarRight,
   House,
   Check2Circle,
   Check2Square,
@@ -160,6 +161,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'logo-without-text' && (
         <LogoWithoutText className={className} width={width} height={height} />
+      )}
+      {name === 'arrow-bar-right' && (
+        <ArrowBarRight className={className} width={width} height={height} />
       )}
     </>
   );

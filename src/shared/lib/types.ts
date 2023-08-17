@@ -6,6 +6,7 @@ export type TIcon =
   | 'filter'
   | 'pencil-fill'
   | 'arrow-bar-left'
+  | 'arrow-bar-right'
   | 'house'
   | 'check2-circle'
   | 'check2-square'
