@@ -47,6 +47,7 @@ export const Modal = ({
           borderRadius: '16px',
           boxShadow:
             '0px 20px 13px 0px rgba(0, 0, 0, 0.03), 0px 8px 5px 0px rgba(0, 0, 0, 0.08)',
+          bottom: 'auto',
         },
       }}
       {...props}
