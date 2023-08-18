@@ -1,7 +1,7 @@
 export { Button } from './Button';
 export { Icon } from './Icon';
 export { Loading } from './Loading';
-export { Layout } from './Layout';
+export { Layout, LayoutInner } from './Layout';
 export { Indicator } from './Indicator';
 export { Badge } from './Badge';
 export { Progress } from './Progress';

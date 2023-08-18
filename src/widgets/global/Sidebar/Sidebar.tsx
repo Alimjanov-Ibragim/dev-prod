@@ -90,6 +90,7 @@ export const Sidebar = () => {
                       route.sub?.map((r) => r.to.split('/')).join('')
                     )}`]: !isOpen,
                     'flex-col': !isSidebarOpen.isOpen,
+                    hidden: route.isHidden,
                   })}
                   to={'#'}
                   icon={route.icon}
@@ -118,6 +119,7 @@ export const Sidebar = () => {
                     <Link
                       className={cn(`${setActiveClass(subroute.to.slice(1))}`, {
                         'flex-col': !isSidebarOpen.isOpen,
+                        hidden: route.isHidden,
                       })}
                       key={subrouteIndex}
                       chevron
@@ -135,6 +137,7 @@ export const Sidebar = () => {
               <Link
                 className={cn(`${setActiveClass(route.to.slice(1))}`, {
                   'flex-col': !isSidebarOpen.isOpen,
+                  hidden: route.isHidden,
                 })}
                 key={index}
                 to={route.to}

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { useAppSelector } from 'shared/model';
 
 type Props = {
-  sidebarSlot: ReactNode;
+  sidebarSlot?: ReactNode;
   header?: ReactNode;
 };
 

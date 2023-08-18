@@ -6,7 +6,7 @@ import { CountriesPage } from 'pages/countries';
 import { DealsPage } from 'pages/deals';
 import { DevelopersPage } from 'pages/developers';
 import { LeadsPage } from 'pages/leads';
-import { ProjectsPage } from 'pages/projects';
+import { ProjectsPage, SingleProject } from 'pages/projects';
 import { ReportsPage } from 'pages/reports';
 import { TasksPage } from 'pages/tasks';
 import { UnitsPage } from 'pages/units';
@@ -15,6 +15,7 @@ import { UsersPage } from 'pages/users';
 import { TIcon } from 'shared/lib';
 
 type TRouteItem = {
+  isHidden?: boolean;
   icon?: TIcon;
   title: string;
   to: string;
@@ -85,6 +86,13 @@ export const routes: TRoute[] = [
     title: 'Projects',
     to: '/projects',
     component: ProjectsPage,
+  },
+  {
+    isHidden: true,
+    // icon: 'layers',
+    title: 'Project',
+    to: '/projects/:id',
+    component: SingleProject,
   },
   {
     icon: 'building',

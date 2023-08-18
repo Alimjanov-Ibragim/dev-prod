@@ -8,10 +8,13 @@ type TStyleTypeTable =
   | 'thead-divided';
 
 type Props = {
-  /**  */
+  /** Rounded table */
   rounded?: boolean;
+  /** Table with shadow */
   withShadow?: boolean;
+  /** Table head background class */
   theadBgClass?: string;
+  /** Boolean for show or not head of the table */
   headless?: boolean;
   /** Above right place of the table as ReactNode */
   topSlot?: React.ReactNode;

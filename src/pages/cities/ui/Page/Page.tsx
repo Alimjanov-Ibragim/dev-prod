@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import { TableData } from 'widgets/cities';
 import { AddCity } from 'features/AddCity';
-import { Breadcrumb, Title } from 'shared/ui';
+import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
   {
@@ -17,20 +17,18 @@ const LIST_BREADCRUMB = [
 
 export const CitiesPage = () => {
   return (
-    <div
-      className='grid gap-[24px]'
-      style={{
-        textAlign: 'center',
-      }}
+    <LayoutInner
+      topSlot={
+        <>
+          <div className={cn('grid gap-[8px]')}>
+            <Breadcrumb list={LIST_BREADCRUMB} />
+            <Title text='Cities' />
+          </div>
+          <AddCity />
+        </>
+      }
     >
-      <div className='flex justify-between gap-[12px]'>
-        <div className={cn('grid gap-[8px]')}>
-          <Breadcrumb list={LIST_BREADCRUMB} />
-          <Title text='Cities' />
-        </div>
-        <AddCity />
-      </div>
       <TableData />
-    </div>
+    </LayoutInner>
   );
 };
