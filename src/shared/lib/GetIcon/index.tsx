@@ -31,6 +31,7 @@ import {
   X,
   TrashFill,
   Houses,
+  PencilSquare,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
@@ -164,6 +165,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'arrow-bar-right' && (
         <ArrowBarRight className={className} width={width} height={height} />
+      )}
+      {name === 'pencil-square' && (
+        <PencilSquare className={className} width={width} height={height} />
       )}
     </>
   );
