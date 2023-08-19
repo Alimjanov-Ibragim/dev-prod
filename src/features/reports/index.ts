@@ -1,2 +1,1 @@
-export { SoldUnits } from './SoldUnits';
-export { ExporUnits } from './ExporUnits';
+export { SoldUnits, ExporUnits } from './ui';

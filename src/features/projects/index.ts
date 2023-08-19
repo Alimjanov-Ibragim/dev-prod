@@ -1,1 +1,1 @@
-export { EditGeneralInfo } from './EditGeneralInfo';
+export { EditGeneralInfo } from './ui';
