@@ -5,6 +5,7 @@ export type {
   TInputStyleType,
   TTabsItem,
   TTabsTypeStyle,
+  TFile,
 } from './types';
 export { priceFormatter } from './utils';
 

@@ -17,3 +17,4 @@ export { Title } from './Title';
 export { Link } from './Link';
 export { Modal } from './Modal';
 export { Tabs } from './Tabs';
+export { Dropzone } from './Dropzone';

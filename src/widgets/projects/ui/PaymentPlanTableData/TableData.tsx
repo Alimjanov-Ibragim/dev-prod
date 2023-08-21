@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { Table, Pagination } from 'shared/ui';
+import { EditPaymentPlan } from 'features/projects';
+import { Table, Title } from 'shared/ui';
 import { data } from './config/data';
 import { tableConstants } from './config/tableConstants';
 import { TListTableRow } from './libs/types';
@@ -65,19 +66,14 @@ export const TableData = () => {
     console.log('item: ', item);
   };
 
-  //handle Page Change
-  const handleTablePageChange = (event: { selected: number }) => {
-    console.log('Current event: ', event);
-  };
-
   return (
     <Table
-      botSlot={
-        <Pagination
-          pageCount={150}
-          onChange={handleTablePageChange}
-          perPageAmount={true}
-        />
+      topSlot={
+        <>
+          <Title text='Payment plan' />
+          {/* modal */}
+          <EditPaymentPlan />
+        </>
       }
       theadBgClass='bg-gray-50'
       rounded

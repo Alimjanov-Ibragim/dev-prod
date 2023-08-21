@@ -35,7 +35,7 @@ import {
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
-import { Excel, Logo, Pdf, PrelineSlash, Word } from './ui';
+import { Excel, Logo, Pdf, PrelineSlash, Word, DropzonImg } from './ui';
 import { LogoWithoutText } from './ui/LogoWithoutText';
 
 type Props = {
@@ -168,6 +168,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'pencil-square' && (
         <PencilSquare className={className} width={width} height={height} />
+      )}
+      {name === 'dropzone-img' && (
+        <DropzonImg className={className} width={width} height={height} />
       )}
     </>
   );

@@ -165,7 +165,7 @@ export const Table = ({
                     ) => (
                       <div
                         key={i}
-                        className={cn('pl-[20px] flex items-center', {
+                        className={cn('pl-[20px] flex items-center relative', {
                           [`${col.maxWidth}`]: col.maxWidth,
                           [`${col.width}`]: col.width,
                         })}

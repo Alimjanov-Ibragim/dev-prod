@@ -1,15 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { ChooseDate } from 'features/ChooseDate';
 import { ExportOptions } from 'features/ExportOptions';
 import { FilterDropdown } from 'features/FilterDropdown';
 import { Search } from 'features/Search';
-import { Table, Pagination } from 'shared/ui';
+import { Table, Pagination, Title } from 'shared/ui';
 import { data } from './config/data';
 import { tableConstants } from './config/tableConstants';
 
 export const TableData = () => {
+  const { pathname } = useLocation();
   // table checkbox check
   const dataHandling = data.map((item) =>
     Object.assign(
@@ -80,12 +82,18 @@ export const TableData = () => {
     <Table
       topSlot={
         <>
-          <Search />
-          <div className='flex items-center gap-[12px]'>
-            <ChooseDate />
-            <ExportOptions />
-            <FilterDropdown />
-          </div>
+          {pathname.split('/').length <= 2 ? (
+            <>
+              <Search />
+              <div className='flex items-center gap-[12px]'>
+                <ChooseDate />
+                <ExportOptions />
+                <FilterDropdown />
+              </div>
+            </>
+          ) : (
+            <Title text='Units' />
+          )}
         </>
       }
       botSlot={

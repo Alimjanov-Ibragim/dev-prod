@@ -4,9 +4,9 @@ import { ClientsPage } from 'pages/clients';
 import { CompaniesPage } from 'pages/companies';
 import { CountriesPage } from 'pages/countries';
 import { DealsPage } from 'pages/deals';
-import { DevelopersPage } from 'pages/developers';
+import { DevelopersPage, SingleDeveloperPage } from 'pages/developers';
 import { LeadsPage } from 'pages/leads';
-import { ProjectsPage, SingleProject } from 'pages/projects';
+import { ProjectsPage, SingleProjectPage } from 'pages/projects';
 import { ReportsPage } from 'pages/reports';
 import { TasksPage } from 'pages/tasks';
 import { UnitsPage } from 'pages/units';
@@ -92,13 +92,20 @@ export const routes: TRoute[] = [
     // icon: 'layers',
     title: 'Project',
     to: '/projects/:id',
-    component: SingleProject,
+    component: SingleProjectPage,
   },
   {
     icon: 'building',
     title: 'Developers',
     to: '/developers',
     component: DevelopersPage,
+  },
+  {
+    isHidden: true,
+    icon: 'building',
+    title: 'Developer',
+    to: '/developers/:id',
+    component: SingleDeveloperPage,
   },
   {
     icon: 'cloud-download',

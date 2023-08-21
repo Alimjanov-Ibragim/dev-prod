@@ -1,5 +1,5 @@
-import { PaymentPlanTableData } from 'widgets/projects';
-import { TableData as UnitsTableData } from 'widgets/units';
+import { FilesGallery } from 'widgets/developers';
+import { TableData } from 'widgets/projects';
 import { TTabsItem } from 'shared/lib';
 
 export const tabsConstants = (): TTabsItem[] => {
@@ -9,11 +9,11 @@ export const tabsConstants = (): TTabsItem[] => {
       // icon: 'printer',
       maxWidth: 'max-w-[2%]',
       width: 'flex-[0_0_2%]',
-      title: 'Payment Plan',
+      title: 'Projects',
       renderContent: () => {
         return (
           <>
-            <PaymentPlanTableData />
+            <TableData />
           </>
         );
       },
@@ -22,9 +22,9 @@ export const tabsConstants = (): TTabsItem[] => {
       // icon: 'houses',
       maxWidth: 'max-w-[2%]',
       width: 'flex-[0_0_2%]',
-      title: 'Units',
+      title: 'Files',
       renderContent: () => {
-        return <UnitsTableData />;
+        return <FilesGallery />;
       },
     },
   ];

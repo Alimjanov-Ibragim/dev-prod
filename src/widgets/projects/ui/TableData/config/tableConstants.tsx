@@ -55,7 +55,7 @@ export const tableConstants = (
         return (
           <Link
             to={`${pathname}/${rowData.id}`}
-            className='!inline-flex !text-slate-800 font-semibold hover:!bg-blue-50'
+            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
           >
             {rowData.title}
           </Link>

@@ -1,1 +1,6 @@
-export { EditGeneralInfo } from './ui';
+export {
+  EditGeneralInfo,
+  AddProject,
+  AddProjectSingle,
+  EditPaymentPlan,
+} from './ui';

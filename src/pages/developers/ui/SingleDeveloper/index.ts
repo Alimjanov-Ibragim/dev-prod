@@ -1,0 +1,1 @@
+export { SingleDeveloper } from './Page';

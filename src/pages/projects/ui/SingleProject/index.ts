@@ -1,1 +1,1 @@
-export { SingleProject } from './SingleProject';
+export { SingleProject } from './Page';

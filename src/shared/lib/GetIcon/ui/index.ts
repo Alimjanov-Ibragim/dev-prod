@@ -3,3 +3,4 @@ export { Pdf } from './Pdf';
 export { Word } from './Word';
 export { PrelineSlash } from './PrelineSlash';
 export { Logo } from './Logo';
+export { DropzonImg } from './DropzonImg';

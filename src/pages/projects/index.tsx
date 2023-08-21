@@ -1,2 +1,2 @@
 export { ProjectsPage } from './ui/Page';
-export { SingleProject } from './ui/SingleProject';
+export { SingleProject as SingleProjectPage } from './ui/SingleProject';

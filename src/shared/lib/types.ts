@@ -39,7 +39,8 @@ export type TIcon =
   | 'logo-without-text'
   | 'trash-fill'
   | 'houses'
-  | 'pencil-square';
+  | 'pencil-square'
+  | 'dropzone-img';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 
@@ -63,3 +64,20 @@ export type TTabsTypeStyle =
   | 'segment'
   | 'pills'
   | 'pills-gray';
+
+export type TType<ID = number> = {
+  id: ID;
+  title: string;
+  color?: string;
+};
+
+export type TFile = {
+  id: number;
+  name: string;
+  type: TType;
+  originalName: string;
+  size: number;
+  mimeType: string;
+  path: string;
+  createdAt?: string;
+};
