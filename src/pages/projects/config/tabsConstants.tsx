@@ -1,4 +1,4 @@
-import { TableData as ProjectsTableData } from 'widgets/projects';
+import { PaymentPlanTableData } from 'widgets/projects';
 import { TableData as UnitsTableData } from 'widgets/units';
 import { TTabsItem } from 'shared/lib';
 
@@ -13,7 +13,7 @@ export const tabsConstants = (): TTabsItem[] => {
       renderContent: () => {
         return (
           <>
-            <ProjectsTableData />
+            <PaymentPlanTableData />
           </>
         );
       },

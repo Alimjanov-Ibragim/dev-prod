@@ -1,1 +1,1 @@
-export { TableData } from './ui';
+export { TableData, PaymentPlanTableData } from './ui';
