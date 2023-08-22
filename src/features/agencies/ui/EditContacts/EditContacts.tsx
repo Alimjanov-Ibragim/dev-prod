@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { Contacts } from 'entities/agencies';
+import { AgenciesContacts } from 'entities/agencies';
 import { Button, Modal, Icon } from 'shared/ui';
 
 type IFormInput = {
@@ -31,7 +31,7 @@ export const EditContacts = () => {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   return (
-    <Contacts
+    <AgenciesContacts
       rightSlot={
         <>
           <Icon

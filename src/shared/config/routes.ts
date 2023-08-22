@@ -10,7 +10,7 @@ import { ProjectsPage, SingleProjectPage } from 'pages/projects';
 import { ReportsPage } from 'pages/reports';
 import { TasksPage } from 'pages/tasks';
 import { SingleUnit, UnitsPage } from 'pages/units';
-import { UsersPage } from 'pages/users';
+import { SingleUser, UsersPage } from 'pages/users';
 
 import { TIcon } from 'shared/lib';
 
@@ -66,6 +66,12 @@ export const routes: TRoute[] = [
         title: 'Users',
         to: '/users',
         component: UsersPage,
+      },
+      {
+        isHidden: true,
+        title: 'User',
+        to: '/users/:id',
+        component: SingleUser,
       },
     ],
   },

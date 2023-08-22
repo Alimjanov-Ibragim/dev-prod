@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { DevelopersGeneralInfo } from 'entities/developers';
+import { UsersContacts } from 'entities/users';
 import { Button, Modal, Icon } from 'shared/ui';
 
 type IFormInput = {
@@ -11,7 +11,7 @@ type IFormInput = {
   iceCreamType: { label: string; value: string };
 };
 
-export const EditGeneralInfo = () => {
+export const EditContacts = () => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       firstName: '',
@@ -31,7 +31,7 @@ export const EditGeneralInfo = () => {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   return (
-    <DevelopersGeneralInfo
+    <UsersContacts
       rightSlot={
         <>
           <Icon
@@ -42,12 +42,12 @@ export const EditGeneralInfo = () => {
             onClick={handleOpen}
           />
           <Modal
-            contentLabel='Ex-dev: Edit general information'
+            contentLabel='Ex-dev: Edit contacts info'
             isOpen={isOpen}
             shouldCloseOnOverlayClick={true}
             onRequestClose={handleClose}
             closeHandler={handleClose}
-            title='Edit general information'
+            title='Edit contacts info'
             botSlot={
               <div className={cn('flex justify-between items-center w-full')}>
                 {false && (

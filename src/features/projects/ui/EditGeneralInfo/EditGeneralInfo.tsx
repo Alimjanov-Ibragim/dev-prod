@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { GeneralInfo } from 'entities/projects';
+import { ProjectsGeneralInfo } from 'entities/projects';
 import { Button, Modal, Icon } from 'shared/ui';
 
 type IFormInput = {
@@ -31,7 +31,7 @@ export const EditGeneralInfo = () => {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   return (
-    <GeneralInfo
+    <ProjectsGeneralInfo
       rightSlot={
         <>
           <Icon

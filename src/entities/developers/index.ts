@@ -1,1 +1,1 @@
-export { GeneralInfo } from './ui';
+export { GeneralInfo as DevelopersGeneralInfo } from './ui';

@@ -1,4 +1,6 @@
-import { Avatar, Checkbox, Icon } from 'shared/ui';
+import { useLocation } from 'react-router-dom';
+
+import { Avatar, Checkbox, Icon, Link } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
 
 export const tableConstants = (
@@ -10,6 +12,7 @@ export const tableConstants = (
   ) => void,
   handleRemove: (data: TListTableRow) => void
 ) => {
+  const { pathname } = useLocation();
   return [
     {
       maxWidth: 'max-w-[3%]',
@@ -49,11 +52,16 @@ export const tableConstants = (
       title: 'Name',
       render: (rowData: TListTableRow) => {
         return (
-          <Avatar
-            styleType={rowData.avatar ? 'image' : 'placeholder'}
-            imageSrc={rowData.avatar || ''}
-            textTitle={rowData.displayName || 'unknown'}
-          />
+          <Link
+            to={`${pathname}/${rowData.id}`}
+            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer'
+          >
+            <Avatar
+              styleType={rowData.avatar ? 'image' : 'placeholder'}
+              imageSrc={rowData.avatar || ''}
+              textTitle={rowData.displayName || 'unknown'}
+            />
+          </Link>
         );
       },
     },

@@ -1,1 +1,4 @@
-export { GeneralInfo, Contacts } from './ui';
+export {
+  GeneralInfo as AgenciesGeneralInfo,
+  Contacts as AgenciesContacts,
+} from './ui';
