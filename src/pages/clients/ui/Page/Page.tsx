@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { ClientsTableData } from 'widgets/clients';
-import { AddClient } from 'features/AddClient';
+import { AddClient } from 'features/clients';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [

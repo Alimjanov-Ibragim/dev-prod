@@ -1,0 +1,1 @@
+export { tabsConstants } from './tabsConstants';
