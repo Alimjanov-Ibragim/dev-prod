@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/projects';
+import { ProjectsTableData } from 'widgets/projects';
 import { AddProject } from 'features/projects/ui/AddProject';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const ProjectsPage = () => {
         </>
       }
     >
-      <TableData />
+      <ProjectsTableData />
     </LayoutInner>
   );
 };

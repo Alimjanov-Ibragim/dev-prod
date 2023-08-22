@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
+import { useLocation } from 'react-router-dom';
 
-import { Checkbox, Icon } from 'shared/ui';
+import { Checkbox, Icon, Link } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
 
 export const tableConstants = (
@@ -12,6 +13,7 @@ export const tableConstants = (
   ) => void,
   handleRemove: (data: TListTableRow) => void
 ) => {
+  const { pathname } = useLocation();
   return [
     {
       maxWidth: 'max-w-[2%]',
@@ -50,7 +52,14 @@ export const tableConstants = (
       width: 'flex-[0_0_12%]',
       title: 'Agency Name',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.title || 'unknown'}</span>;
+        return (
+          <Link
+            to={`${pathname}/${rowData.id}`}
+            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
+          >
+            {rowData.title || '----'}
+          </Link>
+        );
       },
     },
     {

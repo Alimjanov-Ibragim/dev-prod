@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/users';
+import { UsersTableData } from 'widgets/users';
 import { AddUser } from 'features/AddUser';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const UsersPage = () => {
         </>
       }
     >
-      <TableData />
+      <UsersTableData />
     </LayoutInner>
   );
 };

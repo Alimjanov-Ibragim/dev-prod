@@ -1,1 +1,4 @@
-export { TableData } from './ui';
+export {
+  TableData as AgenciesTableData,
+  FilesGallery as AgenciesFilesGallery,
+} from './ui';

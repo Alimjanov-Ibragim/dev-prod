@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/clients';
+import { ClientsTableData } from 'widgets/clients';
 import { AddClient } from 'features/AddClient';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const ClientsPage = () => {
         </>
       }
     >
-      <TableData />
+      <ClientsTableData />
     </LayoutInner>
   );
 };

@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/countries';
+import { ContriesTableData } from 'widgets/countries';
 import { AddCountry } from 'features/AddCountry';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const CountriesPage = () => {
         </>
       }
     >
-      <TableData />
+      <ContriesTableData />
     </LayoutInner>
   );
 };

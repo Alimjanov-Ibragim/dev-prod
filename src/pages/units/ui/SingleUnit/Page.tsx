@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { tabsConstants } from 'pages/units/config/tabsConstants';
+import { tabsConstants } from 'pages/units/config';
 import { AddUnit, EditGeneralInfo } from 'features/units';
 import { Breadcrumb, LayoutInner, Tabs, Title } from 'shared/ui';
 

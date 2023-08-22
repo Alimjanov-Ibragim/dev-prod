@@ -1,5 +1,5 @@
-import { FilesGallery } from 'widgets/developers';
-import { TableData } from 'widgets/projects';
+import { DevelopersFilesGallery } from 'widgets/developers';
+import { ProjectsTableData } from 'widgets/projects';
 import { TTabsItem } from 'shared/lib';
 
 export const tabsConstants = (): TTabsItem[] => {
@@ -13,7 +13,7 @@ export const tabsConstants = (): TTabsItem[] => {
       renderContent: () => {
         return (
           <>
-            <TableData />
+            <ProjectsTableData />
           </>
         );
       },
@@ -24,7 +24,7 @@ export const tabsConstants = (): TTabsItem[] => {
       width: 'flex-[0_0_2%]',
       title: 'Files',
       renderContent: () => {
-        return <FilesGallery />;
+        return <DevelopersFilesGallery />;
       },
     },
   ];

@@ -1,0 +1,1 @@
+export { SingleAgency } from './Page';

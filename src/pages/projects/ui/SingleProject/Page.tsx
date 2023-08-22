@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { tabsConstants } from 'pages/projects/config/tabsConstants';
+import { tabsConstants } from 'pages/projects/config';
 import {
   EditGeneralInfo,
   AddProjectSingle,

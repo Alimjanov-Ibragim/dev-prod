@@ -1,4 +1,4 @@
-import { AgenciesPage } from 'pages/agencies';
+import { AgenciesPage, SingleAgency } from 'pages/agencies';
 import { CitiesPage } from 'pages/cities';
 import { ClientsPage } from 'pages/clients';
 import { CompaniesPage } from 'pages/companies';
@@ -74,6 +74,13 @@ export const routes: TRoute[] = [
     title: 'Agencies',
     to: '/agencies',
     component: AgenciesPage,
+  },
+  {
+    isHidden: true,
+    icon: 'houses',
+    title: 'Agency',
+    to: '/agencies/:id',
+    component: SingleAgency,
   },
   {
     icon: 'house-door',

@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/cities';
+import { CitiesTableData } from 'widgets/cities';
 import { AddCity } from 'features/AddCity';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const CitiesPage = () => {
         </>
       }
     >
-      <TableData />
+      <CitiesTableData />
     </LayoutInner>
   );
 };

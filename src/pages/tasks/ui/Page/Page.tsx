@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/tasks';
+import { TaskTableData } from 'widgets/tasks';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -26,7 +26,7 @@ export const TasksPage = () => {
         </>
       }
     >
-      <TableData />
+      <TaskTableData />
     </LayoutInner>
   );
 };

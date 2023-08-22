@@ -1,6 +1,6 @@
 import { DealsTableData } from 'widgets/deals';
 import { LeadsTableData } from 'widgets/leads';
-import { FilesGallery } from 'widgets/units';
+import { UnitsFilesGallery } from 'widgets/units';
 import { TTabsItem } from 'shared/lib';
 
 export const tabsConstants = (): TTabsItem[] => {
@@ -14,7 +14,7 @@ export const tabsConstants = (): TTabsItem[] => {
       renderContent: () => {
         return (
           <>
-            <FilesGallery />
+            <UnitsFilesGallery />
           </>
         );
       },

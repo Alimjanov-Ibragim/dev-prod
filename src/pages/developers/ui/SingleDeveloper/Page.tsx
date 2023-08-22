@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { tabsConstants } from 'pages/developers/config/tabsConstants';
+import { tabsConstants } from 'pages/developers/config';
 import { AddDeveloper } from 'features/AddDeveloper';
 import { EditGeneralInfo } from 'features/developers';
 import { Breadcrumb, LayoutInner, Tabs, Title } from 'shared/ui';

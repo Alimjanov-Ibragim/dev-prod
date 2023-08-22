@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/companies';
+import { CompaniesTableData } from 'widgets/companies';
 import { AddCompany } from 'features/AddCompany';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const CompaniesPage = () => {
         </>
       }
     >
-      <TableData />
+      <CompaniesTableData />
     </LayoutInner>
   );
 };

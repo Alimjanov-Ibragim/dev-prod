@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/developers';
+import { DevelopersTableData } from 'widgets/developers';
 import { AddDeveloper } from 'features/AddDeveloper';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const DevelopersPage = () => {
         </>
       }
     >
-      <TableData />
+      <DevelopersTableData />
     </LayoutInner>
   );
 };

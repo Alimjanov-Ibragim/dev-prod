@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/agencies';
-import { AddAgency } from 'features/AddAgency';
+import { AgenciesTableData } from 'widgets/agencies';
+import { AddAgency } from 'features/agencies/ui/AddAgency';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -28,7 +28,7 @@ export const AgenciesPage = () => {
         </>
       }
     >
-      <TableData />
+      <AgenciesTableData />
     </LayoutInner>
   );
 };
