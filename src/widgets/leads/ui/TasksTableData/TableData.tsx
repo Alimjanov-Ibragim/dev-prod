@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 
-import { Table, Title } from 'shared/ui';
+import { Table, Title, Pagination } from 'shared/ui';
 import { data } from './config/data';
 import { tableConstants } from './config/tableConstants';
 
@@ -27,12 +27,24 @@ export const TableData = () => {
     setList(tempList);
   };
 
+  //handle Page Change
+  const handleTablePageChange = (event: { selected: number }) => {
+    console.log('Current event: ', event);
+  };
+
   return (
     <Table
       topSlot={
         <>
           <Title text='Tasks' />
         </>
+      }
+      botSlot={
+        <Pagination
+          pageCount={150}
+          onChange={handleTablePageChange}
+          perPageAmount={true}
+        />
       }
       theadBgClass='bg-gray-50'
       rounded

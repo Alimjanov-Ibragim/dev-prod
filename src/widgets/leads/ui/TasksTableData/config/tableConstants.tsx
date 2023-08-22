@@ -51,8 +51,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[3%]',
-      width: 'flex-[0_0_3%]',
+      maxWidth: 'max-w-[8%]',
+      width: 'flex-[0_0_8%]',
       title: 'Status',
       render: (rowData: TListTableRow) => {
         return (
@@ -66,8 +66,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[43.5%]',
-      width: 'flex-[0_0_43.5%]',
+      maxWidth: 'max-w-[38.5%]',
+      width: 'flex-[0_0_38.5%]',
       title: 'ACCESS ROLES',
       render: (rowData: TListTableRow) => {
         const userIndex = 1;

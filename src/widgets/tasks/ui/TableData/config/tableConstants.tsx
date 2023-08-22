@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import dayjs from 'dayjs';
 
-import { Checkbox } from 'shared/ui';
+import { Checkbox, Link } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
 
 const USER_ROLE_ID = 1;
@@ -54,9 +54,12 @@ export const tableConstants = (
       title: 'TYPE',
       render: (rowData: TListTableRow) => {
         return (
-          <span className={cn('font-semibold')}>
+          <Link
+            to={`/leads/${rowData.id}`}
+            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
+          >
             {rowData.deal?.title ? 'Deal' : 'Lead'}
-          </span>
+          </Link>
         );
       },
     },
@@ -65,7 +68,14 @@ export const tableConstants = (
       width: 'flex-[0_0_15.5%]',
       title: 'DEAL/LEAD TITLE',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.deal?.title || rowData.lead?.title}</span>;
+        return (
+          <Link
+            to={`/leads/${rowData.id}`}
+            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
+          >
+            {rowData.deal?.title || rowData.lead?.title}
+          </Link>
+        );
       },
     },
     {
