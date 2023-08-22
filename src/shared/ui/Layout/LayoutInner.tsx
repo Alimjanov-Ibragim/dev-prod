@@ -15,7 +15,7 @@ export const LayoutInner = ({ topSlot, sidebarSlot, children }: Props) => {
       </div>
       <div className={cn('flex gap-[24px]')}>
         {sidebarSlot && (
-          <div className={cn('flex-[0_0_25%]')}>{sidebarSlot}</div>
+          <div className={cn('flex-[0_0_20%]')}>{sidebarSlot}</div>
         )}
         <div className={cn('flex-1')}>{children}</div>
       </div>

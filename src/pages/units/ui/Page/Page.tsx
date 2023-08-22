@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { TableData } from 'widgets/units';
-import { AddUnit } from 'features/AddUnit';
+import { AddUnit } from 'features/units';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [

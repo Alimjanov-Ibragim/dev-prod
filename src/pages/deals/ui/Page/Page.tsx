@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/deals';
+import { DealsTableData } from 'widgets/deals';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -26,7 +26,7 @@ export const DealsPage = () => {
         </>
       }
     >
-      <TableData />
+      <DealsTableData />
     </LayoutInner>
   );
 };

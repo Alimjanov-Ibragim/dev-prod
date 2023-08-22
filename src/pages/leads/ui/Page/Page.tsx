@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { TableData } from 'widgets/leads';
+import { LeadsTableData } from 'widgets/leads';
 import { AddLead } from 'features/AddLead';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
@@ -28,7 +28,7 @@ export const LeadsPage = () => {
         </>
       }
     >
-      <TableData />
+      <LeadsTableData />
     </LayoutInner>
   );
 };

@@ -9,7 +9,7 @@ import { LeadsPage } from 'pages/leads';
 import { ProjectsPage, SingleProjectPage } from 'pages/projects';
 import { ReportsPage } from 'pages/reports';
 import { TasksPage } from 'pages/tasks';
-import { UnitsPage } from 'pages/units';
+import { SingleUnit, UnitsPage } from 'pages/units';
 import { UsersPage } from 'pages/users';
 
 import { TIcon } from 'shared/lib';
@@ -80,6 +80,13 @@ export const routes: TRoute[] = [
     title: 'Units',
     to: '/units',
     component: UnitsPage,
+  },
+  {
+    isHidden: true,
+    icon: 'house-door',
+    title: 'Unit',
+    to: '/units/:id',
+    component: SingleUnit,
   },
   {
     icon: 'layers',
