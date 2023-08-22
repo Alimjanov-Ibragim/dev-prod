@@ -1,7 +1,6 @@
 import { AgenciesFilesGallery } from 'widgets/agencies';
 import { DealsTableData } from 'widgets/deals';
 import { LeadsTableData } from 'widgets/leads';
-import { UsersTableData } from 'widgets/users';
 import { TTabsItem } from 'shared/lib';
 
 export const tabsConstants = (): TTabsItem[] => {
@@ -27,15 +26,6 @@ export const tabsConstants = (): TTabsItem[] => {
       title: 'Deals',
       renderContent: () => {
         return <DealsTableData />;
-      },
-    },
-    {
-      // icon: 'houses',
-      maxWidth: 'max-w-[2%]',
-      width: 'flex-[0_0_2%]',
-      title: 'Agents',
-      renderContent: () => {
-        return <UsersTableData />;
       },
     },
     {
