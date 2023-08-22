@@ -5,7 +5,7 @@ import { CompaniesPage, SingleCompanies } from 'pages/companies';
 import { CountriesPage } from 'pages/countries';
 import { DealsPage } from 'pages/deals';
 import { DevelopersPage, SingleDeveloperPage } from 'pages/developers';
-import { LeadsPage } from 'pages/leads';
+import { LeadsPage, SingleLeads } from 'pages/leads';
 import { ProjectsPage, SingleProjectPage } from 'pages/projects';
 import { ReportsPage } from 'pages/reports';
 import { TasksPage } from 'pages/tasks';
@@ -46,6 +46,13 @@ export const routes: TRoute[] = [
     title: 'Leads',
     to: '/leads',
     component: LeadsPage,
+  },
+  {
+    isHidden: true,
+    icon: 'person',
+    title: 'Lead',
+    to: '/leads/:id',
+    component: SingleLeads,
   },
   {
     icon: 'people',

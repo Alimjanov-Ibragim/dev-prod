@@ -1,1 +1,1 @@
-export { LeadsPage } from './ui/Page';
+export { LeadsPage, SingleLeads } from './ui';

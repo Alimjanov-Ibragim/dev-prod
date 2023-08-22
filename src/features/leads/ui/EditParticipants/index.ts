@@ -1,0 +1,1 @@
+export { EditParticipants } from './EditParticipants';

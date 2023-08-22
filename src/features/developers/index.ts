@@ -1,1 +1,1 @@
-export { EditGeneralInfo } from './ui';
+export { EditGeneralInfo, AddDeveloper } from './ui';

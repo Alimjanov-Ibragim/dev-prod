@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { LeadsTableData } from 'widgets/leads';
-import { AddLead } from 'features/AddLead';
+import { AddLead } from 'features/leads';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [

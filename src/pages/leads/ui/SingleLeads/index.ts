@@ -1,0 +1,1 @@
+export { SingleLeads } from './Page';

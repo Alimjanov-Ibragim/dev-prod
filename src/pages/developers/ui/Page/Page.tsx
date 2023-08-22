@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { DevelopersTableData } from 'widgets/developers';
-import { AddDeveloper } from 'features/AddDeveloper';
+import { AddDeveloper } from 'features/developers';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
