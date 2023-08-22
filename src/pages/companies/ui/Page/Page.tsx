@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { CompaniesTableData } from 'widgets/companies';
-import { AddCompany } from 'features/AddCompany';
+import { AddCompany } from 'features/companies/ui/AddCompany';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [

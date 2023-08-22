@@ -1,0 +1,1 @@
+export { SingleCompanies } from './Page';

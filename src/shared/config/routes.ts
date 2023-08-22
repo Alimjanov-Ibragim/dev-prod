@@ -1,7 +1,7 @@
 import { AgenciesPage, SingleAgency } from 'pages/agencies';
 import { CitiesPage } from 'pages/cities';
 import { ClientsPage } from 'pages/clients';
-import { CompaniesPage } from 'pages/companies';
+import { CompaniesPage, SingleCompanies } from 'pages/companies';
 import { CountriesPage } from 'pages/countries';
 import { DealsPage } from 'pages/deals';
 import { DevelopersPage, SingleDeveloperPage } from 'pages/developers';
@@ -61,6 +61,12 @@ export const routes: TRoute[] = [
         title: 'Companies',
         to: '/companies',
         component: CompaniesPage,
+      },
+      {
+        isHidden: true,
+        title: 'Company',
+        to: '/companies/:id',
+        component: SingleCompanies,
       },
       {
         title: 'Users',

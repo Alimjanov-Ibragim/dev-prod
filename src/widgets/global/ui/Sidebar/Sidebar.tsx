@@ -119,7 +119,7 @@ export const Sidebar = () => {
                     <Link
                       className={cn(`${setActiveClass(subroute.to.slice(1))}`, {
                         'flex-col': !isSidebarOpen.isOpen,
-                        hidden: route.isHidden,
+                        hidden: subroute.isHidden,
                       })}
                       key={subrouteIndex}
                       chevron

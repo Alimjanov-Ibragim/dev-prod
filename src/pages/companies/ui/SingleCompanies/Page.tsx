@@ -1,38 +1,42 @@
 import cn from 'classnames';
 
-import { tabsConstants } from 'pages/agencies/config';
-import { AddAgency, EditContacts, EditGeneralInfo } from 'features/agencies';
+import { tabsConstants } from 'pages/companies/config';
+import {
+  AddCompany,
+  CompaniesEditContacts,
+  CompaniesEditGeneralInfo,
+} from 'features/companies';
 import { Breadcrumb, LayoutInner, Tabs, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
   {
-    text: 'Agency',
-    link: '/agencies',
+    text: 'Companies',
+    link: '/companies',
   },
   {
-    text: 'Agency name',
+    text: 'Company name',
     link: '#',
   },
 ];
 
-export const SingleAgency = () => {
+export const SingleCompanies = () => {
   return (
     <LayoutInner
       topSlot={
         <>
           <div className={cn('grid gap-[8px]')}>
             <Breadcrumb list={LIST_BREADCRUMB} />
-            <Title text='Agency name' />
+            <Title text='Company name' />
           </div>
           <div className={cn('flex items-center gap-[12px]')}>
-            <AddAgency />
+            <AddCompany />
           </div>
         </>
       }
       sidebarSlot={
         <>
-          <EditGeneralInfo />
-          <EditContacts />
+          <CompaniesEditGeneralInfo />
+          <CompaniesEditContacts />
         </>
       }
     >
