@@ -3,7 +3,7 @@ import { CitiesPage } from 'pages/cities';
 import { ClientsPage, SingleClients } from 'pages/clients';
 import { CompaniesPage, SingleCompanies } from 'pages/companies';
 import { CountriesPage } from 'pages/countries';
-import { DealsPage } from 'pages/deals';
+import { DealsPage, SingleDeals } from 'pages/deals';
 import { DevelopersPage, SingleDeveloperPage } from 'pages/developers';
 import { LeadsPage, SingleLeads } from 'pages/leads';
 import { ProjectsPage, SingleProjectPage } from 'pages/projects';
@@ -40,6 +40,14 @@ export const routes: TRoute[] = [
     to: '/deals',
     badgeText: '5',
     component: DealsPage,
+  },
+  {
+    isHidden: true,
+    icon: 'check2-square',
+    title: 'Deal',
+    to: '/deals/:id',
+    badgeText: '5',
+    component: SingleDeals,
   },
   {
     icon: 'person',

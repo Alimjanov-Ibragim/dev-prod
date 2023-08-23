@@ -1,14 +1,15 @@
 import cn from 'classnames';
 import { Fragment } from 'react';
 
-import { Badge, Button, Checkbox } from 'shared/ui';
+import { Badge, Checkbox, Icon } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
 
 export const tableConstants = (
   onChangeCheckboxHandler: (
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
-  ) => void
+  ) => void,
+  handleRemove: (data: TListTableRow) => void
 ) => {
   return [
     {
@@ -17,35 +18,12 @@ export const tableConstants = (
       title: 'TITLE',
       render: (rowData: TListTableRow) => {
         return (
-          <div className='text-left'>
-            <div>{rowData.title}</div>
-            <div className='flex items-center gap-[12px] mt-[5px]'>
-              <Button
-                typeStyle='link'
-                className='relative h-auto px-[1px] py-[3px] before:absolute before:content-[""] before:border-b before:border-blue-600 before:left-[0] before:right-[0] before:bottom-[0] !text-blue-600'
-              >
-                Apply
-              </Button>
-              <Button
-                typeStyle='link'
-                className='relative h-auto px-[1px] py-[3px]'
-              >
-                Generate
-              </Button>
-              <Button
-                typeStyle='link'
-                className='relative h-auto px-[5px] py-[3px] rounded-md border border-gray-500'
-              >
-                Accept
-              </Button>
-              <Button
-                disabled
-                typeStyle='link'
-                className='relative h-auto px-[5px] py-[3px]'
-              >
-                Link
-              </Button>
-            </div>
+          <div
+            className={cn('text-left truncate text-ellipsis overflow-hidden', {
+              'text-gray-300': !rowData.checked,
+            })}
+          >
+            {rowData.title}
           </div>
         );
       },
@@ -53,7 +31,7 @@ export const tableConstants = (
     {
       maxWidth: 'max-w-[8%]',
       width: 'flex-[0_0_8%]',
-      title: 'Status',
+      title: 'Completed',
       render: (rowData: TListTableRow) => {
         return (
           <Checkbox
@@ -72,12 +50,16 @@ export const tableConstants = (
       render: (rowData: TListTableRow) => {
         const userIndex = 1;
         return (
-          <div>
+          <div
+            className={cn({
+              'text-gray-300': !rowData.checked,
+            })}
+          >
             {rowData.accessRoles.map((role, index) => (
               <Fragment key={index}>
                 <span
                   className={cn({
-                    'text-green-500': userIndex === index,
+                    'text-green-500': userIndex === index && rowData.checked,
                   })}
                 >
                   {role.title}
@@ -90,11 +72,19 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[20.5%]',
-      width: 'flex-[0_0_20.5%]',
+      maxWidth: 'max-w-[14.5%]',
+      width: 'flex-[0_0_14.5%]',
       title: 'DEADLINE',
       render: (rowData: TListTableRow) => {
-        return <span>----</span>;
+        return (
+          <span
+            className={cn({
+              'text-gray-300': !rowData.checked,
+            })}
+          >
+            ----
+          </span>
+        );
       },
     },
     {
@@ -104,10 +94,34 @@ export const tableConstants = (
       render: (rowData: TListTableRow) => {
         return (
           <span>
-            <Badge type='soft' className='!justify-center'>
+            <Badge
+              type='soft'
+              color={!rowData.checked ? 'gray' : 'blue'}
+              className='!justify-center'
+            >
               System
             </Badge>
           </span>
+        );
+      },
+    },
+    {
+      maxWidth: 'max-w-[6%]',
+      width: 'flex-[0_0_6%]',
+      title: 'Edit',
+      render: (rowData: TListTableRow) => {
+        return (
+          <Icon
+            className='hover:bg-gray-100'
+            size='small'
+            icon='pencil-square'
+            styleType={!rowData.checked ? 'soft' : 'white'}
+            color='gray'
+            role={!rowData.checked ? 'div' : 'button'}
+            onClick={
+              !rowData.checked ? () => false : () => handleRemove(rowData)
+            }
+          />
         );
       },
     },

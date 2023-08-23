@@ -1,0 +1,1 @@
+export { SingleDeals } from './Page';

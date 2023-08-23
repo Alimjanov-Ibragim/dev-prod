@@ -1,8 +1,9 @@
 import cn from 'classnames';
-
 import dayjs from 'dayjs';
+import { useLocation } from 'react-router-dom';
+
 import { priceFormatter } from 'shared/lib';
-import { Avatar, Badge, Checkbox } from 'shared/ui';
+import { Avatar, Badge, Checkbox, Link } from 'shared/ui';
 import { TListTableRow } from '../libs/types';
 import { DealStatusType, dealStatusesColorSwitch } from './const';
 
@@ -14,6 +15,7 @@ export const tableConstants = (
     id: number
   ) => void
 ) => {
+  const { pathname } = useLocation();
   return [
     {
       maxWidth: 'max-w-[2%]',
@@ -52,7 +54,15 @@ export const tableConstants = (
       width: 'flex-[0_0_12.625%]',
       title: 'Title',
       render: (rowData: TListTableRow) => {
-        return <span>{rowData.title}</span>;
+        const lengthPath = pathname.split('/').length;
+        return (
+          <Link
+            to={`${lengthPath < 2 ? pathname : '/deals'}/${rowData.id}`}
+            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
+          >
+            {rowData.title || '----'}
+          </Link>
+        );
       },
     },
     {

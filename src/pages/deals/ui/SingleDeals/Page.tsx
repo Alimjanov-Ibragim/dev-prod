@@ -1,42 +1,35 @@
 import cn from 'classnames';
 
-import { tabsConstants } from 'pages/leads/config';
-import {
-  AddLead,
-  LeadsEditParticipants,
-  LeadsEditGeneralInfo,
-} from 'features/leads';
+import { tabsConstants } from 'pages/deals/config';
+import { DealsEditParticipants, DealsEditGeneralInfo } from 'features/deals';
 import { Breadcrumb, LayoutInner, Tabs, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
   {
-    text: 'Leads',
-    link: '/leads',
+    text: 'Deals',
+    link: '/deals',
   },
   {
-    text: 'Lead name',
+    text: 'Deal name',
     link: '#',
   },
 ];
 
-export const SingleLeads = () => {
+export const SingleDeals = () => {
   return (
     <LayoutInner
       topSlot={
         <>
           <div className={cn('grid gap-[8px]')}>
             <Breadcrumb list={LIST_BREADCRUMB} />
-            <Title text='Lead name' />
-          </div>
-          <div className={cn('flex items-center gap-[12px]')}>
-            <AddLead />
+            <Title text='Deal name' />
           </div>
         </>
       }
       sidebarSlot={
         <>
-          <LeadsEditGeneralInfo />
-          <LeadsEditParticipants />
+          <DealsEditGeneralInfo />
+          <DealsEditParticipants />
         </>
       }
     >

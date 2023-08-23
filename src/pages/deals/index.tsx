@@ -1,1 +1,1 @@
-export { DealsPage } from './ui/Page';
+export { DealsPage, SingleDeals } from './ui';
