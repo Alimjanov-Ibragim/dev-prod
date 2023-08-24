@@ -1,13 +1,13 @@
 import cn from 'classnames';
 
 import { ContriesTableData } from 'widgets/countries';
-import { AddCountry } from 'features/AddCountry';
+import { AddCountry } from 'features/countries';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
   {
     text: 'Home',
-    link: '#',
+    link: '/',
   },
   {
     text: 'Countries',

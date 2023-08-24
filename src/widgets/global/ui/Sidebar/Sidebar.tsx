@@ -17,8 +17,11 @@ export const Sidebar = () => {
   const { pathname } = location;
   const splitLocation = pathname.split('/');
 
-  const setActiveClass = (routeName: string) =>
-    routeName.includes(splitLocation[1]) ? 'bg-white/10' : '';
+  const setActiveClass = (routeName: string) => {
+    if (splitLocation.join('').length === 0) return;
+
+    return routeName.includes(splitLocation[1]) ? 'bg-white/10' : '';
+  };
 
   return (
     <div

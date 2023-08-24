@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { CitiesTableData } from 'widgets/cities';
-import { AddCity } from 'features/AddCity';
+import { AddCity } from 'features/cities';
 import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
