@@ -22,7 +22,7 @@ type Props = {
   inputClassName?: string;
 };
 
-export const Input = forwardRef(
+export const Input = forwardRef<HTMLInputElement, Props>(
   (
     {
       styleType = 'bordered',
@@ -69,7 +69,7 @@ export const Input = forwardRef(
             </div>
           )}
           <input
-            ref={null}
+            ref={ref}
             id={`input-${UNIQUE_NUMBER}`}
             className={cn(
               'input text-[15px] leading-none font-medium block w-full',
