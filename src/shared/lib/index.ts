@@ -6,6 +6,13 @@ export type {
   TTabsItem,
   TTabsTypeStyle,
   TFile,
+  TButtonColors,
+  TButtonFontSize,
+  TButtonFontWeight,
+  TButtonShapes,
+  TButtonSizes,
+  TButtonStyles,
+  TType,
 } from './types';
 export { priceFormatter } from './utils';
 

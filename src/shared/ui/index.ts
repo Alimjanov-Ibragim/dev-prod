@@ -18,3 +18,4 @@ export { Link } from './Link';
 export { Modal } from './Modal';
 export { Tabs } from './Tabs';
 export { Dropzone } from './Dropzone';
+export { ConfirmationModal } from './ConfirmationModal';

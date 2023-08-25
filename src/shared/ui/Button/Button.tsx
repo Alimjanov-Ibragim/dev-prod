@@ -2,7 +2,6 @@ import cn from 'classnames';
 import { type ReactNode } from 'react';
 
 import { TIcon } from 'shared/lib';
-import { Icon, Loading } from 'shared/ui';
 import {
   TButtonColors,
   TButtonFontSize,
@@ -10,7 +9,8 @@ import {
   TButtonShapes,
   TButtonSizes,
   TButtonStyles,
-} from './libs';
+} from 'shared/lib';
+import { Icon, Loading } from 'shared/ui';
 
 type Props = {
   /** Click handler */

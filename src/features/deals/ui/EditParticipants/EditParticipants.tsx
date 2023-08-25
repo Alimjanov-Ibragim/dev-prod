@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   useForm,
   SubmitHandler,
@@ -10,7 +10,7 @@ import {
 // need to change data from store
 import { ColourOption, colourOptions } from 'pages/leads/ui/Page/data';
 import { DealsParticipants } from 'entities/deals';
-import { Button, Modal, Icon, AsyncSelect } from 'shared/ui';
+import { Button, Modal, Icon, AsyncSelect, ConfirmationModal } from 'shared/ui';
 
 type IFormInput = {
   participants: {
@@ -52,10 +52,18 @@ export const EditParticipants = () => {
     console.log(data);
   };
 
+  // participants modal
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
+  const handleOpen = useCallback(() => setIsOpen(true), [isOpen]);
+  const handleClose = useCallback(() => setIsOpen(false), [isOpen]);
+  // confirmation modal
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [currentConfirmIndex, setCurrentConfirmIndex] = useState(-1);
+  const handleOpenConfirm = useCallback(
+    (index: number) => (setIsConfirmOpen(true), setCurrentConfirmIndex(index)),
+    [isConfirmOpen]
+  );
+  const handleCloseConfirm = useCallback(() => setIsConfirmOpen(false), []);
 
   // options
   // select example
@@ -73,115 +81,127 @@ export const EditParticipants = () => {
     });
 
   return (
-    <DealsParticipants
-      rightSlot={
-        <>
-          <Icon
-            icon='pencil-square'
-            size='small'
-            color='gray'
-            role='button'
-            onClick={handleOpen}
-          />
-          <Modal
-            contentLabel='Ex-dev: Edit participants info'
-            isOpen={isOpen}
-            shouldCloseOnOverlayClick={true}
-            onRequestClose={handleClose}
-            closeHandler={handleClose}
-            title='Edit participants info'
-            botSlot={
-              <div className={cn('flex justify-between items-center w-full')}>
-                <div className={cn('flex items-center gap-[10px] ml-auto')}>
-                  <Button
-                    className='w-full'
-                    typeStyle='white'
-                    color='dark'
-                    size='default'
-                    onClick={handleClose}
-                  >
-                    Cancel
-                  </Button>
-                  <Button className='w-full' size='default'>
-                    Apply
-                  </Button>
+    <>
+      <DealsParticipants
+        rightSlot={
+          <>
+            <Icon
+              icon='pencil-square'
+              size='small'
+              color='gray'
+              role='button'
+              onClick={handleOpen}
+            />
+            <Modal
+              contentLabel='Ex-dev: Edit participants info'
+              isOpen={isOpen}
+              shouldCloseOnOverlayClick={true}
+              onRequestClose={handleClose}
+              closeHandler={handleClose}
+              title='Edit participants info'
+              botSlot={
+                <div className={cn('flex justify-between items-center w-full')}>
+                  <div className={cn('flex items-center gap-[10px] ml-auto')}>
+                    <Button
+                      className='w-full'
+                      typeStyle='white'
+                      color='dark'
+                      size='default'
+                      onClick={handleClose}
+                    >
+                      Cancel
+                    </Button>
+                    <Button className='w-full' size='default'>
+                      Apply
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            }
-          >
-            <form
-              className={cn('grid gap-[15px]')}
-              onSubmit={handleSubmit(onSubmit)}
+              }
             >
-              {fields.map((field, index) => (
-                <div
-                  className={cn('flex justify-between items-end')}
-                  key={field.id}
-                >
-                  <div className={cn('grid grid-cols-2 gap-x-[15px] flex-1')}>
-                    <Controller
-                      render={({
-                        fieldState: { invalid, isTouched, isDirty, error },
-                        field: { onChange, onBlur, value, name, ref },
-                      }) => (
-                        <AsyncSelect
-                          options={promiseOptions}
-                          label='Role'
-                          onChange={onChange}
-                          defaultValue={value}
-                        />
-                      )}
-                      name={`participants.${index}.role`}
-                      control={control}
-                      rules={{ required: true }}
-                    />
-                    <Controller
-                      render={({
-                        field: { onChange, onBlur, value, name, ref },
-                        fieldState: { invalid, isTouched, isDirty, error },
-                      }) => (
-                        <AsyncSelect
-                          options={promiseOptions}
-                          label='Participant'
-                          onChange={onChange}
-                          defaultValue={value}
-                        />
-                      )}
-                      name={`participants.${index}.participant`}
-                      control={control}
-                      rules={{ required: true }}
+              <form
+                className={cn('grid gap-[15px]')}
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                {fields.map((field, index) => (
+                  <div
+                    className={cn('flex justify-between items-end')}
+                    key={field.id}
+                  >
+                    <div className={cn('grid grid-cols-2 gap-x-[15px] flex-1')}>
+                      <Controller
+                        render={({
+                          fieldState: { invalid, isTouched, isDirty, error },
+                          field: { onChange, onBlur, value, name, ref },
+                        }) => (
+                          <AsyncSelect
+                            options={promiseOptions}
+                            label='Role'
+                            onChange={onChange}
+                            defaultValue={value}
+                          />
+                        )}
+                        name={`participants.${index}.role`}
+                        control={control}
+                        rules={{ required: true }}
+                      />
+                      <Controller
+                        render={({
+                          field: { onChange, onBlur, value, name, ref },
+                          fieldState: { invalid, isTouched, isDirty, error },
+                        }) => (
+                          <AsyncSelect
+                            options={promiseOptions}
+                            label='Participant'
+                            onChange={onChange}
+                            defaultValue={value}
+                          />
+                        )}
+                        name={`participants.${index}.participant`}
+                        control={control}
+                        rules={{ required: true }}
+                      />
+                    </div>
+                    <Icon
+                      color='red'
+                      icon='trash-fill'
+                      role='button'
+                      onClick={() => handleOpenConfirm(index)}
                     />
                   </div>
-                  <Icon
-                    color='red'
-                    icon='trash-fill'
-                    role='button'
-                    onClick={() => remove(index)}
-                  />
-                </div>
-              ))}
-              <Icon
-                color='blue'
-                styleType='soft'
-                icon='plus'
-                role='button'
-                onClick={() =>
-                  append({
-                    role: {
-                      label: '',
-                      value: '',
-                    },
-                    participant: {
-                      label: '',
-                      value: '',
-                    },
-                  })
-                }
-              />
-            </form>
-          </Modal>
-        </>
-      }
-    />
+                ))}
+                <Icon
+                  color='blue'
+                  styleType='soft'
+                  icon='plus'
+                  role='button'
+                  onClick={() =>
+                    append({
+                      role: {
+                        label: '',
+                        value: '',
+                      },
+                      participant: {
+                        label: '',
+                        value: '',
+                      },
+                    })
+                  }
+                />
+              </form>
+            </Modal>
+          </>
+        }
+      />
+      <ConfirmationModal
+        isOpen={isConfirmOpen}
+        applyHandler={() => remove(currentConfirmIndex)}
+        closeHandler={handleCloseConfirm}
+        applyBtnText='Delete'
+        shouldCloseOnOverlayClick={true}
+        onRequestClose={handleCloseConfirm}
+      >
+        Do you want to delete this?
+      </ConfirmationModal>
+    </>
   );
 };
