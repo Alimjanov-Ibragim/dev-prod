@@ -1,25 +1,18 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
 import { AgenciesContacts } from 'entities/agencies';
-import { Button, Modal, Icon } from 'shared/ui';
+import { Button, Modal, Icon, Input } from 'shared/ui';
 
 type IFormInput = {
-  firstName: string;
-  lastName: string;
-  iceCreamType: { label: string; value: string };
+  email: string;
 };
 
 export const EditContacts = () => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      iceCreamType: {
-        label: '',
-        value: '',
-      },
+      email: '',
     },
   });
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
@@ -50,20 +43,6 @@ export const EditContacts = () => {
             title='Edit contacts info'
             botSlot={
               <div className={cn('flex justify-between items-center w-full')}>
-                {false && (
-                  <Button
-                    className='w-full !text-gray-500 w-auto hover:bg-gray-100'
-                    typeStyle='link'
-                    color='dark'
-                    size='default'
-                    onClick={handleClose}
-                    leadingIconClassName='!p-0 w-[14px] h-[14px]'
-                    leadingIcon='chevron-left'
-                    leadingIconColor='gray'
-                  >
-                    Previous step
-                  </Button>
-                )}
                 <div className={cn('flex items-center gap-[10px] ml-auto')}>
                   <Button
                     className='w-full'
@@ -77,17 +56,38 @@ export const EditContacts = () => {
                   <Button
                     className='w-full'
                     size='default'
-                    trailingIcon='chevron-right'
-                    trailingIconClassName='!p-0 w-[14px] h-[14px]'
-                    trailingIconColor='light'
+                    // trailingIcon='chevron-right'
+                    // trailingIconClassName='!p-0 w-[14px] h-[14px]'
+                    // trailingIconColor='light'
                   >
-                    Next
+                    Apply
                   </Button>
                 </div>
               </div>
             }
           >
-            <form onSubmit={handleSubmit(onSubmit)}></form>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={cn('grid grid-cols-2 gap-x-[15px] gap-y-[20px]')}
+            >
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='Email'
+                    placeholder='Email'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='email'
+                control={control}
+                rules={{ required: true }}
+              />
+            </form>
           </Modal>
         </>
       }

@@ -1,25 +1,30 @@
 import cn from 'classnames';
 import { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
 import { AgenciesGeneralInfo } from 'entities/agencies';
-import { Button, Modal, Icon } from 'shared/ui';
+import { Button, Modal, Icon, Input } from 'shared/ui';
 
 type IFormInput = {
-  firstName: string;
-  lastName: string;
-  iceCreamType: { label: string; value: string };
+  licence: string;
+  bankAccount: string;
+  ORNnumber: string;
+  brokerRegistrationDate: string;
+  licenseDateOfExpiry: string;
+  officeAddress: string;
+  contactPerson: string;
 };
 
 export const EditGeneralInfo = () => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      iceCreamType: {
-        label: '',
-        value: '',
-      },
+      licence: '',
+      bankAccount: '',
+      ORNnumber: '',
+      brokerRegistrationDate: '',
+      licenseDateOfExpiry: '',
+      officeAddress: '',
+      contactPerson: '',
     },
   });
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
@@ -50,20 +55,6 @@ export const EditGeneralInfo = () => {
             title='Edit general information'
             botSlot={
               <div className={cn('flex justify-between items-center w-full')}>
-                {false && (
-                  <Button
-                    className='w-full !text-gray-500 w-auto hover:bg-gray-100'
-                    typeStyle='link'
-                    color='dark'
-                    size='default'
-                    onClick={handleClose}
-                    leadingIconClassName='!p-0 w-[14px] h-[14px]'
-                    leadingIcon='chevron-left'
-                    leadingIconColor='gray'
-                  >
-                    Previous step
-                  </Button>
-                )}
                 <div className={cn('flex items-center gap-[10px] ml-auto')}>
                   <Button
                     className='w-full'
@@ -77,17 +68,140 @@ export const EditGeneralInfo = () => {
                   <Button
                     className='w-full'
                     size='default'
-                    trailingIcon='chevron-right'
-                    trailingIconClassName='!p-0 w-[14px] h-[14px]'
-                    trailingIconColor='light'
+                    // trailingIcon='chevron-right'
+                    // trailingIconClassName='!p-0 w-[14px] h-[14px]'
+                    // trailingIconColor='light'
                   >
-                    Next
+                    Apply
                   </Button>
                 </div>
               </div>
             }
           >
-            <form onSubmit={handleSubmit(onSubmit)}></form>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={cn('grid grid-cols-2 gap-x-[15px] gap-y-[20px]')}
+            >
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='License'
+                    placeholder='License'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='licence'
+                control={control}
+                rules={{ required: true }}
+              />
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='Bank account'
+                    placeholder='Bank account'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='bankAccount'
+                control={control}
+                rules={{ required: true }}
+              />
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='ORN number'
+                    placeholder='ORN number'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='ORNnumber'
+                control={control}
+                rules={{ required: true }}
+              />
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='Broker Registration Date'
+                    placeholder='Broker Registration Date'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='brokerRegistrationDate'
+                control={control}
+                rules={{ required: true }}
+              />
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='License Date of expiry'
+                    placeholder='License Date of expiry'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='licenseDateOfExpiry'
+                control={control}
+                rules={{ required: true }}
+              />
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='Office address'
+                    placeholder='Office address'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='officeAddress'
+                control={control}
+                rules={{ required: true }}
+              />
+              <Controller
+                render={({
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                }) => (
+                  <Input
+                    label='Contact Person'
+                    placeholder='Contact Person'
+                    value={value}
+                    onChange={onChange}
+                    ref={ref}
+                  />
+                )}
+                name='contactPerson'
+                control={control}
+                rules={{ required: true }}
+              />
+            </form>
           </Modal>
         </>
       }
