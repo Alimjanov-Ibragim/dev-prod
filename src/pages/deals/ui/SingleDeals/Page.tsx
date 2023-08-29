@@ -2,6 +2,7 @@ import cn from 'classnames';
 
 import { tabsConstants } from 'pages/deals/config';
 import { DealsEditParticipants, DealsEditGeneralInfo } from 'features/deals';
+import { DealsStatuses } from 'entities/deals';
 import { Breadcrumb, LayoutInner, Tabs, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -20,9 +21,12 @@ export const SingleDeals = () => {
     <LayoutInner
       topSlot={
         <>
-          <div className={cn('grid gap-[8px]')}>
+          <div className={cn('grid gap-[8px] w-full')}>
             <Breadcrumb list={LIST_BREADCRUMB} />
             <Title text='Deal name' />
+            <div className={cn('mt-[10px] w-full')}>
+              <DealsStatuses />
+            </div>
           </div>
         </>
       }
