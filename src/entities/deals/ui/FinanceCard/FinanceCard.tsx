@@ -1,12 +1,33 @@
 import cn from 'classnames';
-import { Button, Icon } from 'shared/ui';
+import { ReactNode } from 'react';
 
 type Props = {
+  /** Type head title: Ex: 'Broker Share', 'Agent Share', 'Payment for Property' */
   typeHeadTitle: string;
+  /** Source person text. Person name of the left side. */
   sourcePerson: string;
+  /** Source role text. Person role of the left side. */
   sourceRole: string;
+  /** Destination person text. Destination name of the right side. */
   destinationPerson: string;
+  /** Destination role text. Destination role of the right side. */
   destinationRole: string;
+  /** Main price on the center of block. */
+  mainPriceOnTheCenter: string;
+  /** Paid line percent, that green line. */
+  paidLinePercent: string;
+  /** Invoiced line percent, that yellow line. */
+  invoicedLinePercent: string;
+  /** Left price (paid) */
+  leftPrice: string;
+  /** Center price (invoiced) */
+  centerPrice: string;
+  /** Right price (outstanding) */
+  rightPrice: string;
+  /** Paid btn */
+  leftBtn: ReactNode;
+  /** Invoiced btn */
+  rightBtn: ReactNode;
 };
 
 export const FinanceCard = ({
@@ -15,13 +36,21 @@ export const FinanceCard = ({
   sourceRole,
   destinationPerson,
   destinationRole,
+  mainPriceOnTheCenter,
+  paidLinePercent,
+  invoicedLinePercent,
+  leftPrice,
+  centerPrice,
+  rightPrice,
+  leftBtn,
+  rightBtn,
 }: Props) => {
   return (
     <div className={cn('')}>
       {/* type title */}
       <div
         className={cn(
-          'py-[16px] px-[20px] border border-slate-200 rounded-t-md'
+          'py-[16px] px-[20px] border border-slate-200 rounded-t-md text-base font-semibold text-slate-800'
         )}
       >
         {typeHeadTitle}
@@ -46,24 +75,31 @@ export const FinanceCard = ({
             {sourceRole}
           </div>
           {/* left line */}
-          <div className={cn('flex items-center')}>
-            <Icon
-              icon='line-circle-left'
-              classNameIcon='w-full !w-[236px]'
-              className='!p-[0px]'
-            />
+          <div className={cn('relative flex items-center flex-1')}>
+            <div
+              className={cn(
+                'h-[1.5px] bg-slate-300 w-full rounded-[3px]',
+                'before:absolute before:content-[""] before:w-[8px] before:h-[8px] before:rounded-full before:bg-slate-300 before:top-[-3.5px]'
+              )}
+            ></div>
           </div>
           {/* centered price */}
-          <div className={cn('text-lg font-semibold text-slate-600 uppercase')}>
-            AED 100,000
+          <div
+            className={cn(
+              'bg-slate-50 rounded p-[12px] text-lg font-semibold text-slate-600 uppercase'
+            )}
+          >
+            {mainPriceOnTheCenter}
           </div>
           {/* right line */}
-          <div className={cn('flex items-center')}>
-            <Icon
-              icon='line-arrow-right'
-              classNameIcon='w-full !w-[232px]'
-              className='!p-[0px]'
-            />
+          <div className={cn('relative flex items-center flex-1')}>
+            <div
+              className={cn(
+                'h-[1.5px] bg-slate-300 w-full rounded-[3px]',
+                'before:absolute before:content-[""] before:right-[0] before:h-[1.5px] before:w-[6px] before:rotate-45 before:top-[-2px] before:bg-slate-300 before:rounded-l-[3px]',
+                'after:absolute after:content-[""] after:right-[0] after:h-[1.5px] after:w-[6px] after:rotate-[-45deg] after:top-[2px] after:bg-slate-300 after:rounded-l-[3px]'
+              )}
+            ></div>
           </div>
           {/* destination */}
           <div className={cn('text-xs text-slate-600')}>
@@ -85,7 +121,7 @@ export const FinanceCard = ({
               'absolute z-[2] rounded-[10px] border-[6px] border-green-400 left-[-6px]'
             )}
             style={{
-              width: '10%',
+              width: paidLinePercent,
             }}
           ></div>
           {/* yellow line */}
@@ -94,14 +130,14 @@ export const FinanceCard = ({
               'absolute z-[1] rounded-[10px] border-[6px] border-amber-400 left-[-6px]'
             )}
             style={{
-              width: '50%',
+              width: invoicedLinePercent,
             }}
           ></div>
         </div>
         {/* price info */}
         <div
           className={cn(
-            'flex justify-between items-center py-[24px] px-[48px] bg-slate-50 rounded'
+            'flex justify-between py-[24px] px-[48px] bg-slate-50 rounded'
           )}
         >
           {/* left side price */}
@@ -111,7 +147,7 @@ export const FinanceCard = ({
                 'mb-[4px] p-[8px] text-sm font-semibold text-slate-600 uppercase'
               )}
             >
-              AED 185,000
+              {leftPrice}
             </div>
             <div
               className={cn(
@@ -125,22 +161,16 @@ export const FinanceCard = ({
               ></div>
               Paid
             </div>
-            <Button
-              leadingIcon='plus'
-              leadingIconColor='light'
-              typeStyle='link'
-            >
-              Create
-            </Button>
+            {leftBtn}
           </div>
-          {/* left side price */}
+          {/* center side price */}
           <div className={cn('flex flex-col items-center')}>
             <div
               className={cn(
                 'mb-[4px] p-[8px] text-sm font-semibold text-slate-600 uppercase'
               )}
             >
-              AED 500,000
+              {centerPrice}
             </div>
             <div
               className={cn(
@@ -152,15 +182,9 @@ export const FinanceCard = ({
                   'w-[14px] h-[8px] mr-[8px] rounded-md bg-amber-400'
                 )}
               ></div>
-              Paid
+              Invoiced
             </div>
-            <Button
-              leadingIcon='plus'
-              leadingIconColor='light'
-              typeStyle='link'
-            >
-              Create
-            </Button>
+            {rightBtn}
           </div>
           {/* right side price */}
           <div className={cn('flex flex-col items-center')}>
@@ -169,7 +193,7 @@ export const FinanceCard = ({
                 'mb-[4px] p-[8px] text-sm font-semibold text-slate-600 uppercase'
               )}
             >
-              AED 200,000
+              {rightPrice}
             </div>
             <div
               className={cn(

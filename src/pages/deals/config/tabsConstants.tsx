@@ -1,9 +1,9 @@
 import {
   DealsFilesGallery,
+  DealsFinance,
   DealsPaymentPlanTableData,
   DealsTasksTableData,
 } from 'widgets/deals';
-import { DealsFinanceCard } from 'entities/deals';
 import { TTabsItem } from 'shared/lib';
 
 export const tabsConstants = (): TTabsItem[] => {
@@ -29,13 +29,7 @@ export const tabsConstants = (): TTabsItem[] => {
       renderContent: () => {
         return (
           <>
-            <DealsFinanceCard
-              typeHeadTitle='Payment for property'
-              sourcePerson='Emaar'
-              sourceRole='Developer'
-              destinationPerson='AX Capital'
-              destinationRole='Agency'
-            />
+            <DealsFinance />
           </>
         );
       },

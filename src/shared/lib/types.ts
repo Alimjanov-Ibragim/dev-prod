@@ -42,7 +42,9 @@ export type TIcon =
   | 'pencil-square'
   | 'dropzone-img'
   | 'line-circle-left'
-  | 'line-arrow-right';
+  | 'line-arrow-right'
+  | 'arrow-right-short'
+  | 'arrow-right';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 
