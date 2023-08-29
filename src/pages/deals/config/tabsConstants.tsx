@@ -1,4 +1,5 @@
 import {
+  DealsComment,
   DealsFilesGallery,
   DealsFinance,
   DealsPaymentPlanTableData,
@@ -50,6 +51,15 @@ export const tabsConstants = (): TTabsItem[] => {
       title: 'Files',
       renderContent: () => {
         return <DealsFilesGallery />;
+      },
+    },
+    {
+      // icon: 'houses',
+      maxWidth: 'max-w-[2%]',
+      width: 'flex-[0_0_2%]',
+      title: 'Comments',
+      renderContent: () => {
+        return <DealsComment />;
       },
     },
   ];
