@@ -40,7 +40,9 @@ export type TIcon =
   | 'trash-fill'
   | 'houses'
   | 'pencil-square'
-  | 'dropzone-img';
+  | 'dropzone-img'
+  | 'line-circle-left'
+  | 'line-arrow-right';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 
