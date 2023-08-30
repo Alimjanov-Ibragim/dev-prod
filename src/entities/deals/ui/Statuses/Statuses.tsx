@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { data } from './config';
 
 export const Statuses = () => {
-  const active = 4;
+  const active = 6;
   return (
     <ul className={cn('flex items-center w-full justify-between')}>
       {data.map((status, index) => (

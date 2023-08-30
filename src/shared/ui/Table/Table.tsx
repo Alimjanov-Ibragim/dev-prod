@@ -1,4 +1,7 @@
 import cn from 'classnames';
+import { useLocation } from 'react-router-dom';
+
+import { useAppSelector } from 'shared/model';
 
 type TStyleTypeTable =
   | 'basic'
@@ -42,6 +45,9 @@ export const Table = ({
   theadBgClass,
   cols,
 }: Props) => {
+  const { pathname } = useLocation();
+  const innerPage = pathname.split('/').length > 2;
+  const { isOpen } = useAppSelector((state) => state.sidebarBoolean);
   return (
     <div
       className={cn('ex-table', {
@@ -66,21 +72,33 @@ export const Table = ({
 
       {/* table elements */}
       <div
-        className={cn('ex-table__table overflow-hidden', {
-          'rounded-tl-md rounded-tr-md': rounded && !topSlot,
-        })}
+        className={cn(
+          'ex-table__table',
+          'relative h-[973px] inset-0 overflow-x-scroll',
+          {
+            'rounded-tl-md rounded-tr-md': rounded && !topSlot,
+            [innerPage ? 'w-[calc(100vw-688px)]' : 'w-[calc(100vw-318px)]']:
+              isOpen,
+            [innerPage ? 'w-[calc(100vw-552px)]' : 'w-[calc(100vw-150px)]']:
+              !isOpen,
+          }
+        )}
       >
         {headless === false && (
           <div
-            className={cn('ex-table__head border-b-[1px] border-solid px-5', {
-              'border-gray-200':
-                styleType === 'basic' ||
-                styleType === 'striped-rows' ||
-                styleType === 'bordered', // border bottom color
-              'border-t-[1px] border-solid border-gray-200': topSlot,
-              // flex: onChangeAllCheckboxHandler,
-              [theadBgClass as string]: theadBgClass,
-            })}
+            className={cn(
+              'ex-table__head border-b-[1px] border-solid px-5',
+              'sticky inset-0 z-10',
+              {
+                'w-[100vw]': cols.length > 7,
+                'border-gray-200':
+                  styleType === 'basic' ||
+                  styleType === 'striped-rows' ||
+                  styleType === 'bordered', // border bottom color
+                'border-t-[1px] border-solid border-gray-200': topSlot,
+                [theadBgClass as string]: theadBgClass,
+              }
+            )}
           >
             <div
               className={cn(
@@ -106,12 +124,16 @@ export const Table = ({
                     })}
                   >
                     <div
-                      className={cn('py-4 pr-5 text-center w-full', {
-                        // 'pl-5': headerIndex === 0 && onChangeAllCheckboxHandler,
-                        'border-r-[1px] border-solid border-gray-200':
-                          styleType === 'thead-divided' &&
-                          headerIndex !== cols.length - 1,
-                      })}
+                      className={cn(
+                        'py-4 pr-5 text-center w-full',
+                        'whitespace-pre',
+                        {
+                          // 'pl-5': headerIndex === 0 && onChangeAllCheckboxHandler,
+                          'border-r-[1px] border-solid border-gray-200':
+                            styleType === 'thead-divided' &&
+                            headerIndex !== cols.length - 1,
+                        }
+                      )}
                     >
                       {headerItem.title === 'checkbox' ? (
                         <>{headerItem.titleRender()}</>
@@ -126,7 +148,13 @@ export const Table = ({
           </div>
         )}
         <div
-          className={cn('ex-table__content text-sm font-medium text-gray-800')}
+          className={cn(
+            'ex-table__content text-sm font-medium text-gray-800',
+            'absolute inset-[50px_0_0_0]',
+            {
+              'w-[100vw]': cols.length > 7,
+            }
+          )}
         >
           {list.map((item: any, index: number) => (
             <div
@@ -136,12 +164,12 @@ export const Table = ({
                   styleType === 'basic' ||
                   styleType === 'highlighted' ||
                   styleType === 'bordered', // border bottom color
-                '!border-b-[0px]':
-                  styleType === 'striped-rows' ||
-                  ((styleType === 'bordered' ||
-                    styleType === 'thead-divided') &&
-                    index === list.length - 1 &&
-                    !botSlot), // border bottom none
+                // '!border-b-[0px]':
+                //   styleType === 'striped-rows' ||
+                //   ((styleType === 'bordered' ||
+                //     styleType === 'thead-divided') &&
+                //     index === list.length - 1 &&
+                //     !botSlot), // border bottom none
                 // flex: onChangeAllCheckboxHandler,
                 'bg-gray-100': styleType === 'striped-rows' && index % 2 !== 0, // bg color
               })}
@@ -171,9 +199,12 @@ export const Table = ({
                         })}
                       >
                         <div
-                          className={cn('py-4 pr-5 text-center w-full', {
-                            // 'pl-5': i === 0 && onChangeAllCheckboxHandler,
-                          })}
+                          className={cn(
+                            'py-4 pr-5 text-center w-full whitespace-pre',
+                            {
+                              // 'pl-5': i === 0 && onChangeAllCheckboxHandler,
+                            }
+                          )}
                         >
                           {col.render(item)}
                         </div>
@@ -189,7 +220,12 @@ export const Table = ({
 
       {/* bottom elements */}
       {botSlot && (
-        <div className={cn('ex-table__bot flex p-5 justify-between', {})}>
+        <div
+          className={cn(
+            'ex-table__bot flex p-5 justify-between mt-[-9px] border-t-[1px] border-gray-200',
+            {}
+          )}
+        >
           {botSlot}
         </div>
       )}

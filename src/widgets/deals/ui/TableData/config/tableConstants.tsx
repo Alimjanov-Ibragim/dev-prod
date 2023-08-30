@@ -50,8 +50,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[12.625%]',
-      width: 'flex-[0_0_12.625%]',
+      maxWidth: 'max-w-[10.625%]',
+      width: 'flex-[0_0_10.625%]',
       title: 'Title',
       render: (rowData: TListTableRow) => {
         const lengthPath = pathname.split('/').length;
@@ -83,8 +83,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[14.625%]',
-      width: 'flex-[0_0_14.625%]',
+      maxWidth: 'max-w-[13.625%]',
+      width: 'flex-[0_0_13.625%]',
       title: 'Client/Company',
       render: (rowData: TListTableRow) => {
         return (
@@ -96,30 +96,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[9.5%]',
-      width: 'flex-[0_0_9.5%]',
-      title: 'Unit',
-      render: (rowData: TListTableRow) => {
-        const statusText = rowData.unit.status.title;
-        const color =
-          statusText === 'Available'
-            ? 'green'
-            : statusText === 'Blocked'
-            ? 'red'
-            : 'gray';
-        return (
-          <div className='inline-flex flex-col items-start'>
-            <span className='mb-[3px]'>{rowData.unit.title}</span>
-            <Badge size='default' type='soft' indicator color={color}>
-              {rowData.unit.status.title}
-            </Badge>
-          </div>
-        );
-      },
-    },
-    {
-      maxWidth: 'max-w-[13.625%]',
-      width: 'flex-[0_0_13.625%]',
+      maxWidth: 'max-w-[12.625%]',
+      width: 'flex-[0_0_12.625%]',
       title: 'Status',
       render: (rowData: TListTableRow) => {
         const statusColor = dealStatusesColorSwitch(rowData.status.id);
@@ -137,16 +115,49 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[9.5%]',
-      width: 'flex-[0_0_9.5%]',
+      maxWidth: 'max-w-[4%]',
+      width: 'flex-[0_0_4%]',
+      title: 'Unit',
+      render: (rowData: TListTableRow) => {
+        return (
+          <div className='inline-flex flex-col items-start'>
+            <span className='mb-[3px]'>{rowData.unit.title}</span>
+          </div>
+        );
+      },
+    },
+    {
+      maxWidth: 'max-w-[7.5%]',
+      width: 'flex-[0_0_7.5%]',
+      title: 'Unit Status',
+      render: (rowData: TListTableRow) => {
+        const statusText = rowData.unit.status.title;
+        const color =
+          statusText === 'Available'
+            ? 'green'
+            : statusText === 'Blocked'
+            ? 'red'
+            : 'gray';
+        return (
+          <div className='inline-flex flex-col items-start'>
+            <Badge size='default' type='soft' indicator color={color}>
+              {rowData.unit.status.title}
+            </Badge>
+          </div>
+        );
+      },
+    },
+    {
+      maxWidth: 'max-w-[13.5%]',
+      width: 'flex-[0_0_13.5%]',
       title: 'Next Job',
       render: (rowData: TListTableRow) => {
         return <span>{rowData.jobs[0]?.title || 'unknown'}</span>;
       },
     },
     {
-      maxWidth: 'max-w-[6.6666%]',
-      width: 'flex-[0_0_6.6666%]',
+      maxWidth: 'max-w-[4.6666%]',
+      width: 'flex-[0_0_4.6666%]',
       title: 'Payment',
       render: (rowData: TListTableRow) => {
         return <span>{rowData.deal || '-----'}</span>;

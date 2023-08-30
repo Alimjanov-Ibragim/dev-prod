@@ -97,30 +97,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[9.5%]',
-      width: 'flex-[0_0_9.5%]',
-      title: 'Unit',
-      render: (rowData: TListTableRow) => {
-        const statusText = rowData.unit.status.title;
-        const color =
-          statusText === 'Available'
-            ? 'green'
-            : statusText === 'Blocked'
-            ? 'red'
-            : 'gray';
-        return (
-          <div className='inline-flex flex-col items-start'>
-            <span className='mb-[3px]'>{rowData.unit.title}</span>
-            <Badge size='default' type='soft' indicator color={color}>
-              {rowData.unit.status.title}
-            </Badge>
-          </div>
-        );
-      },
-    },
-    {
-      maxWidth: 'max-w-[10.625%]',
-      width: 'flex-[0_0_10.625%]',
+      maxWidth: 'max-w-[8.625%]',
+      width: 'flex-[0_0_8.625%]',
       title: 'Status',
       render: (rowData: TListTableRow) => {
         const statusColor = leadStatusesColorSwitch(rowData.status.id);
@@ -134,6 +112,39 @@ export const tableConstants = (
           >
             {LeadStatusType[rowData.status.id]}
           </Badge>
+        );
+      },
+    },
+    {
+      maxWidth: 'max-w-[4%]',
+      width: 'flex-[0_0_4%]',
+      title: 'Unit',
+      render: (rowData: TListTableRow) => {
+        return (
+          <div className='inline-flex flex-col items-start'>
+            <span className='mb-[3px]'>{rowData.unit.title}</span>
+          </div>
+        );
+      },
+    },
+    {
+      maxWidth: 'max-w-[9.5%]',
+      width: 'flex-[0_0_9.5%]',
+      title: 'Unit Status',
+      render: (rowData: TListTableRow) => {
+        const statusText = rowData.unit.status.title;
+        const color =
+          statusText === 'Available'
+            ? 'green'
+            : statusText === 'Blocked'
+            ? 'red'
+            : 'gray';
+        return (
+          <div className='inline-flex flex-col items-start'>
+            <Badge size='default' type='soft' indicator color={color}>
+              {rowData.unit.status.title}
+            </Badge>
+          </div>
         );
       },
     },
@@ -154,8 +165,8 @@ export const tableConstants = (
       },
     },
     {
-      maxWidth: 'max-w-[7.5%]',
-      width: 'flex-[0_0_7.5%]',
+      maxWidth: 'max-w-[5.5%]',
+      width: 'flex-[0_0_5.5%]',
       title: 'Created Date',
       render: (rowData: TListTableRow) => {
         return <span>{dayjs(rowData.createdAt).format('DD/MM/YYYY')}</span>;
