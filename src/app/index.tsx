@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { baseLayout } from 'app/layout';
+import { LoginPage } from 'pages/login';
 import { NotFoundPage } from 'pages/not-found';
 import { routes } from 'shared/config';
 import { withHocs } from './hocs';
@@ -39,6 +40,7 @@ const App = () => {
               )}
               <Route path={'*'} element={<NotFoundPage />} />
             </Route>
+            <Route path={'/login'} element={<LoginPage />} />
           </Routes>
         </div>
       </PersistGate>

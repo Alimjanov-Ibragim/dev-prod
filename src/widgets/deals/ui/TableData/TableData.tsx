@@ -1,10 +1,12 @@
 import { useState, ChangeEvent } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { ChooseDate } from 'features/ChooseDate';
-import { ExportOptions } from 'features/ExportOptions';
-import { FilterDropdown } from 'features/FilterDropdown';
-import { Search } from 'features/Search';
+import {
+  ExportOptions,
+  FilterDropdown,
+  Search,
+  ChooseDate,
+} from 'features/global';
 import { Table, Pagination, Title } from 'shared/ui';
 import { data } from './config/data';
 import { tableConstants } from './config/tableConstants';

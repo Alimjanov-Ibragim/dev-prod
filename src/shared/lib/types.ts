@@ -37,6 +37,7 @@ export type TIcon =
   | 'preline-slash'
   | 'logo'
   | 'logo-without-text'
+  | 'logo-blue-without-text'
   | 'trash-fill'
   | 'houses'
   | 'pencil-square'

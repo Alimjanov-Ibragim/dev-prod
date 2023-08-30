@@ -6,3 +6,4 @@ export { Logo } from './Logo';
 export { DropzonImg } from './DropzonImg';
 export { LineWithArrowOnTheRight } from './LineWithArrowOnTheRight';
 export { LineWithCircleOnTheLeft } from './LineWithCircleOnTheLeft';
+export { LogoBlue } from './LogoBlue';

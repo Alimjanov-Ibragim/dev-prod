@@ -46,6 +46,7 @@ import {
   DropzonImg,
   LineWithArrowOnTheRight,
   LineWithCircleOnTheLeft,
+  LogoBlue,
 } from './ui';
 import { LogoWithoutText } from './ui/LogoWithoutText';
 
@@ -202,6 +203,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'arrow-right' && (
         <ArrowRight className={className} width={width} height={height} />
+      )}
+      {name === 'logo-blue-without-text' && (
+        <LogoBlue className={className} width={width} height={height} />
       )}
     </>
   );

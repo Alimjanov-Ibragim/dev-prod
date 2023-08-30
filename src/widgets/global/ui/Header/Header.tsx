@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Search } from 'features/Search';
+import { Search } from 'features/global';
 import { Avatar } from 'shared/ui';
 
 export const Header = () => {
