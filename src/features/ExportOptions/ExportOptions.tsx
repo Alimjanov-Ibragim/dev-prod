@@ -59,7 +59,7 @@ export const ExportOptions = () => {
       </Button>
       <div
         className={cn(
-          'z-10 bg-white w-[234px] rounded-lg text-left border border-solid border-gray-200 shadow-[0px_10px_8px_0px_rgba(0,_0,_0,_0.04),0px_4px_3px_0px_rgba(0,_0,_0,_0.10)]',
+          'z-20 bg-white w-[234px] rounded-lg text-left border border-solid border-gray-200 shadow-[0px_10px_8px_0px_rgba(0,_0,_0,_0.04),0px_4px_3px_0px_rgba(0,_0,_0,_0.10)]',
           {
             'block absolute inset-[46px_auto_auto_0px] m-[0px] transform-[translate3d(327px,70px,0px)]':
               isOpen,

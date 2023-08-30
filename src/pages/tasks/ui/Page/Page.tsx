@@ -6,7 +6,7 @@ import { Breadcrumb, LayoutInner, Title } from 'shared/ui';
 const LIST_BREADCRUMB = [
   {
     text: 'Home',
-    link: '#',
+    link: '/',
   },
   {
     text: 'Tasks',
