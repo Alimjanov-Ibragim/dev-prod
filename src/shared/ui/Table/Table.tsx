@@ -77,10 +77,12 @@ export const Table = ({
           'relative h-[973px] inset-0 overflow-x-scroll',
           {
             'rounded-tl-md rounded-tr-md': rounded && !topSlot,
-            [innerPage ? 'w-[calc(100vw-688px)]' : 'w-[calc(100vw-318px)]']:
-              isOpen,
-            [innerPage ? 'w-[calc(100vw-552px)]' : 'w-[calc(100vw-150px)]']:
-              !isOpen,
+            [innerPage
+              ? 'min-[1441px]:w-[calc(100vw-688px)] max-[1440px]:w-[calc(100vw-567px)]'
+              : 'w-[calc(100vw-318px)]']: isOpen,
+            [innerPage
+              ? 'min-[1441px]:w-[calc(100vw-552px)] max-[1440px]:w-[calc(100vw-431px)]'
+              : 'w-[calc(100vw-150px)]']: !isOpen,
           }
         )}
       >
@@ -90,7 +92,11 @@ export const Table = ({
               'ex-table__head border-b-[1px] border-solid px-5',
               'sticky inset-0 z-10',
               {
-                'w-[100vw]': cols.length > 7,
+                'min-[1441px]:w-[100vw] max-[1440px]:w-[140vw]': cols.length,
+                // 'min-[1441px]:w-[100vw] max-[1440px]:w-[100vw] ':
+                //   cols.length < 8,
+                // 'min-[1441px]:w-[100vw]  max-[1440px]:w-[140vw]':
+                //   cols.length < 8,
                 'border-gray-200':
                   styleType === 'basic' ||
                   styleType === 'striped-rows' ||
@@ -152,7 +158,7 @@ export const Table = ({
             'ex-table__content text-sm font-medium text-gray-800',
             'absolute inset-[50px_0_0_0]',
             {
-              'w-[100vw]': cols.length > 7,
+              'min-[1441px]:w-[100vw] max-[1440px]:w-[140vw]': cols.length,
             }
           )}
         >
