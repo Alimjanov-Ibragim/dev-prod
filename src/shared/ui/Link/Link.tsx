@@ -5,6 +5,7 @@ import { Badge } from 'shared/ui';
 
 interface Props extends LinkProps {
   className?: string;
+  classNameIcon?: string;
   icon?: TIcon;
   badgeText?: string;
   badgeClassName?: string;
@@ -19,6 +20,7 @@ export const Link = ({
   children,
   chevron,
   className,
+  classNameIcon,
 }: Props) => {
   return (
     <ULink
@@ -30,7 +32,9 @@ export const Link = ({
       )}
       to={to}
     >
-      {icon && <GetIcon name={icon} width='14' height='14' />}
+      {icon && (
+        <GetIcon name={icon} width='14' height='14' className={classNameIcon} />
+      )}
       {chevron ? (
         <>
           {badgeText && (
