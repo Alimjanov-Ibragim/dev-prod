@@ -5,6 +5,7 @@ import {
   EditGeneralInfo,
   AddProjectSingle,
   AddProject,
+  Upload,
 } from 'features/projects';
 import { Breadcrumb, LayoutInner, Tabs, Title } from 'shared/ui';
 
@@ -26,7 +27,10 @@ export const SingleProject = () => {
         <>
           <div className={cn('grid gap-[8px]')}>
             <Breadcrumb list={LIST_BREADCRUMB} />
-            <Title text='Project name' />
+            <div className={cn('flex items-center gap-[12px]')}>
+              <Title text='Project name' />
+              <Upload />
+            </div>
           </div>
           <div className={cn('flex items-center gap-[12px]')}>
             <AddProjectSingle />

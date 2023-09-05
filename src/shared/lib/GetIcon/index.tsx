@@ -35,6 +35,7 @@ import {
   ArrowRightShort,
   ArrowRight,
   FileEarmarkArrowDown,
+  Upload,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
@@ -214,6 +215,9 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
           width={width}
           height={height}
         />
+      )}
+      {name === 'upload' && (
+        <Upload className={className} width={width} height={height} />
       )}
     </>
   );

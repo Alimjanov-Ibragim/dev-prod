@@ -46,7 +46,8 @@ export type TIcon =
   | 'line-arrow-right'
   | 'arrow-right-short'
   | 'arrow-right'
-  | 'file-earmark-arrow-down';
+  | 'file-earmark-arrow-down'
+  | 'upload';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 
