@@ -52,16 +52,19 @@ export const tableConstants = (
       title: 'Name',
       render: (rowData: TListTableRow) => {
         return (
-          <Link
-            to={`${pathname}/${rowData.id}`}
-            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer'
-          >
-            <Avatar
-              styleType={rowData.avatar ? 'image' : 'placeholder'}
-              imageSrc={rowData.avatar || ''}
-              textTitle={rowData.displayName || 'unknown'}
-            />
-          </Link>
+          <>
+            <Link
+              to={`${pathname}/${rowData.id}`}
+              className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer'
+            ></Link>
+            <div className='w-[50%] m-auto'>
+              <Avatar
+                styleType={rowData.avatar ? 'image' : 'placeholder'}
+                imageSrc={rowData.avatar || ''}
+                textTitle={rowData.displayName || 'unknown'}
+              />
+            </div>
+          </>
         );
       },
     },
@@ -101,7 +104,7 @@ export const tableConstants = (
       render: (rowData: TListTableRow) => {
         return (
           <Icon
-            className='hover:bg-gray-100'
+            className='hover:bg-gray-100  w-[30px] mx-auto'
             size='small'
             icon='trash-fill'
             styleType='white'

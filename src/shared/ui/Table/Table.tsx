@@ -73,152 +73,147 @@ export const Table = ({
       {/* table elements */}
       <div
         className={cn(
-          'ex-table__table',
-          'relative h-[973px] inset-0 overflow-x-scroll',
+          'overflow-scroll ex-table__table',
+          // 'relative h-[973px] inset-0 overflow-x-scroll',
           {
             'rounded-tl-md rounded-tr-md': rounded && !topSlot,
             [innerPage
-              ? 'min-[1441px]:w-[calc(100vw-688px)] max-[1440px]:w-[calc(100vw-567px)]'
+              ? 'min-[1441px]:w-[calc(100vw-682px)]'
               : 'w-[calc(100vw-318px)]']: isOpen,
             [innerPage
-              ? 'min-[1441px]:w-[calc(100vw-552px)] max-[1440px]:w-[calc(100vw-431px)]'
-              : 'w-[calc(100vw-150px)]']: !isOpen,
+              ? 'min-[1441px]:w-[calc(100vw-546px)]'
+              : 'w-[calc(100vw-148px)]']: !isOpen,
           }
         )}
       >
-        {headless === false && (
-          <div
-            className={cn(
-              'ex-table__head border-b-[1px] border-solid px-5',
-              'sticky inset-0 z-10',
-              {
-                'min-[1441px]:w-[100vw] max-[1440px]:w-[140vw]': cols.length,
-                // 'min-[1441px]:w-[100vw] max-[1440px]:w-[100vw] ':
-                //   cols.length < 8,
-                // 'min-[1441px]:w-[100vw]  max-[1440px]:w-[140vw]':
-                //   cols.length < 8,
-                'border-gray-200':
-                  styleType === 'basic' ||
-                  styleType === 'striped-rows' ||
-                  styleType === 'bordered', // border bottom color
-                'border-t-[1px] border-solid border-gray-200': topSlot,
-                [theadBgClass as string]: theadBgClass,
-              }
-            )}
-          >
+        <div
+          className={cn(
+            'table w-[2000px] border-collapse ex-table__content text-sm font-medium text-gray-800'
+            // 'absolute inset-[50px_0_0_0]',
+            // {
+            //   'min-[1441px]:w-[100vw] max-[1440px]:w-[140vw]': cols.length,
+            // }
+          )}
+        >
+          {headless === false && (
             <div
               className={cn(
-                'flex-1 flex flex-wrap ml-[-20px] text-xs text-left font-medium text-gray-500 uppercase'
+                'ex-table__head border-b-[1px] border-solid',
+                'table-header-group w-full',
+                // 'table sticky inset-0 z-10',
+                {
+                  // 'min-[1441px]:w-[100vw] max-[1440px]:w-[140vw]': cols.length,
+                  'border-gray-200':
+                    styleType === 'basic' ||
+                    styleType === 'striped-rows' ||
+                    styleType === 'bordered', // border bottom color
+                  'border-t-[1px] border-solid border-gray-200': topSlot,
+                  [theadBgClass as string]: theadBgClass,
+                }
               )}
             >
-              {cols.map(
-                (
-                  headerItem: {
-                    maxWidth: string;
-                    width: string;
-                    title: string;
-                    titleRender?: any;
-                    render: any;
-                  },
-                  headerIndex: number
-                ) => (
-                  <div
-                    key={headerIndex}
-                    className={cn('pl-[20px] flex items-center', {
-                      [`${headerItem.width}`]: headerItem.width,
-                      [`${headerItem.maxWidth}`]: headerItem.maxWidth,
-                    })}
-                  >
+              <div
+                className={cn(
+                  'table-row text-xs text-left font-medium text-gray-500 uppercase'
+                )}
+              >
+                {cols.map(
+                  (
+                    headerItem: {
+                      maxWidth: string;
+                      width: string;
+                      title: string;
+                      titleRender?: any;
+                      render: any;
+                    },
+                    headerIndex: number
+                  ) => (
                     <div
+                      key={headerIndex}
                       className={cn(
-                        'py-4 pr-5 text-center w-full',
-                        'whitespace-pre',
+                        'table-cell align-middle px-1 first:pl-5 last:pr-5',
                         {
+                          // [`${headerItem.width}`]: headerItem.width,
+                          // [`${headerItem.maxWidth}`]: headerItem.maxWidth,
+                        }
+                      )}
+                    >
+                      <div
+                        className={cn('py-4 text-center', 'whitespace-pre', {
                           // 'pl-5': headerIndex === 0 && onChangeAllCheckboxHandler,
                           'border-r-[1px] border-solid border-gray-200':
                             styleType === 'thead-divided' &&
                             headerIndex !== cols.length - 1,
-                        }
-                      )}
-                    >
-                      {headerItem.title === 'checkbox' ? (
-                        <>{headerItem.titleRender()}</>
-                      ) : (
-                        <>{headerItem.title}</>
-                      )}
+                        })}
+                      >
+                        {headerItem.title === 'checkbox' ? (
+                          <>{headerItem.titleRender()}</>
+                        ) : (
+                          <>{headerItem.title}</>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )
-              )}
+                  )
+                )}
+              </div>
             </div>
-          </div>
-        )}
-        <div
-          className={cn(
-            'ex-table__content text-sm font-medium text-gray-800',
-            'absolute inset-[50px_0_0_0]',
-            {
-              'min-[1441px]:w-[100vw] max-[1440px]:w-[140vw]': cols.length,
-            }
           )}
-        >
           {list.map((item: any, index: number) => (
             <div
               key={index}
-              className={cn('border-b-[1px] border-solid px-5', {
-                'border-gray-200':
-                  styleType === 'basic' ||
-                  styleType === 'highlighted' ||
-                  styleType === 'bordered', // border bottom color
-                // '!border-b-[0px]':
-                //   styleType === 'striped-rows' ||
-                //   ((styleType === 'bordered' ||
-                //     styleType === 'thead-divided') &&
-                //     index === list.length - 1 &&
-                //     !botSlot), // border bottom none
-                // flex: onChangeAllCheckboxHandler,
-                'bg-gray-100': styleType === 'striped-rows' && index % 2 !== 0, // bg color
-              })}
+              className={cn(
+                'border-b-[1px] border-solid',
+                'w-full  table-row-group ex-table__row text-left',
+                {
+                  'border-gray-200':
+                    styleType === 'basic' ||
+                    styleType === 'highlighted' ||
+                    styleType === 'bordered', // border bottom color
+                  // '!border-b-[0px]':
+                  //   styleType === 'striped-rows' ||
+                  //   ((styleType === 'bordered' ||
+                  //     styleType === 'thead-divided') &&
+                  //     index === list.length - 1 &&
+                  //     !botSlot), // border bottom none
+                  // flex: onChangeAllCheckboxHandler,
+                  'bg-gray-100':
+                    styleType === 'striped-rows' && index % 2 !== 0, // bg color
+                }
+              )}
             >
-              <div
-                className={cn(
-                  'ex-table__row flex-1 flex flex-wrap ml-[-20px] text-left'
-                )}
-              >
-                <>
-                  {/* new */}
-                  {cols.map(
-                    (
-                      col: {
-                        title: string;
-                        render: any;
-                        width: string;
-                        maxWidth: string;
-                      },
-                      i: number
-                    ) => (
+              <>
+                {/* new */}
+                {cols.map(
+                  (
+                    col: {
+                      title: string;
+                      render: any;
+                      width: string;
+                      maxWidth: string;
+                    },
+                    i: number
+                  ) => (
+                    <div
+                      key={i}
+                      className={cn(
+                        'table-cell align-middle px-1 first:pl-5 last:pr-5 relative',
+                        {
+                          // [`${col.maxWidth}`]: col.maxWidth,
+                          // [`${col.width}`]: col.width,
+                        }
+                      )}
+                    >
                       <div
-                        key={i}
-                        className={cn('pl-[20px] flex items-center relative', {
-                          [`${col.maxWidth}`]: col.maxWidth,
-                          [`${col.width}`]: col.width,
+                        className={cn('py-4 text-center whitespace-pre', {
+                          // 'pl-5': i === 0 && onChangeAllCheckboxHandler,
                         })}
                       >
-                        <div
-                          className={cn(
-                            'py-4 pr-5 text-center w-full whitespace-pre',
-                            {
-                              // 'pl-5': i === 0 && onChangeAllCheckboxHandler,
-                            }
-                          )}
-                        >
-                          {col.render(item)}
-                        </div>
+                        {col.render(item)}
                       </div>
-                    )
-                  )}
-                </>
-              </div>
+                    </div>
+                  )
+                )}
+              </>
             </div>
           ))}
         </div>

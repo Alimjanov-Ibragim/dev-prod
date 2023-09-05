@@ -53,12 +53,13 @@ export const tableConstants = (
       title: 'Agency Name',
       render: (rowData: TListTableRow) => {
         return (
-          <Link
-            to={`${pathname}/${rowData.id}`}
-            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
-          >
-            {rowData.title || '----'}
-          </Link>
+          <>
+            <Link
+              to={`${pathname}/${rowData.id}`}
+              className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
+            ></Link>
+            <div>{rowData.title || '----'}</div>
+          </>
         );
       },
     },
@@ -137,7 +138,7 @@ export const tableConstants = (
       render: (rowData: TListTableRow) => {
         return (
           <Icon
-            className='hover:bg-gray-100'
+            className='hover:bg-gray-100 w-[30px] mx-auto'
             size='small'
             icon='trash-fill'
             styleType='white'

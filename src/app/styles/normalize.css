@@ -41,3 +41,7 @@ body {
 ::-webkit-scrollbar-corner {
   background-color: #fff;
 }
+
+.ex-table__table::-webkit-scrollbar {
+  width: 0;
+}

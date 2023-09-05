@@ -52,12 +52,13 @@ export const tableConstants = (
       title: 'COMPANY NAME',
       render: (rowData: TListTableRow) => {
         return (
-          <Link
-            to={`${pathname}/${rowData.id}`}
-            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
-          >
-            {rowData.title || '----'}
-          </Link>
+          <>
+            <Link
+              to={`${pathname}/${rowData.id}`}
+              className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
+            ></Link>
+            <div>{rowData.title || '----'}</div>
+          </>
         );
       },
     },

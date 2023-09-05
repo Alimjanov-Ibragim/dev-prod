@@ -56,12 +56,13 @@ export const tableConstants = (
       render: (rowData: TListTableRow) => {
         const lengthPath = pathname.split('/').length;
         return (
-          <Link
-            to={`${lengthPath < 2 ? pathname : '/units'}/${rowData.id}`}
-            className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
-          >
-            {rowData.project.title || '----'}
-          </Link>
+          <>
+            <Link
+              to={`${lengthPath < 2 ? pathname : '/units'}/${rowData.id}`}
+              className='!inline-flex !text-slate-800 font-semibold absolute translate-y-[-50%] translate-x-[-50%] w-full h-full cursor-pointer justify-center'
+            ></Link>
+            <div>{rowData.project.title || '----'}</div>
+          </>
         );
       },
     },
