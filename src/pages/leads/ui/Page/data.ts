@@ -40,6 +40,14 @@ export const userRoles: ColourOption[] = [
   { value: 'referral', label: 'Referral', color: '#5243AA' },
 ];
 
+export const unitStatuses: ColourOption[] = [
+  { value: 'unreleased', label: 'Unreleased', color: '#00B8D9', isFixed: true },
+  { value: 'available', label: 'Available', color: '#00B8D9', isFixed: true },
+  { value: 'blocked', label: 'Blocked', color: '#0052CC', isDisabled: false },
+  { value: 'booked', label: 'Booked', color: '#5243AA' },
+  { value: 'sold', label: 'Sold', color: '#5243AA' },
+];
+
 export const participants: RoleOption[] = [
   {
     id: 1,

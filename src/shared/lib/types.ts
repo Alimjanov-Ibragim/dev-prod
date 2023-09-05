@@ -45,7 +45,8 @@ export type TIcon =
   | 'line-circle-left'
   | 'line-arrow-right'
   | 'arrow-right-short'
-  | 'arrow-right';
+  | 'arrow-right'
+  | 'file-earmark-arrow-down';
 
 export type TInputStyleType = 'bordered' | 'underline' | 'light';
 

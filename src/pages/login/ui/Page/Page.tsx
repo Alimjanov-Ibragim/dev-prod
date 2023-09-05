@@ -27,7 +27,7 @@ export const LoginPage = () => {
           </span>
         </div>
         {/* form fields */}
-        <div className={cn('flex flex-col gap-[48px] mt-[-100px] p-[48px]')}>
+        <div className={cn('flex flex-col gap-[48px] p-[48px]')}>
           <div>
             <Title
               text='Log in to your account'

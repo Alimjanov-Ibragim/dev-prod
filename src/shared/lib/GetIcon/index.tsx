@@ -34,6 +34,7 @@ import {
   PencilSquare,
   ArrowRightShort,
   ArrowRight,
+  FileEarmarkArrowDown,
 } from 'react-bootstrap-icons';
 
 import { TIcon } from 'shared/lib';
@@ -206,6 +207,13 @@ export const GetIcon = ({ className, width, height, name }: Props) => {
       )}
       {name === 'logo-blue-without-text' && (
         <LogoBlue className={className} width={width} height={height} />
+      )}
+      {name === 'file-earmark-arrow-down' && (
+        <FileEarmarkArrowDown
+          className={className}
+          width={width}
+          height={height}
+        />
       )}
     </>
   );

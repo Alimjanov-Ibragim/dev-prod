@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { tabsConstants } from 'pages/units/config';
-import { AddUnit, EditGeneralInfo } from 'features/units';
+import { AddUnit, EditGeneralInfo, Generate, StatusUnit } from 'features/units';
 import { Breadcrumb, LayoutInner, Tabs, Title } from 'shared/ui';
 
 const LIST_BREADCRUMB = [
@@ -22,9 +22,13 @@ export const SingleUnit = () => {
         <>
           <div className={cn('grid gap-[8px]')}>
             <Breadcrumb list={LIST_BREADCRUMB} />
-            <Title text='Unit name' />
+            <div className={cn('flex items-center gap-[12px]')}>
+              <Title text='Unit name' />
+              <StatusUnit />
+            </div>
           </div>
           <div className={cn('flex items-center gap-[12px]')}>
+            <Generate />
             <AddUnit />
           </div>
         </>
