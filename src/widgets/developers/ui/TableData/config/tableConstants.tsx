@@ -93,7 +93,7 @@ export const tableConstants = (
       render: (rowData: TListTableRow) => {
         return (
           <Icon
-            className='hover:bg-gray-100'
+            className='hover:bg-gray-100 w-[30px] mx-auto'
             size='small'
             icon='trash-fill'
             styleType='white'

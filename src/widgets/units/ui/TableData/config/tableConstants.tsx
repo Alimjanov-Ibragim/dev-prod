@@ -156,7 +156,7 @@ export const tableConstants = (
         return (
           <span className='flex justify-center gap-[5px]'>
             <Icon
-              className='hover:bg-gray-100'
+              className='hover:bg-gray-100 w-[30px]'
               size='small'
               icon='download'
               role='button'
@@ -164,7 +164,7 @@ export const tableConstants = (
               onClick={() => handleDownload(rowData)}
             />
             <Icon
-              className='hover:bg-gray-100'
+              className='hover:bg-gray-100 w-[30px]'
               size='small'
               icon='trash-fill'
               styleType='white'
