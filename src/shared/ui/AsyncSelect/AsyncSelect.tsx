@@ -69,7 +69,13 @@ export const AsyncSelect = forwardRef(
     const DropdownIndicator = (props: any) => {
       return (
         components.DropdownIndicator && (
-          <components.DropdownIndicator {...props}>
+          <components.DropdownIndicator
+            {...props}
+            innerProps={{
+              ...props.innerProps,
+              onMouseDown: (e) => (e.preventDefault(), e.stopPropagation()),
+            }}
+          >
             <GetIcon
               name={
                 isMenuOpen ? dropdownIndicatorIconOpen : dropdownIndicatorIcon
