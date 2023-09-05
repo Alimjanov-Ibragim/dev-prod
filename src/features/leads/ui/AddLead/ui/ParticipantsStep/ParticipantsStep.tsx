@@ -208,6 +208,10 @@ export const ParticipantsStep = () => {
                 textBody={participant.textBody}
               />
               <Select
+                menuPortalTarget={document.body} // Or document.getElementById('scrollContainer')
+                styles={{
+                  menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+                }}
                 classNamePrefix='select'
                 defaultValue={userRoles[0]}
                 isDisabled={false}
