@@ -2,19 +2,7 @@ import cn from 'classnames';
 import { useCallback, useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 
-import { GetIcon, TIcon } from 'shared/lib';
-
 import { Button } from 'shared/ui';
-
-const LIST_OPTIONS: {
-  icon: TIcon;
-  text: string;
-}[] = [
-  {
-    icon: 'printer',
-    text: 'Print',
-  },
-];
 
 const LIST: {
   text: string;
